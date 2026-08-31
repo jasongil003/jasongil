@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jason Gil De La Cruz — Technical Lead &amp; Applied AI Engineer</title>
+    <meta name="description" content="Portfolio of Jason Gil De La Cruz — Technical Lead specializing in Linux Infrastructure, Enterprise Networking, SaaS/MSP Operations, Automation, and Applied AI/RAG Systems.">
+    <meta name="author" content="Jason Gil De La Cruz">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jason Gil De La Cruz — Technical Lead | Linux, Network &amp; Applied AI">
+    <meta property="og:description" content="Technical Lead with 8+ years across Linux infrastructure, enterprise networking, SaaS/MSP operations, and Applied AI/RAG systems.">
+    <meta property="og:url" content="https://github.com/jasongil003">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .flex { display: flex; }
+        .inline-flex { display: inline-flex; }
+        .grid { display: grid; }
+        .hidden { display: none !important; }
+        .items-center { align-items: center; }
+        .items-baseline { align-items: baseline; }
+        .items-start { align-items: flex-start; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .w-full { width: 100%; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .inset-0 { inset: 0; }
+        .z-0 { z-index: 0; }
+        .z-10 { z-index: 10; }
+        .z-50 { z-index: 50; }
+        .pointer-events-none { pointer-events: none; }
+        .select-none { user-select: none; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .rounded-full { border-radius: 9999px; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-md { border-radius: 0.375rem; }
+        .border { border-width: 1px; border-style: solid; }
+        .border-t { border-top: 1px solid rgb(var(--g200)); }
+        .border-b { border-bottom: 1px solid rgb(var(--g200)); }
+        .border-y { border-top: 1px solid rgb(var(--g200)); border-bottom: 1px solid rgb(var(--g200)); }
+        .divide-y > * + * { border-top: 1px solid rgb(var(--g200)); }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+        .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .py-14 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .pt-16 { padding-top: 4rem; }
+        .pb-12 { padding-bottom: 3rem; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-5 { margin-top: 1.25rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-gray-400 { color: rgb(var(--g400)); }
+        .text-gray-500 { color: rgb(var(--g500)); }
+        .text-gray-600 { color: rgb(var(--g600)); }
+        .text-ink { color: rgb(var(--ink)); }
+        .bg-ink { background-color: rgb(var(--ink)); color: rgb(var(--bg)); }
+        .bg-white { background-color: rgb(var(--bg)); }
+        .border-gray-200 { border-color: rgb(var(--g200)); }
+        .border-gray-300 { border-color: rgb(var(--g300)); }
+        .hover-lift:hover { transform: translateY(-2px); }
+        .transition { transition: all 0.2s ease; }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; }
+
+        .hero-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        @media (min-width: 640px) {
+            .hero-grid {
+                grid-template-columns: 16rem 1fr;
+                align-items: start;
+            }
+        }
+        .profile-avatar-box {
+            position: relative;
+            width: 100%;
+            max-width: 16rem;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            border: 1px solid rgb(var(--g200));
+            background: linear-gradient(180deg, rgb(var(--g100)) 0%, rgb(var(--bg)) 100%);
+            box-shadow: 0 16px 36px -16px rgba(0, 0, 0, 0.2);
+        }
+        .profile-avatar-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stack-btn {
+            padding: 4px 10px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            border-radius: 6px;
+            border: 1px solid rgb(var(--g200));
+            background: rgb(var(--g50));
+            color: rgb(var(--g500));
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .stack-btn:hover {
+            color: rgb(var(--ink));
+            border-color: rgb(var(--g400));
+        }
+        .stack-btn.is-active {
+            background: rgb(var(--ink));
+            color: rgb(var(--bg));
+            border-color: rgb(var(--ink));
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- ─────────────── Page-wide Halftone Backdrop ─────────────── -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
+        <div class="halftone halftone-wide mask-tr absolute right-0 top-0 h-[70vh] w-[65vw] opacity-20"></div>
+        <div class="halftone mask-bl absolute bottom-0 left-0 h-[60vh] w-[55vw] opacity-15"></div>
+    </div>
+
+    <!-- ─────────────── Fixed Left Sidebar (Desktop) ─────────────── -->
+    <nav class="sidebar-nav">
+        <a href="#top" class="font-pixel text-lg font-bold tracking-tight text-ink hover:opacity-75">Jason Gil</a>
+        <p class="font-mono text-xs text-gray-400 mt-1">Technical Lead &amp; AI Architect</p>
+        <p class="font-mono text-[10px] text-gray-400">Makati City, PH</p>
+
+        <!-- Navigation Links -->
+        <div class="mt-7 flex flex-1 flex-col gap-3 font-mono text-[13px]">
+            <a href="#projects" class="flex items-center gap-2 text-gray-500 hover:text-ink transition">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                Projects
+            </a>
+            <a href="#experience" class="flex items-center gap-2 text-gray-500 hover:text-ink transition">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Experience
+            </a>
+            <a href="#stack" class="flex items-center gap-2 text-gray-500 hover:text-ink transition">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                Skills &amp; Stack
+            </a>
+            <a href="#certifications" class="flex items-center gap-2 text-gray-500 hover:text-ink transition">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                Certifications
+            </a>
+            <a href="#github" class="flex items-center gap-2 text-gray-500 hover:text-ink transition">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                GitHub Activity
+            </a>
+        </div>
+
+        <!-- Interactive Shortcuts -->
+        <div class="pt-3 border-t border-gray-200 flex flex-col gap-2">
+            <button type="button" onclick="openAsk()" class="flex items-center justify-between text-xs text-gray-400 hover:text-ink transition w-full py-1">
+                <span>Ask anything</span>
+                <span class="inline-flex items-center gap-1">
+                    <kbd>⌘</kbd><span>+</span><kbd>K</kbd>
+                </span>
+            </button>
+            <button type="button" onclick="openTyping()" class="flex items-center justify-between text-xs text-gray-400 hover:text-ink transition w-full py-1">
+                <span>Typing test</span>
+                <span class="inline-flex items-center gap-1">
+                    <kbd>⌘</kbd><span>+</span><kbd>J</kbd>
+                </span>
+            </button>
+        </div>
+
+        <!-- Live Presence & Guestbook Trigger -->
+        <div class="mt-3 border-y border-gray-200 py-3">
+            <div class="flex items-center">
+                <span class="presence-icons inline-flex items-center">
+                    <img class="presence-avatar" alt="Viewer avatar" src="https://api.dicebear.com/9.x/notionists/svg?seed=Jason&radius=50&backgroundColor=f1f1f1">
+                    <img class="presence-avatar" alt="Viewer avatar" src="https://api.dicebear.com/9.x/notionists/svg?seed=Maria&radius=50&backgroundColor=f1f1f1">
+                    <img class="presence-avatar" alt="Viewer avatar" src="https://api.dicebear.com/9.x/notionists/svg?seed=Zoe&radius=50&backgroundColor=f1f1f1">
+                </span>
+                <span class="presence-more">+3</span>
+            </div>
+            <p class="font-mono text-[10.5px] text-gray-400 mt-1"><b class="presence-num text-ink">6</b> viewing right now</p>
+            <button type="button" onclick="openChat()" class="mt-2 flex items-center gap-1.5 font-mono text-xs text-gray-600 hover:text-ink transition">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Community guestbook
+            </button>
+        </div>
+
+        <!-- Theme & Audio Controls -->
+        <div class="mt-3 flex items-center justify-between">
+            <div class="theme-switch" role="group" aria-label="Theme Switcher">
+                <button type="button" data-theme-opt="system" onclick="setTheme('system', event)" class="theme-opt is-active" title="System Theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M9 21h6M12 17v4"/></svg>
+                </button>
+                <button type="button" data-theme-opt="light" onclick="setTheme('light', event)" class="theme-opt" title="Light Theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+                </button>
+                <button type="button" data-theme-opt="dark" onclick="setTheme('dark', event)" class="theme-opt" title="Dark Theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 13.6A8 8 0 1 1 10.4 4a6.2 6.2 0 0 0 9.6 9.6z"/></svg>
+                </button>
+            </div>
+
+            <button type="button" data-sound-toggle onclick="window.siteSound.toggle()" class="sound-toggle-btn" title="Toggle sound effects">
+                <svg data-sound-on class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" hidden>
+                    <path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                </svg>
+                <svg data-sound-off class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mt-3 pt-3 border-t border-gray-200">
+            <button type="button" onclick="copyEmail(event)" class="font-mono text-xs text-gray-500 hover:text-ink flex items-center gap-1.5 transition">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-3.5 w-3.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+                JasonGil.Career@gmail.com
+            </button>
+        </div>
+    </nav>
+
+    <!-- ─────────────── Mobile Top Bar ─────────────── -->
+    <header class="mobile-header">
+        <a href="#top" class="font-pixel text-base font-bold text-ink">Jason Gil</a>
+        <div class="flex items-center gap-3">
+            <button type="button" data-sound-toggle onclick="window.siteSound.toggle()" class="sound-toggle-btn">
+                <svg data-sound-on class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" hidden><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <svg data-sound-off class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            </button>
+            <button type="button" onclick="openMobileNav()" aria-label="Open menu" class="text-ink p-1">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ─────────────── Mobile Navigation Drawer ─────────────── -->
+    <div id="mobileNav" class="mobile-nav-drawer p-6">
+        <div class="flex items-center justify-between border-b border-gray-200 pb-4">
+            <span class="font-pixel text-lg">Jason Gil De La Cruz</span>
+            <button type="button" onclick="closeMobileNav()" aria-label="Close menu" class="text-ink p-1">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="flex flex-col gap-4 py-6 font-mono text-base">
+            <a href="#projects" onclick="closeMobileNav()">01 — Projects</a>
+            <a href="#experience" onclick="closeMobileNav()">02 — Experience</a>
+            <a href="#stack" onclick="closeMobileNav()">03 — Skills &amp; Stack</a>
+            <a href="#certifications" onclick="closeMobileNav()">04 — Certifications</a>
+            <a href="#github" onclick="closeMobileNav()">05 — GitHub Activity</a>
+        </div>
+        <div class="mt-auto border-t border-gray-200 pt-6 flex flex-col gap-3">
+            <button type="button" onclick="closeMobileNav(); setTimeout(openAsk, 300)" class="flex items-center justify-between text-sm text-gray-500 hover:text-ink">
+                <span>Ask AI terminal</span>
+                <span>⌘+K</span>
+            </button>
+            <button type="button" onclick="closeMobileNav(); setTimeout(openTyping, 300)" class="flex items-center justify-between text-sm text-gray-500 hover:text-ink">
+                <span>Speed typing test</span>
+                <span>⌘+J</span>
+            </button>
+            <button type="button" onclick="closeMobileNav(); setTimeout(openChat, 300)" class="flex items-center justify-between text-sm text-gray-500 hover:text-ink">
+                <span>Guestbook</span>
+                <span>💬</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ─────────────── Main Portfolio Page ─────────────── -->
+    <main id="top" class="main-content">
+        <div class="content-container">
+
+            <!-- ── HERO SECTION ── -->
+            <section class="pt-16 pb-12">
+                <div class="hero-grid">
+                    <!-- Profile Graphic / Halftone portrait -->
+                    <div class="profile-avatar-box mx-auto sm:mx-0">
+                        <svg viewBox="0 0 200 220" class="profile-avatar-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="220" fill="transparent"/>
+                            <!-- Technical Lead Silhouette & Server / AI Halftone -->
+                            <circle cx="100" cy="80" r="45" fill="rgb(var(--g200))" stroke="rgb(var(--ink))" stroke-width="3"/>
+                            <rect x="75" y="70" width="12" height="6" rx="2" fill="rgb(var(--ink))"/>
+                            <rect x="113" y="70" width="12" height="6" rx="2" fill="rgb(var(--ink))"/>
+                            <path d="M88 100 Q100 110 112 100" stroke="rgb(var(--ink))" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M55 58 Q100 28 145 58" fill="rgb(var(--ink))"/>
+                            <path d="M35 220 C35 155 60 140 100 140 C140 140 165 155 165 220 Z" fill="rgb(var(--g100))" stroke="rgb(var(--ink))" stroke-width="3"/>
+                            <line x1="100" y1="140" x2="100" y2="185" stroke="rgb(var(--g300))" stroke-width="2"/>
+                            <rect x="20" y="175" width="70" height="20" rx="10" fill="rgb(var(--ink))"/>
+                            <text x="55" y="189" fill="rgb(var(--bg))" font-family="'Geist Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">LEAD &amp; AI</text>
+                        </svg>
+                        <div aria-hidden="true" class="halftone-white mask-up pointer-events-none absolute inset-x-0 bottom-0 h-28"></div>
+                    </div>
+
+                    <!-- Intro & Bio -->
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white text-xs font-mono text-gray-500 mb-4">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            Technical Lead @ ANTlabs · Open for Consultations
+                        </div>
+                        <h1 class="font-pixel text-3xl sm:text-4xl text-ink leading-tight">Jason Gil De La Cruz</h1>
+                        <p class="font-mono text-xs text-gray-400 mt-1 uppercase tracking-wider">
+                            Technical Lead | SaaS / MSP | Linux · Network · Cloud · Automation · Applied AI
+                        </p>
+                        <p class="mt-4 text-[14.5px] leading-relaxed text-gray-600">
+                            Technical Lead with <strong>8+ years of experience</strong> across Linux infrastructure, enterprise networking, SaaS/MSP operations, and applied AI systems.
+                        </p>
+                        <p class="mt-2.5 text-[14px] leading-relaxed text-gray-600">
+                            Proven track record progressing from System Engineer to SME and Technical Lead at <strong>ANTlabs</strong> — combining hands-on engineering, incident escalation, root cause analysis (RCA), HA/DRBD failover, and developing private RAG-based AI knowledge architectures.
+                        </p>
+
+                        <!-- Contact Quicklinks -->
+                        <div class="mt-6 flex flex-wrap items-center gap-3 font-mono text-xs text-gray-500">
+                            <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="hover:text-ink transition">github (@jasongil003) ↗</a>
+                            <span>·</span>
+                            <a href="mailto:JasonGil.Career@gmail.com" class="hover:text-ink transition">JasonGil.Career@gmail.com ↗</a>
+                            <span>·</span>
+                            <span class="text-gray-400">+63 998 565 5016</span>
+                            <span>·</span>
+                            <button type="button" onclick="openModal('contact')" class="hover:text-ink transition underline underline-offset-4">contact modal →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── LIVE STATS GRID ── -->
+            <section class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-6 border-t border-gray-200">
+                <div class="stat-box" onclick="openModal('experience')">
+                    <div class="flex items-center justify-between">
+                        <span class="font-pixel text-xl text-ink">8+ yrs</span>
+                        <svg class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mt-1">Linux &amp; Net Ops</div>
+                </div>
+
+                <div class="stat-box" onclick="openModal('experience')">
+                    <div class="flex items-center justify-between">
+                        <span class="font-pixel text-xl text-ink">Global</span>
+                        <svg class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mt-1">APAC / EMEA / NA</div>
+                </div>
+
+                <div class="stat-box" onclick="openModal('projects')">
+                    <div class="flex items-center justify-between">
+                        <span class="font-pixel text-xl text-ink">RAG AI</span>
+                        <svg class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mt-1">1000s Docs Ingested</div>
+                </div>
+
+                <div class="stat-box" onclick="openModal('experience')">
+                    <div class="flex items-center justify-between">
+                        <span class="font-pixel text-xl text-ink">HA / DRBD</span>
+                        <svg class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mt-1">High Availability</div>
+                </div>
+            </section>
+
+            <!-- ── SECTION 01: SELECTED TECHNICAL PROJECTS ── -->
+            <section id="projects" class="py-14">
+                <div class="section-header">
+                    <h2 class="section-title">01 — selected technical projects</h2>
+                    <span class="font-mono text-xs text-gray-400">Click side cards to rotate</span>
+                </div>
+
+                <div class="deck" data-deck>
+                    <!-- Card 1 (Center) -->
+                    <article class="deck-card is-center" role="button" tabindex="0" onclick="activateCard(this)">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider">
+                                🧠 Private On-Premise RAG
+                            </span>
+                            <span class="font-mono text-[10px] text-gray-400">ANTlabs</span>
+                        </div>
+                        <div class="mt-4 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center font-pixel text-blue-500 text-lg">AI</div>
+                            <div>
+                                <h3 class="font-pixel text-base text-ink">ANTlabs Local AI Knowledge Base</h3>
+                                <p class="font-mono text-[11px] text-gray-400">Ollama · Open WebUI · MiniLM · Vector Search</p>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-xs leading-relaxed text-gray-600">
+                            Private RAG knowledge system on WSL2 Ubuntu, Docker, local Qwen/Gemma LLMs, and Tailscale for secure remote access. Features a resumable Bash pipeline indexing thousands of technical docs for semantic RCA retrieval.
+                        </p>
+                        <div class="mt-4 flex items-center gap-2 font-mono text-xs">
+                            <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-ink font-medium hover:opacity-85 transition">GitHub Profile ↗</a>
+                            <button type="button" onclick="openAsk()" class="px-3 py-1.5 rounded-lg border border-gray-300 hover:border-ink transition">Ask AI details</button>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 (Left) -->
+                    <article class="deck-card is-left" role="button" tabindex="0" onclick="activateCard(this)">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider">
+                                ⚡ Productivity Tool
+                            </span>
+                            <span class="font-mono text-[10px] text-gray-400">Automation</span>
+                        </div>
+                        <div class="mt-4 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-pixel text-emerald-500 text-lg">OCR</div>
+                            <div>
+                                <h3 class="font-pixel text-base text-ink">Document Processing Automation</h3>
+                                <p class="font-mono text-[11px] text-gray-400">OCR · Batch Export · Validation</p>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-xs leading-relaxed text-gray-600">
+                            Browser-based OCR tool combining rule-based validation, automated file naming, editable review, batch processing, and structured Excel/ZIP exports to eliminate manual data entry.
+                        </p>
+                        <div class="mt-4 flex items-center gap-2 font-mono text-xs">
+                            <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-ink font-medium hover:opacity-85 transition">Explore ↗</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 (Right) -->
+                    <article class="deck-card is-right" role="button" tabindex="0" onclick="activateCard(this)">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider">
+                                📊 SaaS / Operations
+                            </span>
+                            <span class="font-mono text-[10px] text-gray-400">In Development</span>
+                        </div>
+                        <div class="mt-4 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center font-pixel text-purple-500 text-lg">OPS</div>
+                            <div>
+                                <h3 class="font-pixel text-base text-ink">ANTlabs Operations App &amp; PAWI</h3>
+                                <p class="font-mono text-[11px] text-gray-400">API Integration · Gateway Telemetry</p>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-xs leading-relaxed text-gray-600">
+                            Developing API-integrated applications for gateway monitoring, reporting, and MSP operational visibility, alongside PAWI, an offline-first expense management mobile app.
+                        </p>
+                        <div class="mt-4 flex items-center gap-2 font-mono text-xs">
+                            <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-ink font-medium hover:opacity-85 transition">View Updates ↗</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ── SECTION 02: PROFESSIONAL EXPERIENCE ── -->
+            <section id="experience" class="py-14 border-t border-gray-200">
+                <div class="section-header">
+                    <h2 class="section-title">02 — professional experience</h2>
+                    <button type="button" onclick="openModal('experience')" class="section-link">view details →</button>
+                </div>
+
+                <div class="divide-y divide-gray-200 border-y border-gray-200">
+                    <!-- ANTlabs - Tech Lead -->
+                    <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                        <div class="font-mono text-xs text-gray-400 sm:w-28 shrink-0">Jul 2024—Present</div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm font-semibold text-ink">Technical Lead / IT Manager</h3>
+                                <span class="px-2 py-0.5 rounded bg-ink font-mono text-[9px] uppercase">Current</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-0.5">ANTlabs · SaaS, MSP, Enterprise &amp; Hospitality Support</p>
+                            <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">
+                                Lead remote technical support and escalation management across APAC, EMEA, and North America. Own complex Linux, network, gateway, and product escalations using tcpdump, logs, and Bash diagnostics for evidence-based RCA. Lead HA failover testing, software patching, and disaster recovery.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ANTlabs - SME -->
+                    <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                        <div class="font-mono text-xs text-gray-400 sm:w-28 shrink-0">Jan 2024—Jul 2024</div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-ink">Subject Matter Expert (SME)</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">ANTlabs</p>
+                            <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">
+                                Handled high-tier partner escalations across networking, gateway configuration, authentication, PMS, SMTP, DNS, routing, port forwarding, and Multi-WAN. Coached junior engineers on troubleshooting methodology.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ANTlabs - System Engineer -->
+                    <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                        <div class="font-mono text-xs text-gray-400 sm:w-28 shrink-0">Mar 2023—Jan 2024</div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-ink">System Engineer</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">ANTlabs</p>
+                            <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">
+                                Administered Linux-based gateway and network infrastructure. Executed remote troubleshooting for DNS, DHCP, VPN, routing, SMTP, PMS synchronization, authentication, and Multi-WAN issues.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Wipro & Prior -->
+                    <div class="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                        <div class="font-mono text-xs text-gray-400 sm:w-28 shrink-0">2021—2023</div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-ink">IT Service Desk Analyst &amp; Help Desk Specialist</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">Wipro Philippines (L1.5) · Safeway Philtech (L1) · TaskUs (L2)</p>
+                            <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">
+                                Enterprise service-desk support, incident triage, ticket ownership, workstation, network troubleshooting, and cross-team escalation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── SECTION 03: CORE TECHNICAL SKILLS ── -->
+            <section id="stack" class="py-14 border-t border-gray-200">
+                <div class="section-header">
+                    <h2 class="section-title">03 — core technical skills</h2>
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" class="stack-btn is-active" onclick="filterStack('all', this)">All</button>
+                        <button type="button" class="stack-btn" onclick="filterStack('network', this)">Networking</button>
+                        <button type="button" class="stack-btn" onclick="filterStack('linux', this)">Linux &amp; HA</button>
+                        <button type="button" class="stack-btn" onclick="filterStack('ai', this)">AI &amp; RAG</button>
+                        <button type="button" class="stack-btn" onclick="filterStack('tools', this)">Cloud &amp; Tools</button>
+                    </div>
+                </div>
+
+                <div id="stackContainer" class="flex flex-wrap gap-2">
+                    <!-- Networking -->
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">TCP/IP</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">DNS / DHCP</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">VPN &amp; VLAN</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">Routing &amp; NAT</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">Multi-WAN</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">Port Forwarding</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">SSL / TLS</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">CCNA Fundamentals</span>
+
+                    <!-- Linux & HA -->
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Linux Administration</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Bash / Shell Scripting</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">High Availability (HA)</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">DRBD Replication</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Disaster Recovery</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Virtual Machines (VMs)</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">tcpdump &amp; Packet Analysis</span>
+
+                    <!-- AI & RAG -->
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">RAG Architectures</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Ollama &amp; Open WebUI</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Qwen &amp; Gemma LLMs</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Vector Databases</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Sentence Transformers &amp; MiniLM</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Multi-Agent Systems</span>
+
+                    <!-- Cloud & Tools -->
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Docker</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">WSL2 &amp; Ubuntu</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Tailscale Mesh VPN</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">AWS Cloud</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">REST APIs &amp; Postman</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Git / GitHub</span>
+                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Workflow Automation</span>
+                </div>
+            </section>
+
+            <!-- ── SECTION 04: CERTIFICATIONS & EDUCATION ── -->
+            <section id="certifications" class="py-14 border-t border-gray-200">
+                <div class="section-header">
+                    <h2 class="section-title">04 — certifications &amp; education</h2>
+                    <span class="font-mono text-xs text-gray-400">Credentials</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="p-5 rounded-xl border border-gray-200 bg-white text-center hover-lift transition">
+                        <div class="w-10 h-10 mx-auto rounded-lg bg-blue-50 border border-gray-200 flex items-center justify-center font-pixel text-blue-600 font-bold">CCNA</div>
+                        <h3 class="mt-3 text-sm font-semibold text-ink">Cisco CCNA Routing &amp; Switching</h3>
+                        <p class="font-mono text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Scaling &amp; Connecting Networks</p>
+                        <span class="inline-block mt-3 font-mono text-[10px] text-gray-500 uppercase tracking-widest">★ Coursework Complete</span>
+                    </div>
+
+                    <div class="p-5 rounded-xl border border-gray-200 bg-white text-center hover-lift transition">
+                        <div class="w-10 h-10 mx-auto rounded-lg bg-emerald-50 border border-gray-200 flex items-center justify-center font-pixel text-emerald-600 font-bold">SUSE</div>
+                        <h3 class="mt-3 text-sm font-semibold text-ink">SUSE Linux Enterprise Server 10</h3>
+                        <p class="font-mono text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Linux Server Administration</p>
+                        <span class="inline-block mt-3 font-mono text-[10px] text-gray-500 uppercase tracking-widest">★ Certified Education</span>
+                    </div>
+
+                    <div class="p-5 rounded-xl border border-gray-200 bg-white text-center hover-lift transition">
+                        <div class="w-10 h-10 mx-auto rounded-lg bg-purple-50 border border-gray-200 flex items-center justify-center font-pixel text-purple-600 font-bold">B.S.</div>
+                        <h3 class="mt-3 text-sm font-semibold text-ink">Bachelor's Degree in ICT</h3>
+                        <p class="font-mono text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">IETI · Graduated 2016</p>
+                        <span class="inline-block mt-3 font-mono text-[10px] text-gray-500 uppercase tracking-widest">★ Information Technology</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 rounded-xl border border-gray-200 bg-gray-50 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-gray-600">
+                    <span><strong>Additional Training:</strong> Six Sigma Yellow &amp; Green Belt · NC II Computer Hardware · Monday.com Automation</span>
+                </div>
+            </section>
+
+            <!-- ── SECTION 05: GITHUB ACTIVITY (HALFTONE MATRIX) ── -->
+            <section id="github" class="py-14 border-t border-gray-200">
+                <div class="section-header">
+                    <h2 class="section-title">05 — github activity</h2>
+                    <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="section-link">@jasongil003 ↗</a>
+                </div>
+
+                <div class="contrib-grid" id="githubGrid">
+                    <!-- Populated dynamically via main.js -->
+                </div>
+                <div class="mt-3 flex items-center justify-between font-mono text-[11px] text-gray-400">
+                    <span>Active development &amp; continuous shipping</span>
+                    <div class="flex items-center gap-1">
+                        <span>Less</span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-gray-200"></span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-gray-400"></span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-gray-600"></span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-ink"></span>
+                        <span>More</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── FOOTER ── -->
+            <footer class="py-12 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-gray-400">
+                <p>© 2026 Jason Gil De La Cruz. Makati City, Philippines.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#top" class="hover:text-ink transition">Back to top ↑</a>
+                    <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="hover:text-ink transition">GitHub</a>
+                    <button type="button" onclick="openAsk()" class="hover:text-ink transition">⌘K</button>
+                    <button type="button" onclick="openTyping()" class="hover:text-ink transition">⌘J</button>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- ─────────────── ASK AI OVERLAY (⌘K) ─────────────── -->
+    <div id="askOverlay" role="dialog" aria-modal="true" aria-label="Ask Jason AI">
+        <div class="ask-backdrop" onclick="closeAsk()"></div>
+        <div class="ask-content" onclick="focusAsk()">
+            <div class="ask-bubble" id="askBubble"><span id="askBubbleText"></span></div>
+            <div class="flex items-center gap-3">
+                <div class="loader" id="askLoader" style="display:none;"></div>
+                <h2 class="ask-title">what do you want to ask?</h2>
+            </div>
+            <div class="ask-field"><span id="askText"></span><span class="ask-caret"></span></div>
+            <input id="askInput" class="ask-hidden-input" type="text" autocomplete="off" aria-label="Ask a question">
+            
+            <div class="ask-chips">
+                <button type="button" class="ask-chip" onclick="askPrompt('Who are you?')">who are you?</button>
+                <button type="button" class="ask-chip" onclick="askPrompt('Tell me about your RAG AI project')">RAG AI system</button>
+                <button type="button" class="ask-chip" onclick="askPrompt('What is your Linux & networking experience?')">networking &amp; linux</button>
+                <button type="button" class="ask-chip" onclick="askPrompt('How can I contact you?')">contact info</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─────────────── SPEED TYPING TEST OVERLAY (⌘J) ─────────────── -->
+    <div id="typingOverlay" role="dialog" aria-modal="true" aria-label="Speed Typing Test">
+        <div class="tt-backdrop" onclick="closeTyping()"></div>
+        <div class="tt-content">
+            <div class="tt-stats">
+                <div class="tt-stat">
+                    <span class="tt-stat-val" id="ttWpm">0</span>
+                    <span class="tt-stat-label">WPM</span>
+                </div>
+                <div class="tt-stat">
+                    <span class="tt-stat-val"><span id="ttAcc">100</span>%</span>
+                    <span class="tt-stat-label">Accuracy</span>
+                </div>
+                <div class="tt-stat">
+                    <span class="tt-stat-val"><span id="ttTime">0</span>s</span>
+                    <span class="tt-stat-label">Time</span>
+                </div>
+            </div>
+
+            <div class="tt-words-wrap">
+                <div class="tt-words" id="ttWords"></div>
+            </div>
+
+            <div class="tt-keyboard" id="ttKeyboard"></div>
+
+            <div class="font-mono text-xs text-gray-400 flex gap-4">
+                <span><kbd>tab</kbd> restart</span>
+                <span><kbd>esc</kbd> close</span>
+            </div>
+
+            <div class="tt-results">
+                <div class="text-center">
+                    <span class="tt-res-wpm" id="ttResWpm">0</span>
+                    <p class="font-mono text-xs uppercase tracking-widest text-gray-400 mt-1">Words Per Minute</p>
+                </div>
+                <div class="flex gap-8 font-mono text-sm">
+                    <div><b><span id="ttResAcc">0</span>%</b> <span class="text-gray-400">acc</span></div>
+                    <div><b><span id="ttResRaw">0</span></b> <span class="text-gray-400">raw</span></div>
+                    <div><b><span id="ttResTime">0</span>s</b> <span class="text-gray-400">time</span></div>
+                </div>
+                <div id="ttVerdict" class="font-mono text-xs"></div>
+                <button type="button" class="px-4 py-2 rounded-lg bg-ink font-mono text-xs font-semibold hover:opacity-90" onclick="ttRestart()">↻ Try again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─────────────── COMMUNITY GUESTBOOK OVERLAY ─────────────── -->
+    <div id="chatOverlay" role="dialog" aria-modal="true" aria-label="Community Guestbook">
+        <div class="chat-backdrop" onclick="closeChat()"></div>
+        <div class="chat-content p-6 rounded-2xl border border-gray-200 bg-white shadow-2xl">
+            <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+                <div class="flex items-center gap-2">
+                    <span class="font-pixel text-base">Community Guestbook</span>
+                    <span class="font-mono text-xs text-gray-400" id="chatCount">3 messages</span>
+                </div>
+                <button type="button" onclick="closeChat()" class="text-gray-400 hover:text-ink">
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M4 4l8 8M12 4l-8 8" stroke-width="1.5"/></svg>
+                </button>
+            </div>
+
+            <div class="chat-messages py-4" id="chatMessages"></div>
+
+            <form class="pt-3 border-t border-gray-200 flex flex-col gap-2" id="chatForm">
+                <div class="font-mono text-xs text-gray-500" id="chatPrompt">what's your name?</div>
+                <div class="flex items-center gap-2">
+                    <input id="chatInput" class="flex-1 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50 font-mono text-xs text-ink outline-none focus:border-gray-400" type="text" placeholder="your name" maxlength="60" autocomplete="off">
+                    <button type="submit" class="px-4 py-2 rounded-lg bg-ink font-mono text-xs font-medium hover:opacity-90" id="chatSend">next ↵</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ─────────────── RETRO 2D PLAYGROUND MINI-GAME ─────────────── -->
+    <div class="pg-wrap" id="pgWrap" aria-hidden="true">
+        <div class="flex items-baseline justify-between mb-1 px-1 font-mono text-[10px] text-gray-400">
+            <span>Dev Studio Simulator</span>
+            <span>WASD to move</span>
+        </div>
+        <div class="pg-box" id="pgBox">
+            <canvas id="pgCanvas" tabindex="0" width="380" height="280" aria-label="Interactive retro canvas playground"></canvas>
+            <div class="pg-veil">
+                <span>Click to play</span> · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─────────────── GENERAL PURPOSE MODAL ─────────────── -->
+    <div id="siteModal" class="modal-backdrop" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <button type="button" onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-ink">
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M4 4l8 8M12 4l-8 8" stroke-width="1.5"/></svg>
+            </button>
+
+            <!-- Contact Panel -->
+            <div data-panel="contact" style="display:none;">
+                <p class="font-mono text-[10px] uppercase tracking-wider text-gray-400">Get in touch</p>
+                <h3 class="mt-2 font-pixel text-xl text-ink">Let's Connect</h3>
+                <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                    Available for technical leadership, enterprise consulting, Linux/network escalations, and applied AI systems.
+                </p>
+                <div class="mt-4 p-2.5 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-between">
+                    <span class="font-mono text-xs text-ink px-1">JasonGil.Career@gmail.com</span>
+                    <button type="button" onclick="copyEmail(event)" class="px-3 py-1 rounded bg-ink font-mono text-xs font-semibold hover:opacity-90">Copy</button>
+                </div>
+                <div class="mt-2 font-mono text-xs text-gray-500 px-1">
+                    Phone: <strong>+63 998 565 5016</strong> (Makati City, PH)
+                </div>
+                <a href="mailto:JasonGil.Career@gmail.com" class="mt-3 block w-full py-2 rounded-lg border border-gray-300 text-center font-mono text-xs font-semibold hover:border-ink transition">Open Mail Client →</a>
+            </div>
+
+            <!-- Experience History Panel -->
+            <div data-panel="experience" style="display:none;">
+                <p class="font-mono text-[10px] uppercase tracking-wider text-gray-400">Career Progression</p>
+                <h3 class="mt-2 font-pixel text-xl text-ink">ANTlabs &amp; Enterprise Journey</h3>
+                <div class="mt-4 space-y-3 font-mono text-xs max-h-72 overflow-y-auto">
+                    <div>
+                        <div class="flex justify-between font-semibold text-ink">
+                            <span>Technical Lead / IT Manager</span>
+                            <span>Jul 2024—Present</span>
+                        </div>
+                        <p class="text-gray-500 text-[11px]">ANTlabs · APAC, EMEA, NA Escalation Management</p>
+                    </div>
+                    <div>
+                        <div class="flex justify-between font-semibold text-ink">
+                            <span>Subject Matter Expert (SME)</span>
+                            <span>Jan 2024—Jul 2024</span>
+                        </div>
+                        <p class="text-gray-500 text-[11px]">ANTlabs · Complex Routing, Multi-WAN, PMS &amp; Gateway Support</p>
+                    </div>
+                    <div>
+                        <div class="flex justify-between font-semibold text-ink">
+                            <span>System Engineer</span>
+                            <span>Mar 2023—Jan 2024</span>
+                        </div>
+                        <p class="text-gray-500 text-[11px]">ANTlabs · Linux Gateway Administration &amp; Network Diagnostics</p>
+                    </div>
+                    <div>
+                        <div class="flex justify-between font-semibold text-ink">
+                            <span>Service Desk Analyst L1.5 / L1 / L2</span>
+                            <span>2021—2023</span>
+                        </div>
+                        <p class="text-gray-500 text-[11px]">Wipro Philippines · Safeway Philtech · TaskUs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/audio.js"></script>
+    <script src="js/ask.js"></script>
+    <script src="js/typing.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
