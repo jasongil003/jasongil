@@ -137,15 +137,15 @@ window.showToast = function (msg) {
     }, 2400);
 };
 
-// ── One-Click Email Copy ────────────────────────────────────────────────────
-window.copyEmail = function (event) {
+// ── One-Click Profile Link Copy ──────────────────────────────────────────────
+window.copyProfile = function (event) {
     if (event) event.stopPropagation();
-    const email = 'JasonGil.Career@gmail.com';
-    navigator.clipboard.writeText(email).then(() => {
-        window.showToast('Copied JasonGil.Career@gmail.com to clipboard!');
+    const githubUrl = 'https://github.com/jasongil003';
+    navigator.clipboard.writeText(githubUrl).then(() => {
+        window.showToast('Copied GitHub link (github.com/jasongil003)!');
         window.siteSound?.play('success');
     }).catch(() => {
-        window.showToast('Email: JasonGil.Career@gmail.com');
+        window.showToast('GitHub: github.com/jasongil003');
     });
 };
 

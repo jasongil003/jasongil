@@ -38,8 +38,8 @@
             answer: "Bachelor's degree in ICT (IETI, 2016). Cisco CCNA Routing & Switching coursework (Intro, Routing/Switching, Scaling, Connecting Networks), SUSE Linux Enterprise Server 10, Six Sigma Yellow & Green Belt, and NC II Computer Hardware."
         },
         {
-            keywords: ['contact', 'email', 'phone', 'reach', 'hire', 'message', 'location'],
-            answer: "Reach me directly at JasonGil.Career@gmail.com or +63 998 565 5016. Based in Makati City, Philippines. Check out my GitHub at github.com/jasongil003!"
+            keywords: ['contact', 'reach', 'hire', 'message', 'connect', 'social', 'github'],
+            answer: "You can connect with me directly through GitHub at github.com/jasongil003 for technical collaboration, inquiries, and projects!"
         },
         {
             keywords: ['typing', 'game', 'easter', 'egg', 'secret'],
@@ -49,13 +49,13 @@
 
     function searchAnswer(query) {
         const q = query.toLowerCase().trim();
-        if (!q) return "Ask me anything about Jason's 8+ years of technical leadership, Linux & networking, private RAG AI systems, or contact details!";
+        if (!q) return "Ask me anything about Jason's 8+ years of technical leadership, Linux & networking, or private RAG AI systems!";
         for (const item of KNOWLEDGE_BASE) {
             if (item.keywords.some(k => q.includes(k))) {
                 return item.answer;
             }
         }
-        return `Regarding "${query}": Jason specializes in enterprise Linux infrastructure, network troubleshooting, and applied AI systems. Feel free to reach out via JasonGil.Career@gmail.com!`;
+        return `Regarding "${query}": Jason specializes in enterprise Linux infrastructure, network troubleshooting, and applied AI systems. Connect via github.com/jasongil003!`;
     }
 
     function typeWriter(text, el, onComplete) {

@@ -1,6 +1,6 @@
 # ⚡ Jason Gil De La Cruz — Interactive Developer Portfolio
 
-A state-of-the-art, fully responsive, ultra-interactive developer portfolio website tailored for **Jason Gil De La Cruz** (Technical Lead | Linux, Network, Cloud, Automation & Applied AI), inspired by the brutalist minimalism, halftone dot textures, and rich micro-interactions of [bryllim.com](https://bryllim.com/).
+A state-of-the-art, fully responsive, ultra-interactive developer portfolio website tailored for **Jason Gil De La Cruz** (Technical Lead | Linux, Network, Cloud, Automation & Applied AI), featuring brutalist minimalism, halftone dot textures, and rich micro-interactions.
 
 ![Portfolio Preview Banner](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge)
 ![Built with](https://img.shields.io/badge/Built%20with-Vanilla%20HTML5%20%7C%20CSS3%20%7C%20Web%20Audio-black?style=for-the-badge)
@@ -13,8 +13,6 @@ A state-of-the-art, fully responsive, ultra-interactive developer portfolio webs
 - **Name**: Jason Gil De La Cruz
 - **Role**: Technical Lead | SaaS/MSP | Linux, Network, Cloud, Automation & Applied AI
 - **Location**: Makati City, Philippines
-- **Phone**: +63 998 565 5016
-- **Email**: [JasonGil.Career@gmail.com](mailto:JasonGil.Career@gmail.com)
 - **GitHub**: [github.com/jasongil003](https://github.com/jasongil003)
 
 Technical Lead with 8+ years across Linux infrastructure, enterprise networking, SaaS/MSP operations, and applied AI systems. Proven progression from System Engineer to Subject Matter Expert (SME) and Technical Lead at ANTlabs, managing global escalations across APAC, EMEA, and North America.
