@@ -1,6 +1,6 @@
 /**
  * Interactive Ask AI / Command Palette (⌘K / Ctrl+K)
- * Answers questions about Jason Gil De La Cruz, his 8+ years technical leadership, Linux/Networking expertise, RAG/AI systems, and contact info.
+ * Answers questions about Jason Gil, his 8+ years technical leadership, Linux/Networking expertise, RAG/AI systems, and contact info.
  */
 
 (function () {
@@ -19,7 +19,7 @@
     const KNOWLEDGE_BASE = [
         {
             keywords: ['who', 'about', 'bio', 'introduce', 'jason', 'summary'],
-            answer: "I'm Jason Gil De La Cruz — Technical Lead & IT Manager with 8+ years of experience across Linux infrastructure, enterprise networking, SaaS/MSP operations, and Applied AI/RAG systems based in Makati City, Philippines."
+            answer: "I'm Jason Gil — Technical Lead & IT Manager with 8+ years of experience across Linux infrastructure, enterprise networking, SaaS/MSP operations, and Applied AI/RAG systems based in Makati City, Philippines."
         },
         {
             keywords: ['skill', 'stack', 'tech', 'networking', 'linux', 'tools', 'protocols'],

@@ -1,6 +1,6 @@
-# ⚡ Jason Gil De La Cruz — Interactive Developer Portfolio
+# ⚡ Jason Gil — Interactive Developer Portfolio
 
-A state-of-the-art, fully responsive, ultra-interactive developer portfolio website tailored for **Jason Gil De La Cruz** (Technical Lead | Linux, Network, Cloud, Automation & Applied AI), featuring brutalist minimalism, halftone dot textures, and rich micro-interactions.
+A state-of-the-art, fully responsive, ultra-interactive developer portfolio website tailored for **Jason Gil** (Technical Lead | Linux, Network, Cloud, Automation & Applied AI), featuring brutalist minimalism, halftone dot textures, and rich micro-interactions.
 
 ![Portfolio Preview Banner](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge)
 ![Built with](https://img.shields.io/badge/Built%20with-Vanilla%20HTML5%20%7C%20CSS3%20%7C%20Web%20Audio-black?style=for-the-badge)
@@ -10,7 +10,7 @@ A state-of-the-art, fully responsive, ultra-interactive developer portfolio webs
 
 ## 👨‍💻 Profile Summary
 
-- **Name**: Jason Gil De La Cruz
+- **Name**: Jason Gil
 - **Role**: Technical Lead | SaaS/MSP | Linux, Network, Cloud, Automation & Applied AI
 - **Location**: Makati City, Philippines
 - **GitHub**: [github.com/jasongil003](https://github.com/jasongil003)
@@ -86,4 +86,4 @@ portfolio/
     └── main.js             # Theme switcher, 3D deck, GitHub heatmap, modals
 ```
 
-© 2026 Jason Gil De La Cruz. Makati City, Philippines.
+© 2026 Jason Gil. Makati City, Philippines.
