@@ -1,89 +1,63 @@
-# ⚡ Jason Gil — Interactive Developer Portfolio
+# Jason Gil — Technical Lead Portfolio
 
-A state-of-the-art, fully responsive, ultra-interactive developer portfolio website tailored for **Jason Gil** (Technical Lead | Linux, Network, Cloud, Automation & Applied AI), featuring brutalist minimalism, halftone dot textures, and rich micro-interactions.
+A responsive, recruiter-first portfolio for **Jason Gil**, focused on technical leadership across Linux infrastructure, enterprise networking, SaaS/MSP operations, automation, and applied AI systems.
 
-![Portfolio Preview Banner](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge)
-![Built with](https://img.shields.io/badge/Built%20with-Vanilla%20HTML5%20%7C%20CSS3%20%7C%20Web%20Audio-black?style=for-the-badge)
-![GitHub](https://img.shields.io/badge/GitHub-jasongil003-181717?style=for-the-badge&logo=github)
+## What changed
 
----
+This redesign prioritizes credibility, clarity, and fast scanning:
 
-## 👨‍💻 Profile Summary
+- outcome-oriented hero positioning and clear GitHub calls to action
+- four evidence-based project case studies derived from active repositories
+- career progression from service desk roles to Technical Lead / IT Manager
+- structured expertise, operating principles, and credentials
+- accessible keyboard navigation, visible focus states, and a skip link
+- responsive mobile navigation and reduced-motion support
+- persistent dark/light theme with system-aware initial preference
+- semantic metadata and Person structured data for search engines
+- no frameworks, build tooling, analytics, or external runtime dependencies
 
-- **Name**: Jason Gil
-- **Role**: Technical Lead | SaaS/MSP | Linux, Network, Cloud, Automation & Applied AI
-- **Location**: Makati City, Philippines
-- **GitHub**: [github.com/jasongil003](https://github.com/jasongil003)
+## Project case studies
 
-Technical Lead with 8+ years across Linux infrastructure, enterprise networking, SaaS/MSP operations, and applied AI systems. Proven progression from System Engineer to Subject Matter Expert (SME) and Technical Lead at ANTlabs, managing global escalations across APAC, EMEA, and North America.
+1. **ANTlabs Local AI Knowledge Base** — private on-premise RAG and support knowledge retrieval
+2. **ANTlabs Operations Dashboard** — React/TypeScript NOC, site, authentication, session, and revenue visibility
+3. **PAWI Expense Companion** — iOS and Android local-first group expense and debt tracking
+4. **ASP Upgrade Health Check Automation** — Playwright evidence collection and Excel workbook updates
 
----
+## Structure
 
-## 🌟 Key Features
+```text
+.
+├── index.html
+├── README.md
+├── .nojekyll
+├── css/
+│   ├── style.css       # Ordered imports
+│   ├── style-1.css     # Tokens, reset, header, hero foundation
+│   ├── style-2.css     # Hero panel, proof, project system
+│   ├── style-3.css     # Timeline, expertise, credentials, contact
+│   └── style-4.css     # Responsive behavior and motion preferences
+└── js/
+    └── site.js         # Theme, navigation, reveal, and active-section behavior
+```
 
-1. **Monochromatic Brutalist Aesthetics**:
-   - Refined dark and light mode color palette with coordinated color crossfade and circular reveal View Transitions.
-   - Halftone matrix radial dot shaders and mask gradients.
-   - Geist, Geist Mono, and Geist Pixel typography.
+The former interactive JavaScript modules are retained in the repository for comparison but are no longer loaded by `index.html`.
 
-2. **Web Audio FX Synthesizer (`js/audio.js`)**:
-   - Zero external audio files or dependencies.
-   - Procedural Web Audio API sound engine generating mechanical clicks, toggles, success melodies, ticks, steps, and collision tones.
-   - Global sound mute toggle with persisted preferences.
+## Run locally
 
-3. **Spotlight 3D Card Deck (`js/main.js`)**:
-   - Interactive project carousel featuring ANTlabs Local AI Knowledge Base, Document Processing OCR Automation, and Operations Telemetry App.
-
-4. **Ask AI Terminal / Command Palette (`⌘K` / `Ctrl+K`)**:
-   - Interactive intelligent command modal with quick prompt chips and typewriter effect tailored to Jason's career and skills.
-
-5. **Speed Typing Test (`⌘J` / `Ctrl+J`)**:
-   - Monkeytype-style real-time typing test with live WPM, accuracy %, animated keyboard heatmap feedback, and technical word challenge.
-
-6. **Retro 2D Canvas Workspace Game (`js/game.js`)**:
-   - Top-down pixel developer studio simulation with WASD / Arrow keyboard controls, furniture collision, and roaming colleagues.
-
-7. **Community Guestbook & Presence Heartbeat (`js/chat.js`)**:
-   - Interactive message guestbook with DiceBear notionist avatars, device detection, and persistent storage.
-
-8. **Halftone GitHub Activity Heatmap**:
-   - Dynamic interactive contribution matrix connected to `@jasongil003`.
-
----
-
-## 🚀 1-Click Deployment to GitHub Pages
-
-You can easily host this portfolio on **GitHub Pages** under your repository `https://github.com/jasongil003/portfolio` (or `jasongil003.github.io`):
+Because the site is static, any local HTTP server works:
 
 ```bash
-cd "C:\Users\JasonGil\.gemini\antigravity-ide\scratch\portfolio"
-git init
-git add .
-git commit -m "feat: release interactive developer portfolio based on resume"
-git branch -M main
-git remote add origin https://github.com/jasongil003/<your-repo-name>.git
-git push -u origin main
-```
-Then enable GitHub Pages under **Settings** > **Pages** (select `main` branch, `/ root` folder). Your site will be live immediately!
-
----
-
-## 📁 Project Structure
-
-```
-portfolio/
-├── index.html              # Main semantic HTML5 portfolio document
-├── .nojekyll               # Disables Jekyll processing on GitHub Pages
-├── README.md               # Documentation & deployment guide
-├── css/
-│   └── style.css           # Design tokens, halftone masks, 3D deck, and modal styles
-└── js/
-    ├── audio.js            # Procedural Web Audio API sound synthesizer
-    ├── ask.js              # Command palette & Ask AI assistant (⌘K)
-    ├── typing.js           # Interactive speed typing test (⌘J)
-    ├── game.js             # Retro 2D Canvas dev simulator
-    ├── chat.js             # Guestbook & visitor presence
-    └── main.js             # Theme switcher, 3D deck, GitHub heatmap, modals
+python3 -m http.server 8080
 ```
 
-© 2026 Jason Gil. Makati City, Philippines.
+Open `http://localhost:8080`.
+
+## Deploy
+
+The repository includes `.nojekyll` and can be served directly with GitHub Pages from the repository root.
+
+## Content notes
+
+Project descriptions intentionally avoid exposing private source code or internal credentials. Replace or extend the GitHub-only contact call to action when a public email, LinkedIn profile, résumé file, or custom domain is ready.
+
+© 2026 Jason Gil
