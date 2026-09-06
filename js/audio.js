@@ -220,3 +220,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', unlockAudio, { once: true });
     window.addEventListener('keydown', unlockAudio, { once: true });
 });
+

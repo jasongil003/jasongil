@@ -1,6 +1,6 @@
 /**
  * Master Portfolio Controller
- * Coordinates theme switching (with View Transitions), 3D Card Deck, Modals, GitHub Grid, and Toasts.
+ * Coordinates themes, accessible dialogs, navigation, and small page interactions.
  */
 
 // ── Theme Manager ────────────────────────────────────────────────────────────
@@ -40,6 +40,12 @@
     }
 
     function reveal(pref, x, y) {
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+            clearTimeout(animT);
+            root.classList.remove('theme-anim');
+            setClass(pref);
+            return;
+        }
         if (!document.startViewTransition) {
             crossfade(pref);
             return;
@@ -79,25 +85,6 @@
     });
 })();
 
-// ── 3D Spotlight Project Deck ────────────────────────────────────────────────
-window.activateCard = function (card) {
-    if (card.classList.contains('is-center')) return;
-    const deck = card.closest('[data-deck]');
-    if (!deck) return;
-
-    const center = deck.querySelector('.deck-card.is-center');
-    const isLeft = card.classList.contains('is-left');
-
-    if (center) {
-        center.classList.remove('is-center');
-        center.classList.add(isLeft ? 'is-left' : 'is-right');
-    }
-
-    card.classList.remove('is-left', 'is-right');
-    card.classList.add('is-center');
-    window.siteSound?.play('toggle');
-};
-
 // ── Modals & Quick View ──────────────────────────────────────────────────────
 window.openModal = function (name) {
     const modal = document.getElementById('siteModal');
@@ -123,38 +110,48 @@ window.closeModal = function () {
 };
 
 // ── Toast Notification System ────────────────────────────────────────────────
+let toastTimer;
 window.showToast = function (msg) {
     let toast = document.getElementById('siteToast');
     if (!toast) {
         toast = document.createElement('div');
         toast.id = 'siteToast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
         document.body.appendChild(toast);
     }
     toast.textContent = msg;
     toast.classList.add('show');
-    setTimeout(() => {
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
         toast.classList.remove('show');
     }, 2400);
 };
 
 // ── One-Click Profile Link Copy ──────────────────────────────────────────────
-window.copyProfile = function (event) {
+window.copyProfile = async function (event) {
     if (event) event.stopPropagation();
     const githubUrl = 'https://github.com/jasongil003';
-    navigator.clipboard.writeText(githubUrl).then(() => {
+    try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(githubUrl);
         window.showToast('Copied GitHub link (github.com/jasongil003)!');
         window.siteSound?.play('success');
-    }).catch(() => {
+    } catch (error) {
         window.showToast('GitHub: github.com/jasongil003');
-    });
+    }
 };
 
 // ── Mobile Navigation Drawer ─────────────────────────────────────────────────
+let mobileCloseTimer;
+let mobileOpenFrame;
 window.openMobileNav = function () {
     const nav = document.getElementById('mobileNav');
     if (!nav) return;
+    clearTimeout(mobileCloseTimer);
+    cancelAnimationFrame(mobileOpenFrame);
     nav.style.display = 'flex';
-    requestAnimationFrame(() => nav.classList.add('is-open'));
+    mobileOpenFrame = requestAnimationFrame(() => nav.classList.add('is-open'));
     document.documentElement.style.overflow = 'hidden';
     window.siteSound?.play('open');
 };
@@ -162,13 +159,142 @@ window.openMobileNav = function () {
 window.closeMobileNav = function () {
     const nav = document.getElementById('mobileNav');
     if (!nav) return;
+    clearTimeout(mobileCloseTimer);
+    cancelAnimationFrame(mobileOpenFrame);
     nav.classList.remove('is-open');
     document.documentElement.style.overflow = '';
-    setTimeout(() => {
+    mobileCloseTimer = setTimeout(() => {
         nav.style.display = 'none';
     }, 300);
     window.siteSound?.play('close');
 };
+
+// ── Shared Dialog Keyboard and Focus Management ──────────────────────────────
+function initializeDialogs() {
+    const specs = [
+        ['siteModal', 'openModal', 'closeModal', 0],
+        ['mobileNav', 'openMobileNav', 'closeMobileNav', 0],
+        ['askOverlay', 'openAsk', 'closeAsk', 320],
+        ['typingOverlay', 'openTyping', 'closeTyping', 320],
+        ['chatOverlay', 'openChat', 'closeChat', 320]
+    ];
+    const dialogs = [];
+    const backgroundState = new Map();
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const focusSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let active = null;
+    let previousOverflow = '';
+
+    function focusable(dialog) {
+        return [...dialog.querySelectorAll(focusSelector)].filter(el =>
+            el.tabIndex >= 0 && el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden'
+        );
+    }
+
+    function syncAccessibility() {
+        backgroundState.forEach((inert, el) => { el.inert = inert; });
+        backgroundState.clear();
+        if (active) {
+            [...document.body.children].forEach(el => {
+                if (el === active.element || el.contains(active.element) || el.id === 'siteToast') return;
+                backgroundState.set(el, el.inert);
+                el.inert = true;
+            });
+        }
+        dialogs.forEach(entry => {
+            entry.element.inert = entry !== active;
+            entry.element.setAttribute('aria-hidden', String(entry !== active));
+        });
+        document.querySelectorAll('[aria-controls="mobileNav"], button[onclick="openMobileNav()"]')
+            .forEach(button => button.setAttribute('aria-expanded', String(active?.element.id === 'mobileNav')));
+        document.documentElement.style.overflow = active ? 'hidden' : previousOverflow;
+    }
+
+    specs.forEach(([id, openName, closeName, closingDelay]) => {
+        const element = document.getElementById(id);
+        const originalOpen = window[openName];
+        const originalClose = window[closeName];
+        if (!element || !originalOpen || !originalClose) return;
+        const entry = { element, opener: null, pending: null, closedUntil: 0, closeName };
+        dialogs.push(entry);
+        element.tabIndex = -1;
+
+        window[openName] = function (...args) {
+            if (active === entry) return;
+            if (id === 'mobileNav' && desktop.matches) return;
+            if (id === 'siteModal' && ![...element.querySelectorAll('[data-panel]')].some(panel => panel.dataset.panel === args[0])) return;
+            const origin = active && active.element.contains(document.activeElement) ? active.opener : document.activeElement;
+            dialogs.forEach(other => {
+                if (other !== entry && (other === active || other.pending)) window[other.closeName]();
+            });
+            clearTimeout(entry.pending);
+            entry.opener = origin;
+
+            const show = () => {
+                entry.pending = null;
+                previousOverflow = document.documentElement.style.overflow;
+                originalOpen(...args);
+                active = entry;
+                syncAccessibility();
+                if (!element.contains(document.activeElement)) {
+                    const first = id === 'typingOverlay' ? element : focusable(element)[0] || element;
+                    first.focus({ preventScroll: true });
+                }
+            };
+            // The legacy overlays clean up after their closing transition. Let that
+            // cleanup finish before reopening so its timer cannot hide a new dialog.
+            const delay = Math.max(0, entry.closedUntil - Date.now());
+            if (delay) entry.pending = setTimeout(show, delay);
+            else show();
+        };
+
+        window[closeName] = function () {
+            clearTimeout(entry.pending);
+            entry.pending = null;
+            if (active !== entry) return;
+            originalClose();
+            entry.closedUntil = Date.now() + closingDelay;
+            active = null;
+            syncAccessibility();
+            // Opening animations in legacy overlays run in the next frame.
+            requestAnimationFrame(() => {
+                if (active !== entry) element.classList.remove('is-open');
+            });
+            if (entry.opener?.isConnected && !entry.opener.closest('[inert]') && entry.opener.getClientRects().length) {
+                entry.opener.focus({ preventScroll: true });
+            }
+        };
+    });
+
+    document.addEventListener('keydown', event => {
+        if (!active) return;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            window[active.closeName]();
+        } else if (event.key === 'Tab') {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            const targets = focusable(active.element);
+            const index = targets.indexOf(document.activeElement);
+            const next = event.shiftKey ? (index <= 0 ? targets.length - 1 : index - 1) : (index + 1) % targets.length;
+            (targets[next] || active.element).focus({ preventScroll: true });
+        } else if (active.element.id === 'typingOverlay' && event.key === ' ' && event.target.closest('button')) {
+            // Keep Space available to activate dialog controls during the typing game.
+            event.stopImmediatePropagation();
+        }
+    }, true);
+
+    document.addEventListener('focusin', event => {
+        if (active && !active.element.contains(event.target)) {
+            (focusable(active.element)[0] || active.element).focus({ preventScroll: true });
+        }
+    });
+    desktop.addEventListener('change', event => {
+        if (event.matches) window.closeMobileNav();
+    });
+    syncAccessibility();
+}
 
 // ── Interactive GitHub Contribution Graph ────────────────────────────────────
 function buildContributionGraph() {
@@ -223,6 +349,7 @@ window.filterStack = function (category, btn) {
 
 // ── Global Initializations ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+    initializeDialogs();
     buildContributionGraph();
 
     // Attach click sound to interactive buttons and links
@@ -234,11 +361,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Escape closes any open modal
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            window.closeModal();
-            window.closeMobileNav();
-        }
-    });
 });

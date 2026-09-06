@@ -32,7 +32,7 @@
             name: 'Marcus Vance',
             location: 'London, UK',
             device: 'iPhone',
-            message: 'That 3D card deck interaction is incredibly smooth. Great engineering!',
+            message: 'The project case studies are clear and easy to explore. Great engineering!',
             time: '5h ago'
         },
         {
