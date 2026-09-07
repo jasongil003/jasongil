@@ -447,23 +447,69 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
     color: rgb(var(--g500));
     font-size: .64rem;
 }
-.monogram {
+.profile-portrait {
     position: absolute;
-    right: -.35rem;
-    top: 1.2rem;
-    color: rgb(var(--g200));
-    font: 700 8rem/1 'Geist Pixel', monospace;
-    letter-spacing: -.12em;
+    inset: 2.8rem 1.25rem 1.25rem;
+    margin: 0;
+    overflow: hidden;
+    border-radius: .8rem;
+    background: rgb(var(--ink));
 }
-.monogram span { color: #5d6dfb; }
+.profile-portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: radial-gradient(rgb(var(--bg) / .55) .72px, transparent .9px);
+    background-size: 4px 4px;
+    mix-blend-mode: screen;
+    opacity: .48;
+    pointer-events: none;
+}
+.profile-portrait::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgb(var(--ink) / .15) 70%, rgb(var(--ink) / .7) 100%);
+    pointer-events: none;
+}
+.profile-portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 23%;
+    filter: grayscale(1) contrast(1.22) brightness(.9);
+    transform: scale(1.035);
+    transition: transform 240ms cubic-bezier(.23,1,.32,1), filter 200ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+    .hero-note:hover .profile-portrait img {
+        filter: grayscale(1) contrast(1.3) brightness(.94);
+        transform: scale(1.07);
+    }
+}
 .hero-note > p {
     position: absolute;
     left: 1.25rem;
-    bottom: 3.5rem;
-    z-index: 1;
-    font: 600 1.25rem/1.3 'Source Serif 4', serif;
+    bottom: 2.7rem;
+    z-index: 3;
+    max-width: calc(100% - 2.5rem);
+    padding: .55rem .7rem;
+    border: 1px solid rgb(var(--bg) / .22);
+    border-radius: .6rem;
+    background: rgb(var(--ink) / .58);
+    color: rgb(var(--bg));
+    backdrop-filter: blur(5px);
+    font: 600 1.1rem/1.3 'Source Serif 4', serif;
 }
-.note-bottom { position: absolute; inset: auto 1.25rem 1.25rem; }
+.note-bottom {
+    position: absolute;
+    z-index: 3;
+    inset: auto 1.25rem 1.25rem;
+    color: rgb(var(--bg));
+}
 .intro-detail {
     max-width: 52rem;
     padding: 1.2rem 0 1.2rem 1.25rem;
