@@ -243,8 +243,6 @@ function initializeDialogs() {
                     first.focus({ preventScroll: true });
                 }
             };
-            // The legacy overlays clean up after their closing transition. Let that
-            // cleanup finish before reopening so its timer cannot hide a new dialog.
             const delay = Math.max(0, entry.closedUntil - Date.now());
             if (delay) entry.pending = setTimeout(show, delay);
             else show();
@@ -258,7 +256,6 @@ function initializeDialogs() {
             entry.closedUntil = Date.now() + closingDelay;
             active = null;
             syncAccessibility();
-            // Opening animations in legacy overlays run in the next frame.
             requestAnimationFrame(() => {
                 if (active !== entry) element.classList.remove('is-open');
             });
@@ -282,7 +279,6 @@ function initializeDialogs() {
             const next = event.shiftKey ? (index <= 0 ? targets.length - 1 : index - 1) : (index + 1) % targets.length;
             (targets[next] || active.element).focus({ preventScroll: true });
         } else if (active.element.id === 'typingOverlay' && event.key === ' ' && event.target.closest('button')) {
-            // Keep Space available to activate dialog controls during the typing game.
             event.stopImmediatePropagation();
         }
     }, true);
@@ -312,7 +308,6 @@ function buildContributionGraph() {
         const cell = document.createElement('div');
         cell.className = 'contrib-cell';
 
-        // Activity generator
         const r = Math.random();
         let lvl = 'lvl-0';
         let count = 0;
@@ -321,15 +316,9 @@ function buildContributionGraph() {
         else if (r > 0.42) { lvl = 'lvl-2'; count = Math.floor(Math.random() * 4) + 3; }
         else if (r > 0.22) { lvl = 'lvl-1'; count = Math.floor(Math.random() * 2) + 1; }
 
-        if (lvl !== 'lvl-0') {
-            cell.classList.add(lvl);
-        }
-
+        if (lvl !== 'lvl-0') cell.classList.add(lvl);
         cell.setAttribute('title', count > 0 ? `${count} commits on active sprint` : 'No commits');
-        cell.addEventListener('mouseenter', () => {
-            window.siteSound?.play('tick');
-        });
-
+        cell.addEventListener('mouseenter', () => window.siteSound?.play('tick'));
         container.appendChild(cell);
     }
 }
@@ -340,11 +329,7 @@ window.filterStack = function (category, btn) {
     if (btn) btn.classList.add('is-active');
 
     document.querySelectorAll('.stack-item').forEach(item => {
-        if (category === 'all' || item.dataset.category === category) {
-            item.style.display = 'inline-flex';
-        } else {
-            item.style.display = 'none';
-        }
+        item.style.display = (category === 'all' || item.dataset.category === category) ? 'inline-flex' : 'none';
     });
     window.siteSound?.play('tap');
 };
@@ -376,9 +361,6 @@ function enhancePrivateAiProject() {
     const ragPanel = document.querySelector('[data-panel="rag"]');
     if (!ragPanel || ragPanel.dataset.caseStudyEnhanced === 'true') return;
     ragPanel.dataset.caseStudyEnhanced = 'true';
-
-    // Keep this enhancement isolated to the RAG panel so the other portfolio modals
-    // and their existing styling/behavior remain untouched.
     ragPanel.style.maxHeight = '72vh';
     ragPanel.style.overflowY = 'auto';
     ragPanel.style.paddingRight = '0.35rem';
@@ -386,9 +368,7 @@ function enhancePrivateAiProject() {
     ragPanel.innerHTML = `
         <p class="modal-kicker">Private applied AI · Engineering case study</p>
         <h3 class="modal-title">Private AI Troubleshooting &amp; Engineering Knowledge Platform</h3>
-        <p class="modal-lead">
-            Turning years of technical documentation, support cases, RCA findings, and troubleshooting experience into reusable engineering knowledge — while keeping sensitive information inside a private environment.
-        </p>
+        <p class="modal-lead">Turning years of technical documentation, support cases, RCA findings, and troubleshooting experience into reusable engineering knowledge — while keeping sensitive information inside a private environment.</p>
 
         <div class="modal-detail-grid">
             <div class="modal-detail"><span>Knowledge corpus</span><strong>2,700+ internal documents</strong></div>
@@ -399,12 +379,8 @@ function enhancePrivateAiProject() {
 
         <div class="mt-5">
             <p class="modal-kicker">01 — The problem</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                The challenge was not a lack of technical knowledge. It was the time required to find and reuse it. Troubleshooting knowledge was scattered across documentation, historical cases, commands, logs, runbooks, known-good baselines, failure signatures, and lessons learned.
-            </p>
-            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50">
-                <p class="text-sm text-ink leading-relaxed"><strong>“We weren't lacking technical knowledge. We were lacking a fast way to find and reuse it.”</strong></p>
-            </div>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The challenge was not a lack of technical knowledge. It was the time required to find and reuse it. Troubleshooting knowledge was scattered across documentation, historical cases, commands, logs, runbooks, known-good baselines, failure signatures, and lessons learned.</p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50"><p class="text-sm text-ink leading-relaxed"><strong>“We weren't lacking technical knowledge. We were lacking a fast way to find and reuse it.”</strong></p></div>
         </div>
 
         <div class="mt-5">
@@ -438,34 +414,20 @@ RAG Retrieval + Vector Search
                       ↓
               Grounded Answer
          Sources · Evidence · Steps</div>
-            <p class="mt-3 text-xs text-gray-600 leading-relaxed">
-                Underneath the workflow is a locally hosted stack: Windows → WSL Ubuntu → Docker → Ollama → Open WebUI → Vector Database → Private Knowledge Base.
-            </p>
+            <p class="mt-3 text-xs text-gray-600 leading-relaxed">Underneath the workflow is a locally hosted stack: Windows → WSL Ubuntu → Docker → Ollama → Open WebUI → Vector Database → Private Knowledge Base.</p>
         </div>
 
         <div class="mt-5">
             <p class="modal-kicker">04 — Retrieval &amp; engineering memory</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                The retrieval pipeline started with more than 2,700 internal Markdown documents, including runbooks, case files, troubleshooting notes, known-good baselines, failure signatures, and technical references. Local Qwen and Gemma models were tested through Ollama on modest hardware.
-            </p>
-            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50">
-                <p class="text-xs text-gray-600 leading-relaxed"><strong class="text-ink">Key lesson:</strong> retrieval often matters more than model size. A smaller model grounded in the correct documentation can be more useful than a larger model guessing about systems outside its training data.</p>
-            </div>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The retrieval pipeline started with more than 2,700 internal Markdown documents, including runbooks, case files, troubleshooting notes, known-good baselines, failure signatures, and technical references. Local Qwen and Gemma models were tested through Ollama on modest hardware.</p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50"><p class="text-xs text-gray-600 leading-relaxed"><strong class="text-ink">Key lesson:</strong> retrieval often matters more than model size. A smaller model grounded in the correct documentation can be more useful than a larger model guessing about systems outside its training data.</p></div>
         </div>
 
         <div class="mt-5">
             <p class="modal-kicker">05 — Knowledge operations</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                Every investigation should have the potential to become reusable knowledge. Engineering memory is structured around a repeatable lifecycle:
-            </p>
-            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50 font-mono text-xs text-ink" style="overflow-x:auto; white-space:nowrap;">
-                Symptom → Evidence → Finding → Root Cause → Resolution → Validation
-            </div>
-            <ul class="modal-points">
-                <li>Validated engineering findings and investigation records.</li>
-                <li>Failure signatures, case notes, and technical references.</li>
-                <li>Compatibility information, known baselines, and lessons learned.</li>
-            </ul>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">Every investigation should have the potential to become reusable knowledge. Engineering memory is structured around a repeatable lifecycle:</p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50 font-mono text-xs text-ink" style="overflow-x:auto; white-space:nowrap;">Symptom → Evidence → Finding → Root Cause → Resolution → Validation</div>
+            <ul class="modal-points"><li>Validated engineering findings and investigation records.</li><li>Failure signatures, case notes, and technical references.</li><li>Compatibility information, known baselines, and lessons learned.</li></ul>
         </div>
 
         <div class="mt-5">
@@ -482,15 +444,8 @@ RAG Retrieval + Vector Search
 
         <div class="mt-5">
             <p class="modal-kicker">07 — Resumable ingestion pipeline</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                Thousands of documents introduce processing failures, duplicates, formatting differences, and interrupted jobs. The importer is designed to be resumable and observable rather than restarting from zero after every interruption.
-            </p>
-            <ul class="modal-points">
-                <li>Tracks successfully processed and failed documents.</li>
-                <li>Records failure reasons and document paths.</li>
-                <li>Uses content hashes to identify previously processed files.</li>
-                <li>Supports recovery from interrupted ingestion jobs.</li>
-            </ul>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">Thousands of documents introduce processing failures, duplicates, formatting differences, and interrupted jobs. The importer is designed to be resumable and observable rather than restarting from zero after every interruption.</p>
+            <ul class="modal-points"><li>Tracks successfully processed and failed documents.</li><li>Records failure reasons and document paths.</li><li>Uses content hashes to identify previously processed files.</li><li>Supports recovery from interrupted ingestion jobs.</li></ul>
         </div>
 
         <div class="mt-5">
@@ -516,9 +471,7 @@ Make the next investigation faster</div>
 
         <div class="mt-5">
             <p class="modal-kicker">09 — What real testing changed</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                The project is still evolving. Some models did not perform well, documents failed during ingestion, hardware limitations forced design changes, and retrieval approaches had to be redesigned after real testing. Those failures became part of the engineering process rather than being hidden from it.
-            </p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The project is still evolving. Some models did not perform well, documents failed during ingestion, hardware limitations forced design changes, and retrieval approaches had to be redesigned after real testing. Those failures became part of the engineering process rather than being hidden from it.</p>
         </div>
 
         <div class="mt-5">
@@ -530,44 +483,150 @@ Make the next investigation faster</div>
             </div>
         </div>
 
-        <div class="mt-5">
-            <p class="modal-kicker">11 — Next</p>
-            <ul class="modal-points">
-                <li>Incremental knowledge synchronization.</li>
-                <li>Stronger failure-signature matching.</li>
-                <li>Better document classification and retrieval accuracy.</li>
-                <li>Automated knowledge quality checks.</li>
-            </ul>
-        </div>
+        <div class="mt-5"><p class="modal-kicker">11 — Next</p><ul class="modal-points"><li>Incremental knowledge synchronization.</li><li>Stronger failure-signature matching.</li><li>Better document classification and retrieval accuracy.</li><li>Automated knowledge quality checks.</li></ul></div>
 
-        <div class="mt-5 p-3 rounded-lg border border-gray-200 bg-gray-50" data-private-ai-note>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-gray-400">Security &amp; access</p>
-            <p class="mt-1 text-xs text-gray-600 leading-relaxed">
-                The source repository is intentionally private because this project works with internal technical knowledge and includes security-sensitive deployment details. This case study describes the architecture, engineering approach, and lessons without exposing protected source code, credentials, customer data, or company-confidential content.
-            </p>
-        </div>
+        <div class="mt-5 p-3 rounded-lg border border-gray-200 bg-gray-50" data-private-ai-note><p class="font-mono text-[10px] uppercase tracking-wider text-gray-400">Security &amp; access</p><p class="mt-1 text-xs text-gray-600 leading-relaxed">The source repository is intentionally private because this project works with internal technical knowledge and includes security-sensitive deployment details. This case study describes the architecture, engineering approach, and lessons without exposing protected source code, credentials, customer data, or company-confidential content.</p></div>
 
-        <div class="mt-5 p-3 rounded-lg border border-gray-200">
-            <p class="text-sm text-ink leading-relaxed"><strong>AI is only one component. The real project is turning troubleshooting experience into reusable engineering knowledge.</strong></p>
-        </div>
+        <div class="mt-5 p-3 rounded-lg border border-gray-200"><p class="text-sm text-ink leading-relaxed"><strong>AI is only one component. The real project is turning troubleshooting experience into reusable engineering knowledge.</strong></p></div>
 
         <a class="modal-action" href="https://www.linkedin.com/feed/update/urn:li:activity:7498185839668154368/" target="_blank" rel="noopener">Read the full project write-up on LinkedIn <span aria-hidden="true">↗</span></a>
     `;
 }
 
+// ── OCR Automation Project Presentation ──────────────────────────────────────
+function enhanceOcrProject() {
+    const projectCard = [...document.querySelectorAll('.deck-card')].find(card =>
+        card.querySelector('h3')?.textContent.includes('Document Processing Automation')
+    );
+    const modal = document.getElementById('siteModal');
+    if (!projectCard || !modal || modal.querySelector('[data-panel="ocr"]')) return;
+
+    const actions = projectCard.querySelector('.project-actions');
+    const exploreLink = actions?.querySelector('a');
+    if (exploreLink) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = exploreLink.className;
+        button.textContent = 'More details';
+        button.setAttribute('onclick', "openModal('ocr')");
+        button.setAttribute('aria-label', 'View the OCR and document automation case study');
+        exploreLink.replaceWith(button);
+    }
+
+    const summary = projectCard.querySelector('.mt-3.text-xs.leading-relaxed.text-gray-600');
+    if (summary) {
+        summary.textContent = 'An OCR-driven document automation tool inspired by a real repetitive workflow. It extracts document data, applies naming rules, validates results, supports human review, processes files in batches, and exports structured outputs to reduce repetitive manual work.';
+    }
+
+    const panel = document.createElement('div');
+    panel.dataset.panel = 'ocr';
+    panel.style.display = 'none';
+    panel.style.maxHeight = '72vh';
+    panel.style.overflowY = 'auto';
+    panel.style.paddingRight = '0.35rem';
+    panel.innerHTML = `
+        <p class="modal-kicker">Applied automation · Project case study</p>
+        <h3 class="modal-title">OCR Document Processing &amp; Smart Renaming Automation</h3>
+        <p class="modal-lead">A simple conversation about repetitive document work became a practical automation project designed around one question: what parts of this process should a person still review, and what parts should software handle automatically?</p>
+
+        <div class="modal-detail-grid">
+            <div class="modal-detail"><span>Core task</span><strong>Document extraction &amp; renaming</strong></div>
+            <div class="modal-detail"><span>Processing</span><strong>OCR · Batch workflow</strong></div>
+            <div class="modal-detail"><span>Quality control</span><strong>Validation · Editable review</strong></div>
+            <div class="modal-detail"><span>Output</span><strong>Structured Excel / ZIP export</strong></div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">01 — How it started</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The project started from a conversation about a repetitive daily task: reading documents, identifying the important information, renaming files consistently, and preparing the data for the next step. The problem was not technically difficult one document at a time — the problem was the repetition.</p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50"><p class="text-sm text-ink leading-relaxed"><strong>A small recurring task became an opportunity to build a reusable automation workflow.</strong></p></div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">02 — The workflow problem</p>
+            <ul class="modal-points">
+                <li>Open and inspect each document manually.</li>
+                <li>Find the fields needed for naming and record keeping.</li>
+                <li>Rename files using a consistent format.</li>
+                <li>Repeat the same checks across many documents.</li>
+                <li>Transfer the extracted information into structured output.</li>
+            </ul>
+            <p class="mt-3 text-xs text-gray-600 leading-relaxed">Each step is simple, but at volume the process becomes slow, inconsistent, and error-prone.</p>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">03 — Automation approach</p>
+            <div class="mt-2 p-3 rounded-lg border border-gray-200 bg-gray-50 font-mono text-[11px] leading-relaxed text-gray-600" style="overflow-x:auto; white-space:pre;">Upload documents
+       ↓
+OCR text extraction
+       ↓
+Identify required fields
+       ↓
+Apply naming + validation rules
+       ↓
+Human review / correction
+       ↓
+Batch process approved records
+       ↓
+Rename documents
+       ↓
+Export structured data + files</div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">04 — Human-in-the-loop by design</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">OCR is useful, but extraction is not automatically the same as correctness. The workflow keeps an editable review stage so a user can confirm or correct detected values before the final file name and export are produced.</p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50"><p class="text-xs text-gray-600 leading-relaxed"><strong class="text-ink">Design principle:</strong> automate repetitive work without removing the user's ability to verify the result.</p></div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">05 — Rule-based validation</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">Instead of trusting raw OCR output, the tool combines extraction with predictable validation and naming rules. This creates a controlled workflow where recognized text is checked before it becomes part of a file name or structured record.</p>
+            <ul class="modal-points"><li>Consistent file-naming patterns.</li><li>Required-field checks before final processing.</li><li>Editable values when OCR needs correction.</li><li>Repeatable behavior across an entire batch.</li></ul>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">06 — Batch processing</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The project moved beyond a one-file OCR demo. Batch processing makes the automation useful for real workflows by allowing multiple documents to be reviewed, validated, renamed, and exported together.</p>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">07 — Structured output</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The end result is not only renamed files. Extracted and reviewed information can also be organized into structured output, including spreadsheet data and packaged document exports, so the same information can support downstream administrative work.</p>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">08 — What the project taught me</p>
+            <div class="space-y-3 mt-2">
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">1. Start with the repetitive task, not the technology.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">The useful part of the project came from understanding the workflow before deciding where OCR or automation belonged.</p></div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">2. Automation still needs validation.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">A fast wrong result is not an improvement. Review and validation are part of the product, not an afterthought.</p></div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">3. Small problems can produce reusable tools.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">A solution created for one repetitive process can become a general document-processing pattern that applies to many similar workflows.</p></div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">09 — Project focus</p>
+            <ul class="modal-points"><li>Improve OCR reliability across different document layouts.</li><li>Expand configurable field and naming rules.</li><li>Strengthen batch review and exception handling.</li><li>Make the workflow easier to adapt to other document-processing use cases.</li></ul>
+        </div>
+
+        <div class="mt-5 p-3 rounded-lg border border-gray-200"><p class="text-sm text-ink leading-relaxed"><strong>The goal was never OCR for its own sake. The goal was to remove repetitive document work while keeping people in control of the final result.</strong></p></div>
+
+        <a class="modal-action" href="https://www.linkedin.com/pulse/how-one-conversation-inspired-me-build-ai-tool-jason-gil--g5eoc/" target="_blank" rel="noopener">Read the full project story on LinkedIn <span aria-hidden="true">↗</span></a>
+    `;
+
+    modal.querySelector('.modal-card')?.appendChild(panel);
+}
+
 // ── Global Initializations ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     enhancePrivateAiProject();
+    enhanceOcrProject();
     initializeDialogs();
     buildContributionGraph();
 
-    // Attach click sound to interactive buttons and links
     document.querySelectorAll('a, button').forEach(el => {
         el.addEventListener('click', () => {
-            if (!el.hasAttribute('data-cuelume-silent')) {
-                window.siteSound?.play('press');
-            }
+            if (!el.hasAttribute('data-cuelume-silent')) window.siteSound?.play('press');
         });
     });
-
 });
