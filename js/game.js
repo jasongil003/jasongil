@@ -142,40 +142,63 @@
         ctx.save();
         ctx.translate(Math.round(x), Math.round(y));
 
-        // Soft shadow
+        // Grounding shadow and player marker make the controlled character easy to find.
         ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
         ctx.beginPath();
         ctx.ellipse(10, 22, 9, 4, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // Legs / walk animation
-        ctx.fillStyle = '#27272a';
+        if (isPlayer) {
+            ctx.strokeStyle = '#fbbf24';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(1.5, 0.5, 17, 22);
+        }
+
+        const outline = '#18181b';
+        const skin = '#f2c4a4';
+        const hair = '#111827';
         const legOffset = frame % 2 === 0 ? 1 : -1;
-        ctx.fillRect(5 + legOffset, 16, 4, 6);
-        ctx.fillRect(11 - legOffset, 16, 4, 6);
 
-        // Body / Shirt
+        // Pixel outline, jacket, collar, and animated legs.
+        ctx.fillStyle = outline;
+        ctx.fillRect(3, 8, 14, 10);
+        ctx.fillRect(4 + legOffset, 17, 5, 6);
+        ctx.fillRect(11 - legOffset, 17, 5, 6);
         ctx.fillStyle = color;
-        ctx.fillRect(4, 8, 12, 9);
+        ctx.fillRect(4, 9, 12, 8);
+        ctx.fillRect(2, 10, 2, 6);
+        ctx.fillRect(16, 10, 2, 6);
+        ctx.fillStyle = isPlayer ? '#f8fafc' : 'rgba(255, 255, 255, 0.48)';
+        ctx.fillRect(8, 10, 4, 2);
+        ctx.fillRect(9, 12, 2, 5);
+        if (isPlayer) {
+            ctx.fillStyle = '#fbbf24';
+            ctx.fillRect(13, 13, 2, 2);
+        }
 
-        // Head
-        ctx.fillStyle = '#fed7aa'; // Skin tone
-        ctx.fillRect(5, 1, 10, 8);
+        // Face and a shaped hair silhouette give every character a recognizable profile.
+        ctx.fillStyle = outline;
+        ctx.fillRect(4, 1, 12, 9);
+        ctx.fillStyle = skin;
+        ctx.fillRect(5, 3, 10, 7);
+        ctx.fillRect(4, 5, 1, 3);
+        ctx.fillRect(15, 5, 1, 3);
 
-        // Hair
-        ctx.fillStyle = '#18181b';
-        ctx.fillRect(4, 0, 12, 3);
-        ctx.fillRect(4, 3, 2, 3);
+        ctx.fillStyle = hair;
+        ctx.fillRect(4, 1, 12, 3);
+        ctx.fillRect(4, 3, 3, 3);
+        ctx.fillRect(13, 3, 3, 2);
 
-        // Eyes
-        ctx.fillStyle = '#09090b';
+        // Directional facial details make movement immediately legible.
+        ctx.fillStyle = '#111827';
         if (dir === 'left') {
-            ctx.fillRect(6, 4, 2, 2);
+            ctx.fillRect(5, 5, 2, 2);
         } else if (dir === 'right') {
-            ctx.fillRect(12, 4, 2, 2);
+            ctx.fillRect(13, 5, 2, 2);
         } else if (dir !== 'up') {
-            ctx.fillRect(7, 4, 2, 2);
-            ctx.fillRect(11, 4, 2, 2);
+            ctx.fillRect(7, 5, 1, 1);
+            ctx.fillRect(12, 5, 1, 1);
+            ctx.fillRect(9, 8, 2, 1);
         }
 
         ctx.restore();
