@@ -2,6 +2,8 @@
 
 A state-of-the-art, fully responsive, ultra-interactive developer portfolio website tailored for **Jason Gil** (Technical Lead | Linux, Network, Cloud, Automation & Applied AI), featuring brutalist minimalism, halftone dot textures, and rich micro-interactions.
 
+🌐 **[View Live Portfolio](https://jasongil003.github.io/jasongil/)**
+
 ![Portfolio Preview Banner](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge)
 ![Built with](https://img.shields.io/badge/Built%20with-Vanilla%20HTML5%20%7C%20CSS3%20%7C%20Web%20Audio-black?style=for-the-badge)
 ![GitHub](https://img.shields.io/badge/GitHub-jasongil003-181717?style=for-the-badge&logo=github)
