@@ -9,6 +9,7 @@
 
     const input = document.getElementById('askInput');
     const textEl = document.getElementById('askText');
+    const field = document.querySelector('.ask-field');
     const bubble = document.getElementById('askBubble');
     const bubbleText = document.getElementById('askBubbleText');
     const askLoader = document.getElementById('askLoader');
@@ -20,6 +21,10 @@
         {
             keywords: ['who', 'about', 'bio', 'introduce', 'jason', 'summary'],
             answer: "I'm Jason Gil — Technical Lead & IT Manager with 8+ years of experience across Linux infrastructure, enterprise networking, SaaS/MSP operations, and Applied AI/RAG systems based in Makati City, Philippines."
+        },
+        {
+            keywords: ['hi', 'hello', 'hey', 'good morning', 'good afternoon'],
+            answer: "Hi! I’m Jason’s portfolio assistant. Ask about his technical experience, projects, Linux and networking skills, RAG AI work, or how to get in touch."
         },
         {
             keywords: ['skill', 'stack', 'tech', 'networking', 'linux', 'tools', 'protocols'],
@@ -55,7 +60,7 @@
                 return item.answer;
             }
         }
-        return `Regarding "${query}": Jason specializes in enterprise Linux infrastructure, network troubleshooting, and applied AI systems. Email prostudios.com@gmail.com or connect via github.com/jasongil003.`;
+        return `I don’t have a specific answer for "${query}" yet. Try asking about Jason’s experience, projects, Linux and networking skills, RAG AI work, or contact details.`;
     }
 
     function typeWriter(text, el, onComplete) {
@@ -89,6 +94,8 @@
             bubble.classList.add('is-on');
             typeWriter(answer, bubbleText, () => {
                 window.siteSound?.play('chime');
+                if (!input.value) textEl.textContent = 'ask another question…';
+                input.focus({ preventScroll: true });
             });
             input.value = '';
             textEl.textContent = '';
@@ -107,6 +114,7 @@
         document.documentElement.style.overflow = 'hidden';
         requestAnimationFrame(() => {
             overlay.classList.add('is-open');
+            textEl.textContent = '';
             input.focus();
         });
         window.siteSound?.play('open');
@@ -133,6 +141,8 @@
         textEl.textContent = input.value;
         window.siteSound?.play('press');
     });
+
+    field?.addEventListener('click', () => input.focus({ preventScroll: true }));
 
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
