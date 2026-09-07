@@ -349,8 +349,59 @@ window.filterStack = function (category, btn) {
     window.siteSound?.play('tap');
 };
 
+// ── Private AI Project Presentation ──────────────────────────────────────────
+function enhancePrivateAiProject() {
+    const projectCard = [...document.querySelectorAll('.deck-card')].find(card =>
+        card.querySelector('h3')?.textContent.includes('ANTlabs Local AI Knowledge Base')
+    );
+
+    if (projectCard) {
+        const actions = projectCard.querySelector('.project-actions');
+        const githubProfileLink = actions?.querySelector('a[href="https://github.com/jasongil003"]');
+        githubProfileLink?.remove();
+
+        const detailsButton = actions?.querySelector('button');
+        if (detailsButton) {
+            detailsButton.textContent = 'More details';
+            detailsButton.setAttribute('onclick', "openModal('rag')");
+            detailsButton.setAttribute('aria-label', 'View more details about the private ANTlabs Local AI Knowledge Base');
+        }
+
+        const summary = projectCard.querySelector('.mt-3.text-xs.leading-relaxed.text-gray-600');
+        if (summary) {
+            summary.textContent = 'Private RAG knowledge system on WSL2 Ubuntu, Docker, local Qwen/Gemma LLMs, and Tailscale for secure remote access. A resumable Bash pipeline indexes thousands of technical documents for semantic RCA retrieval. The source repository remains private to protect internal knowledge and security-sensitive implementation details.';
+        }
+    }
+
+    const ragPanel = document.querySelector('[data-panel="rag"]');
+    if (!ragPanel || ragPanel.querySelector('[data-private-ai-note]')) return;
+
+    const securityNote = document.createElement('div');
+    securityNote.setAttribute('data-private-ai-note', '');
+    securityNote.className = 'mt-4 p-3 rounded-lg border border-gray-200 bg-gray-50';
+    securityNote.innerHTML = `
+        <p class="font-mono text-[10px] uppercase tracking-wider text-gray-400">Security &amp; access</p>
+        <p class="mt-1 text-xs text-gray-600 leading-relaxed">
+            This project is intentionally kept in a private repository because it works with internal technical knowledge and includes security-sensitive deployment details. The portfolio shares the architecture and outcomes without exposing protected source code or company data.
+        </p>
+    `;
+
+    const projectAction = ragPanel.querySelector('.modal-action');
+    if (projectAction) projectAction.insertAdjacentElement('beforebegin', securityNote);
+    else ragPanel.appendChild(securityNote);
+
+    const linkedInAction = document.createElement('a');
+    linkedInAction.className = 'modal-action';
+    linkedInAction.href = 'https://www.linkedin.com/feed/update/urn:li:activity:7498185839668154368/';
+    linkedInAction.target = '_blank';
+    linkedInAction.rel = 'noopener';
+    linkedInAction.innerHTML = 'Read the project update on LinkedIn <span aria-hidden="true">↗</span>';
+    ragPanel.appendChild(linkedInAction);
+}
+
 // ── Global Initializations ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+    enhancePrivateAiProject();
     initializeDialogs();
     buildContributionGraph();
 
