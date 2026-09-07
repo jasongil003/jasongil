@@ -39,7 +39,7 @@
         },
         {
             keywords: ['contact', 'reach', 'hire', 'message', 'connect', 'social', 'github'],
-            answer: "You can connect with me directly through GitHub at github.com/jasongil003 for technical collaboration, inquiries, and projects!"
+            answer: "Email prostudios.com@gmail.com for technical collaboration, inquiries, and projects, or connect through GitHub at github.com/jasongil003."
         },
         {
             keywords: ['typing', 'game', 'easter', 'egg', 'secret'],
@@ -55,7 +55,7 @@
                 return item.answer;
             }
         }
-        return `Regarding "${query}": Jason specializes in enterprise Linux infrastructure, network troubleshooting, and applied AI systems. Connect via github.com/jasongil003!`;
+        return `Regarding "${query}": Jason specializes in enterprise Linux infrastructure, network troubleshooting, and applied AI systems. Email prostudios.com@gmail.com or connect via github.com/jasongil003.`;
     }
 
     function typeWriter(text, el, onComplete) {
