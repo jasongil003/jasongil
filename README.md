@@ -53,15 +53,15 @@ Technical Lead with 8+ years across Linux infrastructure, enterprise networking,
 
 ## 🚀 1-Click Deployment to GitHub Pages
 
-You can easily host this portfolio on **GitHub Pages** under your repository `https://github.com/jasongil003/portfolio` (or `jasongil003.github.io`):
+You can easily host this portfolio on **GitHub Pages** under your chosen GitHub repository:
 
 ```bash
-cd "C:\Users\JasonGil\.gemini\antigravity-ide\scratch\portfolio"
+cd /path/to/portfolio
 git init
 git add .
 git commit -m "feat: release interactive developer portfolio based on resume"
 git branch -M main
-git remote add origin https://github.com/jasongil003/<your-repo-name>.git
+git remote add origin https://github.com/<your-username>/<your-repo-name>.git
 git push -u origin main
 ```
 Then enable GitHub Pages under **Settings** > **Pages** (select `main` branch, `/ root` folder). Your site will be live immediately!
