@@ -364,39 +364,195 @@ function enhancePrivateAiProject() {
         if (detailsButton) {
             detailsButton.textContent = 'More details';
             detailsButton.setAttribute('onclick', "openModal('rag')");
-            detailsButton.setAttribute('aria-label', 'View more details about the private ANTlabs Local AI Knowledge Base');
+            detailsButton.setAttribute('aria-label', 'View the private AI troubleshooting and engineering knowledge platform case study');
         }
 
         const summary = projectCard.querySelector('.mt-3.text-xs.leading-relaxed.text-gray-600');
         if (summary) {
-            summary.textContent = 'Private RAG knowledge system on WSL2 Ubuntu, Docker, local Qwen/Gemma LLMs, and Tailscale for secure remote access. A resumable Bash pipeline indexes thousands of technical documents for semantic RCA retrieval. The source repository remains private to protect internal knowledge and security-sensitive implementation details.';
+            summary.textContent = 'Private AI troubleshooting and engineering knowledge platform using local RAG, vector search, and evidence-aware retrieval. Built to turn internal documentation, case history, RCA findings, and troubleshooting experience into reusable engineering knowledge without exposing protected source code or company data.';
         }
     }
 
     const ragPanel = document.querySelector('[data-panel="rag"]');
-    if (!ragPanel || ragPanel.querySelector('[data-private-ai-note]')) return;
+    if (!ragPanel || ragPanel.dataset.caseStudyEnhanced === 'true') return;
+    ragPanel.dataset.caseStudyEnhanced = 'true';
 
-    const securityNote = document.createElement('div');
-    securityNote.setAttribute('data-private-ai-note', '');
-    securityNote.className = 'mt-4 p-3 rounded-lg border border-gray-200 bg-gray-50';
-    securityNote.innerHTML = `
-        <p class="font-mono text-[10px] uppercase tracking-wider text-gray-400">Security &amp; access</p>
-        <p class="mt-1 text-xs text-gray-600 leading-relaxed">
-            This project is intentionally kept in a private repository because it works with internal technical knowledge and includes security-sensitive deployment details. The portfolio shares the architecture and outcomes without exposing protected source code or company data.
+    // Keep this enhancement isolated to the RAG panel so the other portfolio modals
+    // and their existing styling/behavior remain untouched.
+    ragPanel.style.maxHeight = '72vh';
+    ragPanel.style.overflowY = 'auto';
+    ragPanel.style.paddingRight = '0.35rem';
+
+    ragPanel.innerHTML = `
+        <p class="modal-kicker">Private applied AI · Engineering case study</p>
+        <h3 class="modal-title">Private AI Troubleshooting &amp; Engineering Knowledge Platform</h3>
+        <p class="modal-lead">
+            Turning years of technical documentation, support cases, RCA findings, and troubleshooting experience into reusable engineering knowledge — while keeping sensitive information inside a private environment.
         </p>
+
+        <div class="modal-detail-grid">
+            <div class="modal-detail"><span>Knowledge corpus</span><strong>2,700+ internal documents</strong></div>
+            <div class="modal-detail"><span>Deployment</span><strong>Local / private infrastructure</strong></div>
+            <div class="modal-detail"><span>Inference</span><strong>Ollama · Qwen · Gemma</strong></div>
+            <div class="modal-detail"><span>Retrieval</span><strong>MiniLM · Vector search · RAG</strong></div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">01 — The problem</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                The challenge was not a lack of technical knowledge. It was the time required to find and reuse it. Troubleshooting knowledge was scattered across documentation, historical cases, commands, logs, runbooks, known-good baselines, failure signatures, and lessons learned.
+            </p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="text-sm text-ink leading-relaxed"><strong>“We weren't lacking technical knowledge. We were lacking a fast way to find and reuse it.”</strong></p>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">02 — Design questions</p>
+            <ul class="modal-points">
+                <li>What information do engineers need during troubleshooting?</li>
+                <li>How can thousands of documents be searched quickly?</li>
+                <li>How can previous investigations become reusable engineering knowledge?</li>
+                <li>How can internal information remain private?</li>
+                <li>How can the system avoid confidently inventing technical answers?</li>
+            </ul>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">03 — High-level architecture</p>
+            <div class="mt-2 p-3 rounded-lg border border-gray-200 bg-gray-50 font-mono text-[11px] leading-relaxed text-gray-600" style="overflow-x:auto; white-space:pre;">Technical Engineer
+       ↓
+   Open WebUI
+       ↓ Ask / Search
+RAG Retrieval + Vector Search
+       ↓
+┌──────────────────────┬──────────────────────┐
+│ Technical Knowledge  │ Engineering Memory   │
+│ Docs · Runbooks      │ Cases · RCA          │
+│ References · Baseline│ Lessons · Failures   │
+└──────────┬───────────┴──────────┬───────────┘
+           └──────────┬───────────┘
+                      ↓
+              Local Models
+            Qwen / Gemma / Ollama
+                      ↓
+              Grounded Answer
+         Sources · Evidence · Steps</div>
+            <p class="mt-3 text-xs text-gray-600 leading-relaxed">
+                Underneath the workflow is a locally hosted stack: Windows → WSL Ubuntu → Docker → Ollama → Open WebUI → Vector Database → Private Knowledge Base.
+            </p>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">04 — Retrieval &amp; engineering memory</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                The retrieval pipeline started with more than 2,700 internal Markdown documents, including runbooks, case files, troubleshooting notes, known-good baselines, failure signatures, and technical references. Local Qwen and Gemma models were tested through Ollama on modest hardware.
+            </p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="text-xs text-gray-600 leading-relaxed"><strong class="text-ink">Key lesson:</strong> retrieval often matters more than model size. A smaller model grounded in the correct documentation can be more useful than a larger model guessing about systems outside its training data.</p>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">05 — Knowledge operations</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                Every investigation should have the potential to become reusable knowledge. Engineering memory is structured around a repeatable lifecycle:
+            </p>
+            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50 font-mono text-xs text-ink" style="overflow-x:auto; white-space:nowrap;">
+                Symptom → Evidence → Finding → Root Cause → Resolution → Validation
+            </div>
+            <ul class="modal-points">
+                <li>Validated engineering findings and investigation records.</li>
+                <li>Failure signatures, case notes, and technical references.</li>
+                <li>Compatibility information, known baselines, and lessons learned.</li>
+            </ul>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">06 — Evidence &amp; trust model</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed"><strong class="text-ink">Never store a guess as a fact.</strong> The system prioritizes verified evidence and trusted documentation before relying on general technical knowledge or the language model itself.</p>
+            <div class="modal-detail-grid mt-3">
+                <div class="modal-detail"><span>VERIFIED</span><strong>Supported by evidence or trusted documentation</strong></div>
+                <div class="modal-detail"><span>INFERENCE</span><strong>Derived from evidence but not fully confirmed</strong></div>
+                <div class="modal-detail"><span>GENERAL KNOWLEDGE</span><strong>Relevant, but not verified against the environment</strong></div>
+                <div class="modal-detail"><span>NEGATIVE TEST</span><strong>“I couldn't verify this from the available technical knowledge.”</strong></div>
+            </div>
+            <p class="mt-3 text-xs text-gray-600 leading-relaxed"><strong class="text-ink">Evidence builds trust.</strong> Engineers should be able to see where an answer came from and distinguish validated findings from unverified reasoning.</p>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">07 — Resumable ingestion pipeline</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                Thousands of documents introduce processing failures, duplicates, formatting differences, and interrupted jobs. The importer is designed to be resumable and observable rather than restarting from zero after every interruption.
+            </p>
+            <ul class="modal-points">
+                <li>Tracks successfully processed and failed documents.</li>
+                <li>Records failure reasons and document paths.</li>
+                <li>Uses content hashes to identify previously processed files.</li>
+                <li>Supports recovery from interrupted ingestion jobs.</li>
+            </ul>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">08 — Target workflow</p>
+            <div class="mt-2 p-3 rounded-lg border border-gray-200 bg-gray-50 font-mono text-[11px] leading-relaxed text-gray-600" style="overflow-x:auto; white-space:pre;">Engineer asks a question
+        ↓
+Search private knowledge
+        ↓
+Retrieve relevant cases + documentation
+        ↓
+Compare available evidence
+        ↓
+Reason over the evidence
+        ↓
+Return grounded answer with sources
+        ↓
+Document the investigation
+        ↓
+Preserve validated lessons
+        ↓
+Make the next investigation faster</div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">09 — What real testing changed</p>
+            <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                The project is still evolving. Some models did not perform well, documents failed during ingestion, hardware limitations forced design changes, and retrieval approaches had to be redesigned after real testing. Those failures became part of the engineering process rather than being hidden from it.
+            </p>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">10 — Three lessons</p>
+            <div class="space-y-3 mt-2">
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">1. Retrieval beats model size.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">A smaller local model with the right context can outperform a larger model working without the right information.</p></div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">2. Private AI is practical.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">Useful AI-assisted search and reasoning can be delivered without sending internal documentation to external services.</p></div>
+                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">3. Evidence builds trust.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">An AI answer should not carry the same weight as a validated engineering finding when its sources cannot be verified.</p></div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <p class="modal-kicker">11 — Next</p>
+            <ul class="modal-points">
+                <li>Incremental knowledge synchronization.</li>
+                <li>Stronger failure-signature matching.</li>
+                <li>Better document classification and retrieval accuracy.</li>
+                <li>Automated knowledge quality checks.</li>
+            </ul>
+        </div>
+
+        <div class="mt-5 p-3 rounded-lg border border-gray-200 bg-gray-50" data-private-ai-note>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-gray-400">Security &amp; access</p>
+            <p class="mt-1 text-xs text-gray-600 leading-relaxed">
+                The source repository is intentionally private because this project works with internal technical knowledge and includes security-sensitive deployment details. This case study describes the architecture, engineering approach, and lessons without exposing protected source code, credentials, customer data, or company-confidential content.
+            </p>
+        </div>
+
+        <div class="mt-5 p-3 rounded-lg border border-gray-200">
+            <p class="text-sm text-ink leading-relaxed"><strong>AI is only one component. The real project is turning troubleshooting experience into reusable engineering knowledge.</strong></p>
+        </div>
+
+        <a class="modal-action" href="https://www.linkedin.com/feed/update/urn:li:activity:7498185839668154368/" target="_blank" rel="noopener">Read the full project write-up on LinkedIn <span aria-hidden="true">↗</span></a>
     `;
-
-    const projectAction = ragPanel.querySelector('.modal-action');
-    if (projectAction) projectAction.insertAdjacentElement('beforebegin', securityNote);
-    else ragPanel.appendChild(securityNote);
-
-    const linkedInAction = document.createElement('a');
-    linkedInAction.className = 'modal-action';
-    linkedInAction.href = 'https://www.linkedin.com/feed/update/urn:li:activity:7498185839668154368/';
-    linkedInAction.target = '_blank';
-    linkedInAction.rel = 'noopener';
-    linkedInAction.innerHTML = 'Read the project update on LinkedIn <span aria-hidden="true">↗</span>';
-    ragPanel.appendChild(linkedInAction);
 }
 
 // ── Global Initializations ──────────────────────────────────────────────────
