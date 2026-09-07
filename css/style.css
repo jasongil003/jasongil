@@ -455,23 +455,12 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
     border-radius: .8rem;
     background: rgb(var(--ink));
 }
-.profile-portrait::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background-image: radial-gradient(rgb(var(--bg) / .55) .72px, transparent .9px);
-    background-size: 4px 4px;
-    mix-blend-mode: screen;
-    opacity: .3;
-    pointer-events: none;
-}
 .profile-portrait::before {
     content: '';
     position: absolute;
     z-index: 2;
     inset: 0;
-    background: linear-gradient(180deg, transparent 48%, rgb(var(--ink) / .15) 70%, rgb(var(--ink) / .7) 100%);
+    background: linear-gradient(180deg, transparent 58%, rgb(var(--ink) / .06) 76%, rgb(var(--ink) / .3) 100%);
     pointer-events: none;
 }
 .profile-portrait img {
@@ -480,13 +469,12 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
     height: 100%;
     object-fit: cover;
     object-position: 50% 23%;
-    filter: grayscale(1) contrast(1.15) brightness(1.04);
-    transform: scale(1.035);
-    transition: transform 240ms cubic-bezier(.23,1,.32,1), filter 200ms ease;
+    filter: none;
+    transform: scale(1.02);
+    transition: transform 240ms cubic-bezier(.23,1,.32,1);
 }
 @media (hover: hover) and (pointer: fine) {
     .hero-note:hover .profile-portrait img {
-        filter: grayscale(1) contrast(1.22) brightness(1.06);
         transform: scale(1.07);
     }
 }
