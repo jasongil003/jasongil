@@ -100,28 +100,28 @@
 
                         <!-- ── LIVE STATS GRID ── -->
             <section class="stats-grid" aria-label="At a glance">
-                <button type="button" class="stat-box" onclick="openModal('experience')">
+                <button type="button" class="stat-box" onclick="openModal('ops')" aria-label="View details about eight years of Linux and network operations experience">
                     <div class="flex items-center justify-between">
                         <span class="font-pixel text-xl text-ink">8+ yrs</span>
                         <svg aria-hidden="true" class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </div>
                     <div class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mt-1">Linux &amp; Net Ops</div></button>
 
-                <button type="button" class="stat-box" onclick="openModal('experience')">
+                <button type="button" class="stat-box" onclick="openModal('global')" aria-label="View details about global technical operations coverage">
                     <div class="flex items-center justify-between">
                         <span class="font-pixel text-xl text-ink">Global</span>
                         <svg aria-hidden="true" class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </div>
                     <div class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mt-1">APAC / EMEA / NA</div></button>
 
-                <button type="button" class="stat-box" onclick="document.getElementById('projects').scrollIntoView()">
+                <button type="button" class="stat-box" onclick="openModal('rag')" aria-label="View details about the private RAG AI knowledge system">
                     <div class="flex items-center justify-between">
                         <span class="font-pixel text-xl text-ink">RAG AI</span>
                         <svg aria-hidden="true" class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
                     </div>
                     <div class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mt-1">1000s Docs Ingested</div></button>
 
-                <button type="button" class="stat-box" onclick="openModal('experience')">
+                <button type="button" class="stat-box" onclick="openModal('availability')" aria-label="View details about high availability and DRBD experience">
                     <div class="flex items-center justify-between">
                         <span class="font-pixel text-xl text-ink">HA / DRBD</span>
                         <svg aria-hidden="true" class="h-3.5 w-3.5 text-gray-400" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 11L11 5M11 5H6M11 5V10" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -511,6 +511,68 @@
                     <button type="button" onclick="copyProfile(event)" class="px-3 py-1 rounded bg-ink font-mono text-xs font-semibold hover:opacity-90">Copy</button>
                 </div>
                 <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="mt-3 block w-full py-2 rounded-lg border border-gray-300 text-center font-mono text-xs font-semibold hover:border-ink transition">Visit GitHub Profile →</a>
+            </div>
+
+            <!-- At-a-glance detail panels -->
+            <div data-panel="ops" style="display:none;">
+                <p class="modal-kicker">Career depth</p>
+                <h3 class="modal-title">8+ years in technical operations</h3>
+                <p class="modal-lead">Hands-on experience across enterprise support, Linux infrastructure, network operations, SaaS/MSP environments, and technical leadership.</p>
+                <div class="modal-detail-grid">
+                    <div class="modal-detail"><span>Progression</span><strong>Support → Systems → SME → Lead</strong></div>
+                    <div class="modal-detail"><span>Core systems</span><strong>Linux gateways &amp; network services</strong></div>
+                </div>
+                <ul class="modal-points">
+                    <li>Evidence-based root cause analysis using packet captures, logs, and Bash diagnostics.</li>
+                    <li>Escalation ownership across DNS, DHCP, VPN, routing, authentication, PMS, and Multi-WAN.</li>
+                    <li>Coaching engineers and coordinating complex customer-impacting incidents.</li>
+                </ul>
+                <a class="modal-action" href="#experience" onclick="closeModal()">Explore career timeline <span aria-hidden="true">↓</span></a>
+            </div>
+
+            <div data-panel="global" style="display:none;">
+                <p class="modal-kicker">Operational reach</p>
+                <h3 class="modal-title">Supporting teams across three regions</h3>
+                <p class="modal-lead">Remote escalation leadership for SaaS, MSP, enterprise, and hospitality environments across APAC, EMEA, and North America.</p>
+                <div class="region-list" aria-label="Regions supported">
+                    <span>APAC</span><span>EMEA</span><span>North America</span>
+                </div>
+                <ul class="modal-points">
+                    <li>Own high-tier incidents from triage through evidence-backed resolution.</li>
+                    <li>Coordinate with partners, customers, engineering, and operations across time zones.</li>
+                    <li>Translate deep technical findings into clear next steps for varied audiences.</li>
+                </ul>
+            </div>
+
+            <div data-panel="rag" style="display:none;">
+                <p class="modal-kicker">Private applied AI</p>
+                <h3 class="modal-title">Local knowledge retrieval for faster RCA</h3>
+                <p class="modal-lead">An on-premise RAG system that turns thousands of technical documents into a searchable troubleshooting knowledge base while keeping data private.</p>
+                <div class="modal-detail-grid">
+                    <div class="modal-detail"><span>Inference</span><strong>Ollama · Qwen · Gemma</strong></div>
+                    <div class="modal-detail"><span>Retrieval</span><strong>MiniLM · Vector search</strong></div>
+                </div>
+                <ul class="modal-points">
+                    <li>Runs locally on WSL2 Ubuntu and Docker with Open WebUI.</li>
+                    <li>Uses a resumable Bash ingestion pipeline for large document collections.</li>
+                    <li>Surfaces relevant technical context for semantic search and incident investigation.</li>
+                </ul>
+                <a class="modal-action" href="#projects" onclick="closeModal()">View the project <span aria-hidden="true">↓</span></a>
+            </div>
+
+            <div data-panel="availability" style="display:none;">
+                <p class="modal-kicker">Resilience engineering</p>
+                <h3 class="modal-title">High availability with DRBD</h3>
+                <p class="modal-lead">Practical experience validating replicated Linux systems, controlled failover, patching, and disaster-recovery readiness.</p>
+                <div class="modal-detail-grid">
+                    <div class="modal-detail"><span>Platform</span><strong>Linux high availability</strong></div>
+                    <div class="modal-detail"><span>Replication</span><strong>DRBD</strong></div>
+                </div>
+                <ul class="modal-points">
+                    <li>Validate node health and replication state before planned changes.</li>
+                    <li>Execute controlled failover tests and confirm service continuity.</li>
+                    <li>Verify recovery, document results, and support disaster-recovery planning.</li>
+                </ul>
             </div>
 
             <!-- Experience History Panel -->

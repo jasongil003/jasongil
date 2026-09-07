@@ -95,6 +95,8 @@ window.openModal = function (name) {
 
     modal.querySelectorAll('[data-panel]').forEach(p => p.style.display = 'none');
     panel.style.display = 'block';
+    const title = panel.querySelector('h3');
+    modal.setAttribute('aria-label', title?.textContent.trim() || 'Portfolio details');
 
     modal.classList.add('is-open');
     document.documentElement.style.overflow = 'hidden';
