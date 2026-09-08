@@ -20,7 +20,7 @@
     function launch() {
         if (game.phase === 'playing') return;
         reset(); game.phase = 'playing'; box.classList.add('is-playing');
-        canvas.setAttribute('aria-label', 'Orbit Impact in progress. Move with WASD or arrow keys and fire with Space.');
+        canvas.setAttribute('aria-label', 'Orbit Impact in progress. Use the touch controls or move with WASD/arrows and fire with Space.');
         window.siteSound?.play('tap');
     }
     function burst(x, y, color, amount) {
@@ -86,6 +86,33 @@
     function setKey(event, pressed) { const map = { w: 'up', arrowup: 'up', s: 'down', arrowdown: 'down', a: 'left', arrowleft: 'left', d: 'right', arrowright: 'right', ' ': 'fire' }; const control = map[event.key.toLowerCase()]; if (!control) return false; event.preventDefault(); keys[control] = pressed; if (pressed && control === 'fire') shoot(); return true; }
     canvas.addEventListener('keydown', event => { if ((event.key === 'Enter' || event.key === ' ') && game.phase !== 'playing') { event.preventDefault(); launch(); return; } setKey(event, true); });
     canvas.addEventListener('keyup', event => setKey(event, false)); canvas.addEventListener('click', () => { canvas.focus({ preventScroll: true }); launch(); }); canvas.addEventListener('blur', () => Object.keys(keys).forEach(key => keys[key] = false)); document.addEventListener('visibilitychange', () => previous = performance.now());
+    const heldPointers = new Map();
+    document.querySelectorAll('[data-game-control]').forEach(button => {
+        const control = button.dataset.gameControl;
+        const release = event => {
+            heldPointers.delete(event.pointerId);
+            keys[control] = [...heldPointers.values()].includes(control);
+        };
+        button.addEventListener('pointerdown', event => {
+            event.preventDefault();
+            button.setPointerCapture(event.pointerId);
+            heldPointers.set(event.pointerId, control);
+            launch();
+            keys[control] = true;
+        });
+        button.addEventListener('pointerup', release);
+        button.addEventListener('pointercancel', release);
+        button.addEventListener('lostpointercapture', release);
+        button.addEventListener('keydown', event => {
+            if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); launch(); keys[control] = true; }
+        });
+        button.addEventListener('keyup', () => { keys[control] = false; });
+        button.addEventListener('blur', () => { keys[control] = false; });
+    });
+    const clearControls = () => { heldPointers.clear(); Object.keys(keys).forEach(key => { keys[key] = false; }); };
+    window.addEventListener('blur', clearControls);
+    document.addEventListener('visibilitychange', clearControls);
+    canvas.closest('details')?.addEventListener('toggle', clearControls);
     const initializeGame = () => { canvas.width = W; canvas.height = H; reset(); render(); previous = performance.now(); requestAnimationFrame(loop); wrap?.classList.add('is-on'); };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initializeGame, { once: true });
     else initializeGame();
