@@ -1479,3 +1479,10 @@ html.dark .chat-backdrop {
 .section-kicker { font: 600 .8125rem/1.5 'Geist Mono', monospace; letter-spacing: .1em; color: rgb(var(--g500)); margin-bottom: .65rem; }
 .section-title { font: 650 clamp(1.75rem, 3vw, 2rem)/1.15 'Geist', sans-serif; letter-spacing: -.025em; text-transform: none; color: rgb(var(--ink)); }
 .section-intro { margin-top: .75rem; color: rgb(var(--g600)); font-size: 1rem; }
+
+.hero-main h1 { font-size: clamp(3rem, 7.5vw, 6.5rem); overflow-wrap: normal; }
+.hero-role { line-height: 1.4; }
+.eyebrow, .hero-location, .note-top { font-size: .875rem; line-height: 1.5; }
+.hero-description { max-width: 60ch; }
+.hero-note { align-self: start; }
+@media (min-width: 768px) and (max-width: 1200px) { .hero-main h1 { font-size: 4rem; } }
