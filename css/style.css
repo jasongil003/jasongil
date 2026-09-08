@@ -1496,3 +1496,13 @@ html.dark .chat-backdrop {
 .deck { grid-template-columns: 1fr; gap: 1.5rem; }
 @media (min-width: 768px) { .deck { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1600px) { .content-container { max-width: 90rem; } .deck { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.case-page { max-width: 76ch; padding: 2rem 1.25rem 4rem; margin: auto; overflow-wrap: anywhere; }
+.case-page nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+.case-page h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; letter-spacing: -.03em; margin-block: 1rem; }
+.case-page h2 { font-size: 1.75rem; line-height: 1.2; margin-bottom: 1rem; }
+.case-page section, .case-page footer { margin-top: 3rem; }
+.case-page p, .case-page li, .case-page .text-xs, .case-page .text-sm { font-size: 1rem; line-height: 1.7; }
+.case-page pre { overflow-x: auto; white-space: pre-wrap; }
+.case-page .modal-detail-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.case-page .modal-kicker { font-size: .875rem; }
