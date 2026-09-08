@@ -1473,3 +1473,9 @@ html.dark .chat-backdrop {
 .main-content .text-xs, .main-content .section-link, .stack-btn, .project-actions { font-size: .875rem; line-height: 1.5; }
 .hero-main h1 { line-height: 1.08; letter-spacing: -.035em; }
 .experience-row { padding-block: var(--space-md); }
+
+.main-content section.py-14 { padding-block: var(--space-section); }
+.section-header { margin-bottom: 2rem; gap: 1.5rem; }
+.section-kicker { font: 600 .8125rem/1.5 'Geist Mono', monospace; letter-spacing: .1em; color: rgb(var(--g500)); margin-bottom: .65rem; }
+.section-title { font: 650 clamp(1.75rem, 3vw, 2rem)/1.15 'Geist', sans-serif; letter-spacing: -.025em; text-transform: none; color: rgb(var(--ink)); }
+.section-intro { margin-top: .75rem; color: rgb(var(--g600)); font-size: 1rem; }
