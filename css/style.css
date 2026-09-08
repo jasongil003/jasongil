@@ -17,8 +17,8 @@
     --g100: 245 245 245;
     --g200: 233 233 233;
     --g300: 212 212 212;
-    --g400: 163 163 163;
-    --g500: 115 115 115;
+    --g400: 105 105 105;
+    --g500: 105 105 105;
     --g600: 82 82 82;
     --g700: 64 64 64;
     --g800: 38 38 38;
@@ -70,7 +70,8 @@ body {
     background-color: rgb(var(--bg));
     color: rgb(var(--ink));
     font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     position: relative;
@@ -1461,3 +1462,14 @@ html.dark .chat-backdrop {
 .contrib-cell.lvl-2 { background-color: rgb(var(--g500)); }
 .contrib-cell.lvl-3 { background-color: rgb(var(--g700)); }
 .contrib-cell.lvl-4 { background-color: rgb(var(--ink)); }
+
+/* Readable type and shared spacing foundation. */
+:root { --space-sm: .75rem; --space-md: 1.5rem; --space-lg: 3rem; --space-section: clamp(3.5rem, 7vw, 6rem); }
+.main-content p, .modal-panel p { max-width: 68ch; }
+.deck-card h3 { font-size: 1.375rem; line-height: 1.2; }
+.deck-card p, .experience-row p { font-size: 1rem; line-height: 1.65; }
+.experience-row h3 { font-size: 1.125rem; line-height: 1.25; }
+.main-content [class*="text-[9px]"], .main-content [class*="text-[10px]"], .main-content [class*="text-[11px]"] { font-size: .8125rem; line-height: 1.5; }
+.main-content .text-xs, .main-content .section-link, .stack-btn, .project-actions { font-size: .875rem; line-height: 1.5; }
+.hero-main h1 { line-height: 1.08; letter-spacing: -.035em; }
+.experience-row { padding-block: var(--space-md); }
