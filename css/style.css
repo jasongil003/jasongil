@@ -1438,31 +1438,6 @@ html.dark .chat-backdrop {
 }
 .stat-box svg { width: .9rem; height: .9rem; flex: none; }
 
-/* GitHub Heatmap Grid */
-.contrib-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13px, 1fr));
-    gap: 4px;
-    padding: 1rem;
-    border: 1px solid rgb(var(--g200));
-    border-radius: 0.75rem;
-    background: rgb(var(--g50));
-}
-.contrib-cell {
-    aspect-ratio: 1;
-    border-radius: 2px;
-    background-color: rgb(var(--g200));
-    transition: transform 0.15s ease, background-color 0.2s ease;
-}
-.contrib-cell:hover {
-    transform: scale(1.3);
-    z-index: 2;
-}
-.contrib-cell.lvl-1 { background-color: rgb(var(--g300)); }
-.contrib-cell.lvl-2 { background-color: rgb(var(--g500)); }
-.contrib-cell.lvl-3 { background-color: rgb(var(--g700)); }
-.contrib-cell.lvl-4 { background-color: rgb(var(--ink)); }
-
 /* Readable type and shared spacing foundation. */
 :root { --space-sm: .75rem; --space-md: 1.5rem; --space-lg: 3rem; --space-section: clamp(3.5rem, 7vw, 6rem); }
 .main-content p, .modal-panel p { max-width: 68ch; }
@@ -1514,3 +1489,18 @@ html.dark .chat-backdrop {
 .expertise-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
 .expertise-grid h3 { font-size: 1.125rem; margin-bottom: .75rem; }
 .expertise-grid p { color: rgb(var(--g600)); }
+
+/* Accessible control sizing and resilient narrow layouts. */
+a.button-primary, a.button-secondary, button, summary, .primary-nav a, .drawer-links a, .theme-opt, .sound-toggle-btn { min-height: 44px; }
+.theme-opt, .sound-toggle-btn, .icon-button { min-width: 44px; }
+.main-content a, .case-page a { overflow-wrap: anywhere; }
+[class*="text-[9px]"], [class*="text-[10px]"], [class*="text-[11px]"] { font-size: .8125rem; line-height: 1.5; }
+#siteModal p, #siteModal li { font-size: 1rem; line-height: 1.65; }
+.demo-note, .playground-details summary, .tool-links button { font-size: .875rem; line-height: 1.5; }
+.main-content .deck-card .button-primary, .main-content .deck-card .button-secondary { padding: .75rem 1rem; }
+.hero-section > *, .section-header > *, .beyond-grid > * { min-width: 0; }
+@media (min-width: 640px) and (max-width: 900px) { .credentials-grid { grid-template-columns: 1fr; } }
+@media (max-width: 400px) { .hero-main h1 { font-size: 2.75rem; } .stats-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { html.scroll-smooth { scroll-behavior: auto !important; } }
+
+.main-content .experience-row p { font-size: 1rem; line-height: 1.65; }

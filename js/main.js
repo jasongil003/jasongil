@@ -294,54 +294,23 @@ function initializeDialogs() {
     syncAccessibility();
 }
 
-// ── Interactive GitHub Contribution Graph ────────────────────────────────────
-function buildContributionGraph() {
-    const container = document.getElementById('githubGrid');
-    if (!container) return;
-    container.innerHTML = '';
-
-    const weeks = 42;
-    const daysPerWeek = 7;
-    const totalCells = weeks * daysPerWeek;
-
-    for (let i = 0; i < totalCells; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'contrib-cell';
-
-        const r = Math.random();
-        let lvl = 'lvl-0';
-        let count = 0;
-        if (r > 0.82) { lvl = 'lvl-4'; count = Math.floor(Math.random() * 8) + 12; }
-        else if (r > 0.62) { lvl = 'lvl-3'; count = Math.floor(Math.random() * 5) + 7; }
-        else if (r > 0.42) { lvl = 'lvl-2'; count = Math.floor(Math.random() * 4) + 3; }
-        else if (r > 0.22) { lvl = 'lvl-1'; count = Math.floor(Math.random() * 2) + 1; }
-
-        if (lvl !== 'lvl-0') cell.classList.add(lvl);
-        cell.setAttribute('title', count > 0 ? `${count} commits on active sprint` : 'No commits');
-        cell.addEventListener('mouseenter', () => window.siteSound?.play('tick'));
-        container.appendChild(cell);
-    }
-}
-
-// ── Tech Stack Filtering ────────────────────────────────────────────────────
-window.filterStack = function (category, btn) {
-    document.querySelectorAll('.stack-btn').forEach(b => b.classList.remove('is-active'));
-    if (btn) btn.classList.add('is-active');
-
-    document.querySelectorAll('.stack-item').forEach(item => {
-        item.style.display = (category === 'all' || item.dataset.category === category) ? 'inline-flex' : 'none';
-    });
-    window.siteSound?.play('tap');
-};
-
 // ── Global Initializations ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     initializeDialogs();
-    buildContributionGraph();
 
     document.querySelectorAll('a, button').forEach(el => {
         el.addEventListener('click', () => {
             if (!el.hasAttribute('data-cuelume-silent')) window.siteSound?.play('press');
         });
     });
+});
+// Load the optional game only when its Lab panel is opened.
+const playground = document.querySelector('.playground-details');
+playground?.addEventListener('toggle', function () {
+    if (!this.open || this.dataset.loaded) return;
+    this.dataset.loaded = 'true';
+    const script = document.createElement('script');
+    script.src = 'js/game.js?v=orbit-impact-2';
+    script.onerror = () => { delete this.dataset.loaded; window.showToast?.('Game could not load. Close and reopen the panel to retry.'); };
+    document.body.appendChild(script);
 });
