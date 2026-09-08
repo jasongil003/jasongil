@@ -134,75 +134,9 @@
                 </div>
 
                 <div class="deck" data-deck>
-                    <!-- Featured AI project -->
-                    <article class="deck-card">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider">
-                                Private AI
-                            </span>
-                            <span class="font-mono text-[10px] text-gray-400">ANTlabs</span>
-                        </div>
-                        <div class="project-heading">
-                            <div class="project-icon w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center font-pixel text-blue-500 text-lg">AI</div>
-                            <div>
-                                <h3 class="font-pixel text-base text-ink">ANTlabs Local AI Knowledge Base</h3>
-                                <p class="font-mono text-[11px] text-gray-400">Ollama · Open WebUI · MiniLM · Vector Search</p>
-                            </div>
-                        </div>
-                        <p class="mt-3 text-xs leading-relaxed text-gray-600">
-                            Private RAG knowledge system on WSL2 Ubuntu, Docker, local Qwen/Gemma LLMs, and Tailscale for secure remote access. Features a resumable Bash pipeline indexing thousands of technical docs for semantic RCA retrieval.
-                        </p>
-                        <div class="project-actions">
-                            <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-ink font-medium hover:opacity-85 transition">GitHub Profile ↗</a>
-                            <button type="button" onclick="openAsk()" class="px-3 py-1.5 rounded-lg border border-gray-300 hover:border-ink transition">Ask AI details</button>
-                        </div>
-                    </article>
-
-                    <!-- Automation project -->
-                    <article class="deck-card">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider">
-                                Automation
-                            </span>
-                            <span class="font-mono text-[10px] text-gray-400">Automation</span>
-                        </div>
-                        <div class="project-heading">
-                            <div class="project-icon w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-pixel text-emerald-500 text-lg">OCR</div>
-                            <div>
-                                <h3 class="font-pixel text-base text-ink">Document Processing Automation</h3>
-                                <p class="font-mono text-[11px] text-gray-400">OCR · Batch Export · Validation</p>
-                            </div>
-                        </div>
-                        <p class="mt-3 text-xs leading-relaxed text-gray-600">
-                            Browser-based OCR tool combining rule-based validation, automated file naming, editable review, batch processing, and structured Excel/ZIP exports to eliminate manual data entry.
-                        </p>
-                        <div class="project-actions">
-                            <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-ink font-medium hover:opacity-85 transition">Explore ↗</a>
-                        </div>
-                    </article>
-
-                    <!-- Operations project -->
-                    <article class="deck-card">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider">
-                                Operations
-                            </span>
-                            <span class="font-mono text-[10px] text-gray-400">In Development</span>
-                        </div>
-                        <div class="project-heading">
-                            <div class="project-icon w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center font-pixel text-purple-500 text-lg">OPS</div>
-                            <div>
-                                <h3 class="font-pixel text-base text-ink">ANTlabs Operations App &amp; PAWI</h3>
-                                <p class="font-mono text-[11px] text-gray-400">API Integration · Gateway Telemetry</p>
-                            </div>
-                        </div>
-                        <p class="mt-3 text-xs leading-relaxed text-gray-600">
-                            Developing API-integrated applications for gateway monitoring, reporting, and MSP operational visibility, alongside PAWI, an offline-first expense management mobile app.
-                        </p>
-                        <div class="project-actions">
-                            <a href="https://github.com/jasongil003" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-ink font-medium hover:opacity-85 transition">View Updates ↗</a>
-                        </div>
-                    </article>
+<article class="deck-card"><p class="section-kicker">Active development</p><h3>SupportOS</h3><p class="project-problem">Support information and operational tools are fragmented.</p><dl class="project-facts"><dt>What I built</dt><dd>A support workspace bringing knowledge, AI assistance, SSH terminals, cases, and vulnerability intelligence together.</dd><dt>Outcome</dt><dd>Working MVP foundation; stabilization and testing continue.</dd><dt>Technology</dt><dd>Next.js · FastAPI · PostgreSQL / pgvector · Docker</dd></dl><div class="project-actions"><a class="button-primary" href="projects/supportos/">View case study →</a><a class="button-secondary" href="https://github.com/jasongil003/SupportOS" target="_blank" rel="noopener">GitHub ↗</a></div></article>
+<article class="deck-card"><p class="section-kicker">Private project</p><h3>Private AI Knowledge Platform</h3><p class="project-problem">Useful troubleshooting knowledge is scattered across documents and past investigations.</p><dl class="project-facts"><dt>What I built</dt><dd>A local RAG pipeline combining document ingestion, vector search, and Ollama for evidence-aware retrieval.</dd><dt>Outcome</dt><dd>Internal engineering knowledge becomes searchable without sending source documents to public AI services.</dd><dt>Technology</dt><dd>Ollama · Open WebUI · MiniLM · Docker · Bash</dd></dl><div class="project-actions"><a class="button-primary" href="projects/private-ai/">View case study →</a></div></article>
+<article class="deck-card"><p class="section-kicker">OCR automation</p><h3>Smart Document Renamer</h3><p class="project-problem">Reading, naming, and exporting documents creates repetitive manual work.</p><dl class="project-facts"><dt>What I built</dt><dd>An OCR workflow with naming rules, validation, human review, batch processing, and structured exports.</dd><dt>Outcome</dt><dd>A repeatable document workflow that keeps people in control of final results.</dd><dt>Technology</dt><dd>OCR · Batch Processing · Excel / ZIP Export</dd></dl><div class="project-actions"><a class="button-primary" href="projects/document-automation/">View case study →</a><a class="button-secondary" href="https://github.com/jasongil003/document_renamer" target="_blank" rel="noopener">GitHub ↗</a></div></article>
                 </div>
             </section>
 

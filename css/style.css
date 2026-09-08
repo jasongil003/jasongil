@@ -1486,3 +1486,13 @@ html.dark .chat-backdrop {
 .hero-description { max-width: 60ch; }
 .hero-note { align-self: start; }
 @media (min-width: 768px) and (max-width: 1200px) { .hero-main h1 { font-size: 4rem; } }
+
+.project-problem { margin-top: 1rem; color: rgb(var(--g600)); }
+.project-facts { margin-top: 1.5rem; }
+.project-facts dt { font-size: .875rem; font-weight: 650; margin-top: 1rem; }
+.project-facts dd { font-size: 1rem; line-height: 1.65; color: rgb(var(--g600)); margin-top: .35rem; }
+.deck-card { padding: clamp(1.25rem, 2vw, 1.75rem); }
+.deck-card:first-child { grid-column: auto; }
+.deck { grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .deck { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1600px) { .content-container { max-width: 90rem; } .deck { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
