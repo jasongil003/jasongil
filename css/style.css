@@ -17,8 +17,8 @@
     --g100: 245 245 245;
     --g200: 233 233 233;
     --g300: 212 212 212;
-    --g400: 163 163 163;
-    --g500: 115 115 115;
+    --g400: 105 105 105;
+    --g500: 105 105 105;
     --g600: 82 82 82;
     --g700: 64 64 64;
     --g800: 38 38 38;
@@ -70,7 +70,8 @@ body {
     background-color: rgb(var(--bg));
     color: rgb(var(--ink));
     font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     position: relative;
@@ -1437,27 +1438,69 @@ html.dark .chat-backdrop {
 }
 .stat-box svg { width: .9rem; height: .9rem; flex: none; }
 
-/* GitHub Heatmap Grid */
-.contrib-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13px, 1fr));
-    gap: 4px;
-    padding: 1rem;
-    border: 1px solid rgb(var(--g200));
-    border-radius: 0.75rem;
-    background: rgb(var(--g50));
-}
-.contrib-cell {
-    aspect-ratio: 1;
-    border-radius: 2px;
-    background-color: rgb(var(--g200));
-    transition: transform 0.15s ease, background-color 0.2s ease;
-}
-.contrib-cell:hover {
-    transform: scale(1.3);
-    z-index: 2;
-}
-.contrib-cell.lvl-1 { background-color: rgb(var(--g300)); }
-.contrib-cell.lvl-2 { background-color: rgb(var(--g500)); }
-.contrib-cell.lvl-3 { background-color: rgb(var(--g700)); }
-.contrib-cell.lvl-4 { background-color: rgb(var(--ink)); }
+/* Readable type and shared spacing foundation. */
+:root { --space-sm: .75rem; --space-md: 1.5rem; --space-lg: 3rem; --space-section: clamp(3.5rem, 7vw, 6rem); }
+.main-content p, .modal-panel p { max-width: 68ch; }
+.deck-card h3 { font-size: 1.375rem; line-height: 1.2; }
+.deck-card p, .experience-row p { font-size: 1rem; line-height: 1.65; }
+.experience-row h3 { font-size: 1.125rem; line-height: 1.25; }
+.main-content [class*="text-[9px]"], .main-content [class*="text-[10px]"], .main-content [class*="text-[11px]"] { font-size: .8125rem; line-height: 1.5; }
+.main-content .text-xs, .main-content .section-link, .stack-btn, .project-actions { font-size: .875rem; line-height: 1.5; }
+.hero-main h1 { line-height: 1.08; letter-spacing: -.035em; }
+.experience-row { padding-block: var(--space-md); }
+
+.main-content section.py-14 { padding-block: var(--space-section); }
+.section-header { margin-bottom: 2rem; gap: 1.5rem; }
+.section-kicker { font: 600 .8125rem/1.5 'Geist Mono', monospace; letter-spacing: .1em; color: rgb(var(--g500)); margin-bottom: .65rem; }
+.section-title { font: 650 clamp(1.75rem, 3vw, 2rem)/1.15 'Geist', sans-serif; letter-spacing: -.025em; text-transform: none; color: rgb(var(--ink)); }
+.section-intro { margin-top: .75rem; color: rgb(var(--g600)); font-size: 1rem; }
+
+.hero-main h1 { font-size: clamp(3rem, 7.5vw, 6.5rem); overflow-wrap: normal; }
+.hero-role { line-height: 1.4; }
+.eyebrow, .hero-location, .note-top { font-size: .875rem; line-height: 1.5; }
+.hero-description { max-width: 60ch; }
+.hero-note { align-self: start; }
+@media (min-width: 768px) and (max-width: 1200px) { .hero-main h1 { font-size: 4rem; } }
+
+.project-problem { margin-top: 1rem; color: rgb(var(--g600)); }
+.project-facts { margin-top: 1.5rem; }
+.project-facts dt { font-size: .875rem; font-weight: 650; margin-top: 1rem; }
+.project-facts dd { font-size: 1rem; line-height: 1.65; color: rgb(var(--g600)); margin-top: .35rem; }
+.deck-card { padding: clamp(1.25rem, 2vw, 1.75rem); }
+.deck-card:first-child { grid-column: auto; }
+.deck { grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .deck { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1600px) { .content-container { max-width: 90rem; } .deck { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.case-page { max-width: 76ch; padding: 2rem 1.25rem 4rem; margin: auto; overflow-wrap: anywhere; }
+.case-page nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+.case-page h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; letter-spacing: -.03em; margin-block: 1rem; }
+.case-page h2 { font-size: 1.75rem; line-height: 1.2; margin-bottom: 1rem; }
+.case-page section, .case-page footer { margin-top: 3rem; }
+.case-page p, .case-page li, .case-page .text-xs, .case-page .text-sm { font-size: 1rem; line-height: 1.7; }
+.case-page pre { overflow-x: auto; white-space: pre-wrap; }
+.case-page .modal-detail-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.case-page .modal-kicker { font-size: .875rem; }
+
+.experience-points { margin-top: 1rem; padding-left: 1.25rem; max-width: 68ch; color: rgb(var(--g600)); }
+.experience-points li + li { margin-top: .5rem; }
+.experience-row > .flex-1 { min-width: 0; }
+.experience-row .flex.items-center { flex-wrap: wrap; }
+.expertise-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.expertise-grid h3 { font-size: 1.125rem; margin-bottom: .75rem; }
+.expertise-grid p { color: rgb(var(--g600)); }
+
+/* Accessible control sizing and resilient narrow layouts. */
+a.button-primary, a.button-secondary, button, summary, .primary-nav a, .drawer-links a, .theme-opt, .sound-toggle-btn { min-height: 44px; }
+.theme-opt, .sound-toggle-btn, .icon-button { min-width: 44px; }
+.main-content a, .case-page a { overflow-wrap: anywhere; }
+[class*="text-[9px]"], [class*="text-[10px]"], [class*="text-[11px]"] { font-size: .8125rem; line-height: 1.5; }
+#siteModal p, #siteModal li { font-size: 1rem; line-height: 1.65; }
+.demo-note, .playground-details summary, .tool-links button { font-size: .875rem; line-height: 1.5; }
+.main-content .deck-card .button-primary, .main-content .deck-card .button-secondary { padding: .75rem 1rem; }
+.hero-section > *, .section-header > *, .beyond-grid > * { min-width: 0; }
+@media (min-width: 640px) and (max-width: 900px) { .credentials-grid { grid-template-columns: 1fr; } }
+@media (max-width: 400px) { .hero-main h1 { font-size: 2.75rem; } .stats-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { html.scroll-smooth { scroll-behavior: auto !important; } }
+
+.main-content .experience-row p { font-size: 1rem; line-height: 1.65; }

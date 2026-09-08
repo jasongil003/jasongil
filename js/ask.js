@@ -1,5 +1,5 @@
 /**
- * Interactive Ask AI / Command Palette (⌘K / Ctrl+K)
+ * Portfolio Assistant / Curated Command Palette (⌘K / Ctrl+K)
  * Answers questions about Jason Gil, his 8+ years technical leadership, Linux/Networking expertise, RAG/AI systems, and contact info.
  */
 

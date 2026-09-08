@@ -82,9 +82,11 @@
         if (game.flash > 0) { ctx.fillStyle = `rgba(251,113,133,${game.flash * 2})`; ctx.fillRect(0, 0, W, H); }
         if (game.phase !== 'playing') { ctx.fillStyle = 'rgba(8,11,22,.74)'; ctx.fillRect(0, 0, W, H); const failed = game.phase === 'gameover'; label(failed ? 'MISSION FAILED' : 'SECTOR CLEAR?', W / 2, 105, 'center', '#f8fafc', 18); label(failed ? `FINAL SCORE ${game.score}` : 'DEFEND THE NETWORK', W / 2, 128, 'center', '#67e8f9', 10); label(failed ? 'CLICK OR PRESS ENTER TO RETRY' : 'CLICK TO LAUNCH', W / 2, 165, 'center', '#fbbf24', 10); if (!failed) label('WASD / ARROWS TO MOVE · SPACE TO FIRE', W / 2, 187, 'center', '#94a3b8', 8); }
     }
-    function loop(now) { const dt = Math.min(.032, (now - previous) / 1000 || 0); previous = now; update(dt); render(); requestAnimationFrame(loop); }
+    function loop(now) { if (document.hidden || !canvas.closest('details')?.open) { previous = now; requestAnimationFrame(loop); return; } const dt = Math.min(.032, (now - previous) / 1000 || 0); previous = now; update(dt); render(); requestAnimationFrame(loop); }
     function setKey(event, pressed) { const map = { w: 'up', arrowup: 'up', s: 'down', arrowdown: 'down', a: 'left', arrowleft: 'left', d: 'right', arrowright: 'right', ' ': 'fire' }; const control = map[event.key.toLowerCase()]; if (!control) return false; event.preventDefault(); keys[control] = pressed; if (pressed && control === 'fire') shoot(); return true; }
     canvas.addEventListener('keydown', event => { if ((event.key === 'Enter' || event.key === ' ') && game.phase !== 'playing') { event.preventDefault(); launch(); return; } setKey(event, true); });
     canvas.addEventListener('keyup', event => setKey(event, false)); canvas.addEventListener('click', () => { canvas.focus({ preventScroll: true }); launch(); }); canvas.addEventListener('blur', () => Object.keys(keys).forEach(key => keys[key] = false)); document.addEventListener('visibilitychange', () => previous = performance.now());
-    document.addEventListener('DOMContentLoaded', () => { canvas.width = W; canvas.height = H; reset(); render(); previous = performance.now(); requestAnimationFrame(loop); setTimeout(() => wrap?.classList.add('is-on'), 300); });
+    const initializeGame = () => { canvas.width = W; canvas.height = H; reset(); render(); previous = performance.now(); requestAnimationFrame(loop); wrap?.classList.add('is-on'); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initializeGame, { once: true });
+    else initializeGame();
 })();
