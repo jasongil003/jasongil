@@ -1506,3 +1506,11 @@ html.dark .chat-backdrop {
 .case-page pre { overflow-x: auto; white-space: pre-wrap; }
 .case-page .modal-detail-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
 .case-page .modal-kicker { font-size: .875rem; }
+
+.experience-points { margin-top: 1rem; padding-left: 1.25rem; max-width: 68ch; color: rgb(var(--g600)); }
+.experience-points li + li { margin-top: .5rem; }
+.experience-row > .flex-1 { min-width: 0; }
+.experience-row .flex.items-center { flex-wrap: wrap; }
+.expertise-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.expertise-grid h3 { font-size: 1.125rem; margin-bottom: .75rem; }
+.expertise-grid p { color: rgb(var(--g600)); }

@@ -158,7 +158,7 @@
                             </div>
                             <p class="text-xs text-gray-500 mt-0.5">ANTlabs · SaaS, MSP, Enterprise &amp; Hospitality Support</p>
                             <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">
-                                Lead remote technical support and escalation management across APAC, EMEA, and North America. Own complex Linux, network, gateway, and product escalations using tcpdump, logs, and Bash diagnostics for evidence-based RCA. Lead HA failover testing, software patching, and disaster recovery.
+                                Lead complex Linux, network, and product escalations across APAC, EMEA, and North America.</p><ul class="experience-points"><li>Perform evidence-based RCA using packet captures, logs, Bash, and system diagnostics.</li><li>Coordinate engineering, partners, and customers during critical incidents.</li><li>Lead HA/DRBD failover testing, patching, and disaster-recovery validation.</li><li>Mentor engineers and improve escalation workflows.</li></ul><p class="sr-only">Technical leadership at ANTlabs.
                             </p>
                         </div>
                     </div>
@@ -205,58 +205,20 @@
             <section id="stack" class="py-14 border-t border-gray-200">
                 <div class="section-header">
                     <div><p class="section-kicker">03 / EXPERTISE</p><h2 class="section-title">Core expertise</h2><p class="section-intro">The systems, methods, and tools behind my work.</p></div>
-                    <div class="skill-filters" role="group" aria-label="Filter skills">
-                        <button type="button" class="stack-btn is-active" onclick="filterStack('all', this)">All</button>
-                        <button type="button" class="stack-btn" onclick="filterStack('network', this)">Networking</button>
-                        <button type="button" class="stack-btn" onclick="filterStack('linux', this)">Linux &amp; HA</button>
-                        <button type="button" class="stack-btn" onclick="filterStack('ai', this)">AI &amp; RAG</button>
-                        <button type="button" class="stack-btn" onclick="filterStack('tools', this)">Cloud &amp; Tools</button>
-                    </div>
-                </div>
-
-                <div id="stackContainer" class="flex flex-wrap gap-2">
-                    <!-- Networking -->
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">TCP/IP</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">DNS / DHCP</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">VPN &amp; VLAN</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">Routing &amp; NAT</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">Multi-WAN</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">Port Forwarding</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">SSL / TLS</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="network">CCNA Fundamentals</span>
-
-                    <!-- Linux & HA -->
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Linux Administration</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Bash / Shell Scripting</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">High Availability (HA)</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">DRBD Replication</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Disaster Recovery</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">Virtual Machines (VMs)</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="linux">tcpdump &amp; Packet Analysis</span>
-
-                    <!-- AI & RAG -->
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">RAG Architectures</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Ollama &amp; Open WebUI</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Qwen &amp; Gemma LLMs</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Vector Databases</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Sentence Transformers &amp; MiniLM</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="ai">Multi-Agent Systems</span>
-
-                    <!-- Cloud & Tools -->
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Docker</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">WSL2 &amp; Ubuntu</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Tailscale Mesh VPN</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">AWS Cloud</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">REST APIs &amp; Postman</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Git / GitHub</span>
-                    <span class="stack-item px-3 py-1.5 rounded-lg border border-gray-200 bg-white font-mono text-xs text-gray-700 hover-lift transition" data-category="tools">Workflow Automation</span>
-                </div>
+                </div><div class="expertise-grid">
+<div><h3>Infrastructure</h3><p>Linux · HA · DRBD · Docker · Disaster Recovery</p></div>
+<div><h3>Networking</h3><p>TCP/IP · DNS · DHCP · VLAN · VPN · Routing · Multi-WAN</p></div>
+<div><h3>Applied AI &amp; Automation</h3><p>RAG · Ollama · Vector Search · OCR · Workflow Automation</p></div>
+<div><h3>Engineering Tools</h3><p>GitHub · Bash · REST APIs · Postman · Tailscale</p></div>
+<div><h3>Technical Leadership</h3><p>Incident Coordination · Root Cause Analysis · Escalation Ownership · Mentoring</p></div>
+</div>
             </section>
 
+<section id="about" class="py-14 border-t border-gray-200"><div class="section-header"><div><p class="section-kicker">04 / ABOUT</p><h2 class="section-title">Evidence first. Practical by design.</h2></div></div><p>I work at the intersection of infrastructure, technical support, and applied AI. My progression from System Engineer to SME and Technical Lead at ANTlabs has shaped how I approach engineering: understand the failure, gather evidence, and make the next investigation easier.</p><p class="section-intro">I build tools around real operational work, from private knowledge retrieval to document automation. The goal is to make useful knowledge easier to find and repetitive work easier to manage.</p></section>
             <!-- ── SECTION 04: CERTIFICATIONS & EDUCATION ── -->
             <section id="certifications" class="py-14 border-t border-gray-200">
                 <div class="section-header">
-                    <div><p class="section-kicker">04 / EDUCATION</p><h2 class="section-title">Education &amp; credentials</h2><p class="section-intro">Formal study and continuing technical development.</p></div>
+                    <div><p class="section-kicker">EDUCATION</p><h2 class="section-title">Education &amp; credentials</h2><p class="section-intro">Formal study and continuing technical development.</p></div>
                     <span class="font-mono text-xs text-gray-400">Credentials</span>
                 </div>
 
@@ -313,6 +275,7 @@
     </div></details>
             </section>
 
+<section id="contact" class="py-14 border-t border-gray-200"><div class="section-header"><div><p class="section-kicker">06 / CONTACT</p><h2 class="section-title">Let’s talk about your next challenge.</h2><p class="section-intro">Technical leadership, infrastructure troubleshooting, and practical automation.</p></div></div><div class="hero-actions"><a class="button-primary" href="mailto:prostudios.com@gmail.com">Email Jason</a><a class="button-secondary" href="https://github.com/jasongil003">GitHub</a><a class="button-secondary" href="https://www.linkedin.com/feed/update/urn:li:activity:7498185839668154368/">Project writing on LinkedIn</a></div></section>
                         <!-- ── FOOTER ── -->
             <footer class="py-12 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-gray-400">
                 <p>© 2026 Jason Gil. Makati City, Philippines.</p>
