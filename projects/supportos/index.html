@@ -1,1 +1,49 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SupportOS — Jason Gil</title><meta name="description" content="Support information and operational tools are fragmented. A support workspace bringing knowledge, AI assistance, SSH terminals, cases, and vulnerability intelligence together."><link rel="canonical" href="https://jasongil003.github.io/jasongil/projects/supportos/"><meta property="og:title" content="SupportOS — Jason Gil"><meta property="og:description" content="Support information and operational tools are fragmented."><meta property="og:url" content="https://jasongil003.github.io/jasongil/projects/supportos/"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../css/utilities.css"><link rel="stylesheet" href="../../css/style.css"><link rel="icon" href="../../assets/favicon.svg"></head><body><a class="skip-link" href="#case">Skip to case study</a><main id="case" class="case-page" tabindex="-1"><nav aria-label="Case study navigation"><a class="button-secondary" href="../../#projects">← Selected work</a><button class="button-secondary" type="button" onclick="document.documentElement.classList.toggle('dark')">Toggle theme</button></nav><article><p class="section-kicker">Support engineering · Active development</p><h1>SupportOS</h1><p class="case-lead">A unified workspace for troubleshooting, knowledge, AI assistance, and remote operations.</p><section><h2>Overview</h2><p>SupportOS brings technical support workflows into one web workspace. The repository contains an active MVP foundation, with ongoing stabilization and testing.</p></section><section><h2>Problem</h2><p>Engineers switch between vendor documentation, internal notes, terminals, vulnerability feeds, and case records. Useful investigation context is difficult to carry between these tools.</p></section><section><h2>Constraints</h2><p>Private knowledge must respect user visibility. Credentials must stay outside AI context. SSH must work independently of AI availability.</p></section><section><h2>Architecture</h2><p>A Next.js web interface connects to a Python FastAPI service. PostgreSQL and pgvector support records and knowledge retrieval; Redis supports shared runtime services. Docker Compose brings the services together, with optional local inference through Ollama.</p></section><section><h2>What I built</h2><p>The repository includes authentication and role-based access, private chat, scoped knowledge ingestion and retrieval, WebSocket SSH terminals, a floating workstation shell, assets, cases, runbooks, evidence analysis, and vulnerability intelligence.</p></section><section><h2>Challenges</h2><p>The engineering work includes cross-user isolation, host-key verification, provider failures, retrieval quality, and reliable integration between the frontend and API.</p></section><section><h2>Results</h2><p>A working application foundation now connects these workflows. This is an active development project; no production adoption, time-saving percentage, or reliability metric is claimed.</p></section><section><h2>Technology</h2><p>Next.js · React · FastAPI · PostgreSQL · pgvector · Redis · AsyncSSH · Ollama · Docker</p></section><section><h2>What I learned</h2><p>Connecting tools is only part of the work. Access boundaries, evidence handling, and recoverable failures need to remain consistent across the workspace.</p></section><a class="button-primary" href="https://github.com/jasongil003/SupportOS">Explore the repository ↗</a></article><footer><a href="../../#contact">Discuss a project →</a></footer></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SupportOS — Jason Gil</title>
+    <meta name="description" content="Support information and operational tools are fragmented. A support workspace bringing knowledge, AI assistance, SSH terminals, cases, and vulnerability intelligence together.">
+    <link rel="canonical" href="https://jasongil003.github.io/jasongil/projects/supportos/">
+    <meta property="og:title" content="SupportOS — Jason Gil">
+    <meta property="og:description" content="Support information and operational tools are fragmented.">
+    <meta property="og:url" content="https://jasongil003.github.io/jasongil/projects/supportos/">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="../../css/utilities.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../assets/favicon.svg">
+</head>
+<body>
+<a class="skip-link" href="#case">Skip to case study</a>
+<main id="case" class="case-page" tabindex="-1">
+    <nav aria-label="Case study navigation">
+        <a class="button-secondary" href="../../#projects">← Selected work</a>
+        <button class="button-secondary" type="button" onclick="document.documentElement.classList.toggle('dark')" aria-label="Toggle light and dark theme">Toggle theme</button>
+    </nav>
+    <article>
+        <p class="section-kicker">Support engineering · Active development</p>
+        <h1>SupportOS</h1>
+        <p class="case-lead">A unified workspace for troubleshooting, knowledge, AI assistance, and remote operations.</p>
+
+        <section class="case-media" aria-label="SupportOS project media placeholder">
+            <div><strong>SupportOS project media</strong><span>Screenshot space reserved for verified product UI. No synthetic screenshot is used.</span></div>
+        </section>
+
+        <section><h2>Overview</h2><p>SupportOS brings technical support workflows into one web workspace. The repository contains an active MVP foundation, with ongoing stabilization and testing.</p></section>
+        <section><h2>Problem</h2><p>Engineers switch between vendor documentation, internal notes, terminals, vulnerability feeds, and case records. Useful investigation context is difficult to carry between these tools.</p></section>
+        <section><h2>Constraints</h2><p>Private knowledge must respect user visibility. Credentials must stay outside AI context. SSH must work independently of AI availability.</p></section>
+        <section><h2>Architecture</h2><p>A Next.js web interface connects to a Python FastAPI service. PostgreSQL and pgvector support records and knowledge retrieval; Redis supports shared runtime services. Docker Compose brings the services together, with optional local inference through Ollama.</p></section>
+        <section><h2>What I built</h2><p>The repository includes authentication and role-based access, private chat, scoped knowledge ingestion and retrieval, WebSocket SSH terminals, a floating workstation shell, assets, cases, runbooks, evidence analysis, and vulnerability intelligence.</p></section>
+        <section><h2>Technical decisions</h2><p>SupportOS keeps remote operations, knowledge retrieval, and AI assistance as separate capabilities so critical support workflows do not depend on a model being available. Access boundaries and credential handling remain explicit parts of the architecture.</p></section>
+        <section><h2>Challenges</h2><p>The engineering work includes cross-user isolation, host-key verification, provider failures, retrieval quality, and reliable integration between the frontend and API.</p></section>
+        <section><h2>Results</h2><p>A working application foundation now connects these workflows. This is an active development project; no production adoption, time-saving percentage, or reliability metric is claimed.</p></section>
+        <section><h2>Technology</h2><p>Next.js · React · FastAPI · PostgreSQL · pgvector · Redis · AsyncSSH · Ollama · Docker</p></section>
+        <section><h2>What I learned</h2><p>Connecting tools is only part of the work. Access boundaries, evidence handling, and recoverable failures need to remain consistent across the workspace.</p></section>
+        <a class="button-primary" href="https://github.com/jasongil003/SupportOS" target="_blank" rel="noopener">Explore the repository ↗</a>
+    </article>
+    <footer><a href="../../#contact">Discuss a project →</a></footer>
+</main>
+</body>
+</html>

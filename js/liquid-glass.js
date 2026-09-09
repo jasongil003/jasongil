@@ -99,11 +99,25 @@
         document.querySelector('.mobile-nav-drawer')?.setAttribute('data-glass-surface', 'strong');
     }
 
+    function initializeProjectMedia() {
+        document.querySelectorAll('.deck-card').forEach(card => {
+            if (card.querySelector('.project-media')) return;
+            const title = card.querySelector('h3')?.textContent.trim() || 'Project';
+            const media = document.createElement('div');
+            media.className = 'project-media';
+            media.setAttribute('role', 'img');
+            media.setAttribute('aria-label', `${title} screenshot placeholder`);
+            media.innerHTML = `<div class="project-media-placeholder"><strong>${title}</strong><span>Screenshot space reserved · add real project media when available</span></div>`;
+            const heading = card.querySelector('h3');
+            if (heading) heading.insertAdjacentElement('afterend', media);
+        });
+    }
+
     function initializeSpecularTracking() {
         if (!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches) return;
         if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
 
-        document.querySelectorAll('.hero-note').forEach(surface => {
+        document.querySelectorAll('.hero-note, .deck-card').forEach(surface => {
             let frame = 0;
             surface.addEventListener('pointermove', event => {
                 cancelAnimationFrame(frame);
@@ -126,6 +140,7 @@
     function initialize() {
         initializeAppearanceControls();
         initializeNavigationSurfaces();
+        initializeProjectMedia();
         initializeSectionNavigation();
         initializeSpecularTracking();
         root.classList.add('liquid-glass-ready');
