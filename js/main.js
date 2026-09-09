@@ -314,3 +314,9 @@ playground?.addEventListener('toggle', function () {
     script.onerror = () => { delete this.dataset.loaded; window.showToast?.('Game could not load. Close and reopen the panel to retry.'); };
     document.body.appendChild(script);
 });
+
+// Progressive Liquid Glass enhancement. The portfolio remains functional if it fails to load.
+const liquidGlassScript = document.createElement('script');
+liquidGlassScript.src = 'js/liquid-glass.js?v=20260909';
+liquidGlassScript.defer = true;
+document.body.appendChild(liquidGlassScript);
