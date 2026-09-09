@@ -1,3 +1,5 @@
+@import url('./liquid-glass.css?v=20260909');
+
 /* Small local utilities used by the existing portfolio content. */
 
         .flex { display: flex; }
