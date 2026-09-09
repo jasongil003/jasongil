@@ -59,6 +59,56 @@
         syncGlassButtons(pref);
     }
 
+    function initializeContentOrder() {
+        const contact = document.getElementById('contact');
+        const lab = document.getElementById('lab');
+        if (contact && lab && contact.parentElement === lab.parentElement) {
+            lab.parentElement.insertBefore(contact, lab);
+        }
+
+        document.querySelectorAll('.primary-nav, .drawer-links').forEach(nav => {
+            const contactLink = nav.querySelector('a[href="#contact"]');
+            const labLink = nav.querySelector('a[href="#lab"]');
+            if (contactLink && labLink) nav.insertBefore(contactLink, labLink);
+        });
+
+        const contactKicker = contact?.querySelector('.section-kicker');
+        const labKicker = lab?.querySelector('.section-kicker');
+        if (contactKicker) contactKicker.textContent = '05 / CONTACT';
+        if (labKicker) labKicker.textContent = '06 / LAB';
+    }
+
+    function initializeContactActions() {
+        const actions = document.querySelector('#contact .hero-actions');
+        if (!actions) return;
+
+        const github = actions.querySelector('a[href*="github.com"]');
+        if (github) {
+            github.target = '_blank';
+            github.rel = 'noopener';
+        }
+
+        const linkedIn = actions.querySelector('a[href*="linkedin.com"]');
+        if (linkedIn) {
+            linkedIn.href = 'https://ph.linkedin.com/in/jason-gil-028249165';
+            linkedIn.target = '_blank';
+            linkedIn.rel = 'noopener';
+            linkedIn.textContent = 'LinkedIn ↗';
+            linkedIn.setAttribute('aria-label', 'Jason Gil on LinkedIn, opens in a new tab');
+        }
+
+        if (!actions.querySelector('.resume-placeholder')) {
+            const resume = document.createElement('button');
+            resume.type = 'button';
+            resume.className = 'button-secondary resume-placeholder';
+            resume.disabled = true;
+            resume.setAttribute('aria-disabled', 'true');
+            resume.title = 'Resume file has not been published yet';
+            resume.textContent = 'Resume · not published yet';
+            actions.appendChild(resume);
+        }
+    }
+
     function setActiveNavigation(id) {
         document.querySelectorAll('.primary-nav a[href^="#"], .drawer-links a[href^="#"]').forEach(link => {
             const active = link.getAttribute('href') === `#${id}`;
@@ -104,10 +154,19 @@
             if (card.querySelector('.project-media')) return;
             const title = card.querySelector('h3')?.textContent.trim() || 'Project';
             const media = document.createElement('div');
+            const placeholder = document.createElement('div');
+            const label = document.createElement('strong');
+            const note = document.createElement('span');
+
             media.className = 'project-media';
             media.setAttribute('role', 'img');
             media.setAttribute('aria-label', `${title} screenshot placeholder`);
-            media.innerHTML = `<div class="project-media-placeholder"><strong>${title}</strong><span>Screenshot space reserved · add real project media when available</span></div>`;
+            placeholder.className = 'project-media-placeholder';
+            label.textContent = title;
+            note.textContent = 'Screenshot space reserved · add real project media when available';
+            placeholder.append(label, note);
+            media.appendChild(placeholder);
+
             const heading = card.querySelector('h3');
             if (heading) heading.insertAdjacentElement('afterend', media);
         });
@@ -137,12 +196,30 @@
         });
     }
 
+    function initializeScrollEdge() {
+        let scheduled = false;
+        const sync = () => {
+            scheduled = false;
+            root.classList.toggle('is-scrolled', window.scrollY > 12);
+        };
+        const schedule = () => {
+            if (scheduled) return;
+            scheduled = true;
+            requestAnimationFrame(sync);
+        };
+        sync();
+        window.addEventListener('scroll', schedule, { passive: true });
+    }
+
     function initialize() {
+        initializeContentOrder();
         initializeAppearanceControls();
+        initializeContactActions();
         initializeNavigationSurfaces();
         initializeProjectMedia();
         initializeSectionNavigation();
         initializeSpecularTracking();
+        initializeScrollEdge();
         root.classList.add('liquid-glass-ready');
     }
 

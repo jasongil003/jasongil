@@ -1,3 +1,5 @@
+@import url('./liquid-contact-lab.css?v=20260909');
+
 /* Patch 6 — Layered glass dialogs and interactive Lab tools */
 
 html body :is(.ask-backdrop, .tt-backdrop, .chat-backdrop) {
