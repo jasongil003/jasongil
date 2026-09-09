@@ -99,10 +99,35 @@
         document.querySelector('.mobile-nav-drawer')?.setAttribute('data-glass-surface', 'strong');
     }
 
+    function initializeSpecularTracking() {
+        if (!window.matchMedia?.('(hover: hover) and (pointer: fine)').matches) return;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+
+        document.querySelectorAll('.hero-note').forEach(surface => {
+            let frame = 0;
+            surface.addEventListener('pointermove', event => {
+                cancelAnimationFrame(frame);
+                frame = requestAnimationFrame(() => {
+                    const rect = surface.getBoundingClientRect();
+                    const x = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+                    const y = Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100));
+                    surface.style.setProperty('--glass-specular-x', `${x.toFixed(1)}%`);
+                    surface.style.setProperty('--glass-specular-y', `${y.toFixed(1)}%`);
+                });
+            }, { passive: true });
+            surface.addEventListener('pointerleave', () => {
+                cancelAnimationFrame(frame);
+                surface.style.removeProperty('--glass-specular-x');
+                surface.style.removeProperty('--glass-specular-y');
+            }, { passive: true });
+        });
+    }
+
     function initialize() {
         initializeAppearanceControls();
         initializeNavigationSurfaces();
         initializeSectionNavigation();
+        initializeSpecularTracking();
         root.classList.add('liquid-glass-ready');
     }
 
