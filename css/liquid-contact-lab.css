@@ -226,3 +226,219 @@ html body :is(.theme-opt, .glass-intensity-control button, .icon-button, .sound-
         box-shadow: none;
     }
 }
+
+/* ========================================================================== 
+   Patch 8 — Responsive QA, accessibility, performance, and final polish
+   ========================================================================== */
+
+html,
+body {
+    max-width: 100%;
+}
+
+html body :is(img, svg, video, canvas) {
+    max-width: 100%;
+}
+
+html body :is(.content-container, .hero-section, .deck, .deck-card, .section-header, .experience-row, .expertise-grid, .beyond-grid, .case-page, .case-page article, .modal-card, .ask-content, .tt-content, .chat-content) > * {
+    min-width: 0;
+}
+
+html body :is(.project-facts dd, .experience-row p, .expertise-grid p, .case-page p, .case-page li, .modal-card p, .modal-card li) {
+    overflow-wrap: anywhere;
+}
+
+html body :is(.button-primary, .button-secondary, .section-link, .modal-action, .theme-opt, .glass-intensity-control button, .sound-toggle-btn, .icon-button, .stat-box, .ask-chip, .tool-links button, .playground-details summary) {
+    min-height: 44px;
+}
+
+html body .case-flow {
+    overflow-x: auto;
+    padding: 1rem;
+    border: 1px solid var(--glass-control-border);
+    border-radius: 1rem;
+    background: rgb(var(--g50) / .48);
+    color: rgb(var(--g600));
+    font: .8rem/1.65 'Geist Mono', ui-monospace, monospace;
+    white-space: pre-wrap;
+    overflow-wrap: normal;
+}
+
+html body .case-lessons {
+    display: grid;
+    gap: .75rem;
+}
+
+html body .case-lessons > div,
+html body .case-closing {
+    padding: 1rem;
+    border: 1px solid rgb(var(--g200) / .82);
+    border-radius: 1rem;
+    background: rgb(var(--g50) / .42);
+}
+
+html body .case-closing {
+    max-width: 64ch;
+    margin-top: clamp(2rem, 5vw, 4rem) !important;
+    color: rgb(var(--ink)) !important;
+}
+
+html body .project-media,
+html body .case-media,
+html body .hero-note,
+html body .deck-card {
+    contain: paint;
+}
+
+@supports not (height: 100dvh) {
+    html body :is(.mobile-nav-drawer, .tt-content, .chat-content) {
+        max-height: calc(100vh - 1.5rem);
+    }
+}
+
+@media (max-width: 359px) {
+    html body .content-container {
+        padding-inline: 1rem;
+    }
+
+    html body .mobile-header {
+        width: calc(100% - .75rem);
+        padding-left: .65rem;
+    }
+
+    html body .mobile-header .brand {
+        gap: .35rem;
+        font-size: .9rem;
+    }
+
+    html body .brand-mark {
+        width: 1.85rem;
+        height: 1.85rem;
+    }
+
+    html body .hero-main h1 {
+        font-size: clamp(2.75rem, 17vw, 3.65rem);
+    }
+
+    html body .hero-role {
+        font-size: 1.05rem;
+    }
+
+    html body .stats-grid,
+    html body .credentials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    html body .glass-intensity-control button {
+        padding-inline: .2rem;
+        font-size: .58rem;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 430px) {
+    html body .content-container {
+        padding-inline: 1.1rem;
+    }
+
+    html body .hero-note {
+        width: min(100%, 27rem);
+    }
+}
+
+@media (min-width: 431px) and (max-width: 767px) {
+    html body .content-container {
+        padding-inline: clamp(1.25rem, 5vw, 2rem);
+    }
+
+    html body .hero-note {
+        width: min(100%, 29rem);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    html body .content-container {
+        padding-inline: clamp(2rem, 5vw, 3rem);
+    }
+
+    html body .hero-section {
+        gap: clamp(1.75rem, 4vw, 3rem);
+    }
+
+    html body .modal-card,
+    html body .ask-content,
+    html body .tt-content,
+    html body .chat-content {
+        max-width: calc(100vw - 3rem);
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1099px) {
+    html body .sidebar-nav {
+        width: 13.75rem;
+        padding: 1.05rem;
+    }
+
+    html body .main-content {
+        padding-left: 15.75rem;
+    }
+
+    html body .content-container {
+        padding-inline: 1.5rem;
+    }
+
+    html body .hero-section {
+        grid-template-columns: minmax(0, 1fr) minmax(15.5rem, .82fr);
+        gap: 1.5rem;
+    }
+
+    html body .hero-main h1 {
+        font-size: clamp(3.2rem, 6vw, 4.15rem);
+    }
+}
+
+@media (min-width: 1100px) and (max-width: 1279px) {
+    html body .content-container {
+        padding-inline: clamp(1.75rem, 3vw, 2.5rem);
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+    html body .content-container {
+        max-width: 74rem;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+    html body .content-container {
+        max-width: 82rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    html body .content-container {
+        max-width: 90rem;
+    }
+
+    html body .hero-section {
+        gap: 5rem;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    html body :is(.deck-card:hover, .hero-note:hover, .stat-box:hover, #contact:hover) {
+        transform: none;
+    }
+}
+
+@media (prefers-contrast: more) {
+    html body :is(.deck-card, .stat-box, .expertise-grid, #contact, #lab .beyond-grid, .modal-card, .ask-content, .tt-content, .chat-content) {
+        background-color: var(--glass-bg-strong);
+        border-width: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html body :is(.mobile-nav-drawer, .deck-card, .hero-note, .stat-box, .button-primary, .button-secondary, .ask-content, .tt-content, .chat-content, .modal-card) {
+        transform: none !important;
+    }
+}

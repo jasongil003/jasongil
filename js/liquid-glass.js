@@ -5,6 +5,16 @@
     const GLASS_KEY = 'portfolio_glass_intensity';
     const VALID_GLASS = new Set(['clear', 'balanced', 'tinted']);
 
+    function ensureRuntimeStyles() {
+        const hasTokens = getComputedStyle(root).getPropertyValue('--glass-radius').trim();
+        if (hasTokens || document.querySelector('link[data-liquid-glass-runtime]')) return;
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'css/liquid-glass.css?v=20260909-final';
+        link.dataset.liquidGlassRuntime = 'true';
+        document.head.appendChild(link);
+    }
+
     function getGlassPreference() {
         try {
             const saved = localStorage.getItem(GLASS_KEY);
@@ -212,6 +222,7 @@
     }
 
     function initialize() {
+        ensureRuntimeStyles();
         initializeContentOrder();
         initializeAppearanceControls();
         initializeContactActions();
