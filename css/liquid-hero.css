@@ -1,0 +1,192 @@
+@import url('./liquid-projects.css?v=20260909');
+@import url('./liquid-controls.css?v=20260909');
+
+/* Patch 3 — Hero depth & portrait glass treatment */
+
+html body .hero-section {
+    position: relative;
+    isolation: isolate;
+    align-items: center;
+    padding-top: clamp(4.75rem, 9vw, 7.5rem);
+}
+
+html body .hero-section::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    inset: 4% -8% 0 -10%;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 22%, rgb(93 109 251 / .10), transparent 32%),
+        radial-gradient(circle at 78% 32%, rgb(74 155 208 / .08), transparent 30%),
+        radial-gradient(circle at 54% 78%, rgb(151 116 255 / .055), transparent 28%);
+    filter: blur(22px);
+    opacity: .9;
+}
+
+html.dark body .hero-section::before {
+    background:
+        radial-gradient(circle at 18% 22%, rgb(109 122 255 / .16), transparent 32%),
+        radial-gradient(circle at 78% 32%, rgb(55 123 170 / .12), transparent 30%),
+        radial-gradient(circle at 54% 78%, rgb(151 116 255 / .08), transparent 28%);
+    opacity: .72;
+}
+
+html body .hero-main {
+    position: relative;
+    z-index: 2;
+}
+
+html body .hero-main h1 {
+    text-wrap: balance;
+}
+
+html body .hero-note {
+    --glass-specular-x: 24%;
+    --glass-specular-y: 14%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: clamp(20rem, 42vw, 31rem);
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: clamp(1.4rem, 3vw, 2rem);
+    background:
+        radial-gradient(circle at var(--glass-specular-x) var(--glass-specular-y), rgb(255 255 255 / .30), transparent 28%),
+        linear-gradient(145deg, rgb(255 255 255 / .13), transparent 48%),
+        var(--glass-bg);
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / .58),
+        inset 1px 0 0 rgb(255 255 255 / .16),
+        inset 0 -1px 0 rgb(15 23 42 / .08),
+        0 26px 62px rgb(15 23 42 / .13),
+        0 5px 16px rgb(15 23 42 / .06);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+    transition: border-color var(--motion-medium) ease, box-shadow var(--motion-medium) ease;
+}
+
+html.dark body .hero-note {
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / .14),
+        inset 1px 0 0 rgb(255 255 255 / .05),
+        inset 0 -1px 0 rgb(0 0 0 / .20),
+        0 28px 68px rgb(0 0 0 / .34),
+        0 5px 18px rgb(0 0 0 / .18);
+}
+
+html body .hero-note::after {
+    content: '';
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(125deg, rgb(255 255 255 / .22), transparent 18% 80%, rgb(255 255 255 / .07)),
+        radial-gradient(circle at var(--glass-specular-x) var(--glass-specular-y), rgb(255 255 255 / .17), transparent 25%);
+    mix-blend-mode: screen;
+    opacity: .62;
+}
+
+html body .hero-note .note-top {
+    position: relative;
+    z-index: 5;
+    min-height: 2rem;
+    padding-inline: .35rem;
+    color: rgb(var(--g500));
+}
+
+html body .profile-portrait {
+    position: absolute;
+    z-index: 1;
+    inset: 3.25rem .8rem .8rem;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / .18);
+    border-radius: clamp(1rem, 2vw, 1.45rem);
+    background: rgb(var(--g100));
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / .16),
+        0 12px 30px rgb(15 23 42 / .12);
+}
+
+html body .profile-portrait::before {
+    background: linear-gradient(180deg, transparent 74%, rgb(8 12 20 / .05) 88%, rgb(8 12 20 / .10) 100%);
+    opacity: .52;
+}
+
+html body .profile-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 23%;
+    filter: none;
+    transform: none;
+    transition: transform var(--motion-slow) var(--motion-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    html body .hero-note:hover {
+        border-color: color-mix(in srgb, var(--glass-border) 78%, white 22%);
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / .62),
+            inset 1px 0 0 rgb(255 255 255 / .18),
+            0 30px 72px rgb(15 23 42 / .16),
+            0 6px 18px rgb(15 23 42 / .07);
+    }
+
+    html body .hero-note:hover .profile-portrait img {
+        transform: scale(1.012);
+    }
+}
+
+@media (min-width: 820px) {
+    html body .hero-section {
+        grid-template-columns: minmax(0, 1.35fr) minmax(17rem, .65fr);
+        gap: clamp(2rem, 6vw, 5rem);
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1180px) {
+    html body .hero-section {
+        grid-template-columns: minmax(0, 1.12fr) minmax(16rem, .88fr);
+        gap: 2rem;
+    }
+
+    html body .hero-main h1 {
+        font-size: clamp(3.4rem, 6vw, 4.7rem);
+    }
+}
+
+@media (max-width: 819px) {
+    html body .hero-note {
+        width: min(100%, 29rem);
+        min-height: clamp(23rem, 112vw, 34rem);
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 430px) {
+    html body .hero-section {
+        padding-top: 3.75rem;
+    }
+
+    html body .hero-main h1 {
+        font-size: clamp(3rem, 17vw, 4.35rem);
+    }
+
+    html body .hero-note {
+        min-height: 25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html body .hero-note::after {
+        opacity: .38;
+    }
+
+    html body .hero-note:hover .profile-portrait img {
+        transform: none;
+    }
+}

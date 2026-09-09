@@ -1,7 +1,35 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Smart Document Renamer — Jason Gil</title><meta name="description" content="Reading, naming, and exporting documents creates repetitive manual work. An OCR workflow with naming rules, validation, human review, batch processing, and structured exports."><link rel="canonical" href="https://jasongil003.github.io/jasongil/projects/document-automation/"><meta property="og:title" content="Smart Document Renamer — Jason Gil"><meta property="og:description" content="Reading, naming, and exporting documents creates repetitive manual work."><meta property="og:url" content="https://jasongil003.github.io/jasongil/projects/document-automation/"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="../../css/utilities.css"><link rel="stylesheet" href="../../css/style.css"><link rel="icon" href="../../assets/favicon.svg"></head><body><a class="skip-link" href="#case">Skip to case study</a><main id="case" class="case-page" tabindex="-1"><nav aria-label="Case study navigation"><a class="button-secondary" href="../../#projects">← Selected work</a><button class="button-secondary" type="button" onclick="document.documentElement.classList.toggle('dark')">Toggle theme</button></nav><article>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Document Renamer — Jason Gil</title>
+    <meta name="description" content="Reading, naming, and exporting documents creates repetitive manual work. An OCR workflow with naming rules, validation, human review, batch processing, and structured exports.">
+    <link rel="canonical" href="https://jasongil003.github.io/jasongil/projects/document-automation/">
+    <meta property="og:title" content="Smart Document Renamer — Jason Gil">
+    <meta property="og:description" content="Reading, naming, and exporting documents creates repetitive manual work.">
+    <meta property="og:url" content="https://jasongil003.github.io/jasongil/projects/document-automation/">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="../../css/utilities.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="../../assets/favicon.svg">
+</head>
+<body>
+<a class="skip-link" href="#case">Skip to case study</a>
+<main id="case" class="case-page" tabindex="-1">
+    <nav aria-label="Case study navigation">
+        <a class="button-secondary" href="../../#projects">← Selected work</a>
+        <button class="button-secondary" type="button" onclick="document.documentElement.classList.toggle('dark')" aria-label="Toggle light and dark theme">Toggle theme</button>
+    </nav>
+    <article>
         <p class="modal-kicker">Applied automation · Project case study</p>
         <h1 class="case-title">OCR Document Processing &amp; Smart Renaming Automation</h1>
-        <p class="modal-lead">A simple conversation about repetitive document work became a practical automation project designed around one question: what parts of this process should a person still review, and what parts should software handle automatically?</p>
+        <p class="case-lead">A simple conversation about repetitive document work became a practical automation project designed around one question: what parts of this process should a person still review, and what parts should software handle automatically?</p>
+
+        <section class="case-media" aria-label="Smart Document Renamer project media placeholder">
+            <div><strong>Smart Document Renamer project media</strong><span>Screenshot space reserved for verified OCR workflow media. No synthetic screenshot is used.</span></div>
+        </section>
 
         <div class="modal-detail-grid">
             <div class="modal-detail"><span>Core task</span><strong>Document extraction &amp; renaming</strong></div>
@@ -10,27 +38,19 @@
             <div class="modal-detail"><span>Output</span><strong>Structured Excel / ZIP export</strong></div>
         </div>
 
-        <div class="mt-5">
-            <p class="modal-kicker">01 — How it started</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The project started from a conversation about a repetitive daily task: reading documents, identifying the important information, renaming files consistently, and preparing the data for the next step. The problem was not technically difficult one document at a time — the problem was the repetition.</p>
-            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50"><p class="text-sm text-ink leading-relaxed"><strong>A small recurring task became an opportunity to build a reusable automation workflow.</strong></p></div>
-        </div>
+        <section>
+            <h2>How it started</h2>
+            <div><p>The project started from a conversation about a repetitive daily task: reading documents, identifying the important information, renaming files consistently, and preparing the data for the next step. The problem was not technically difficult one document at a time — the problem was the repetition.</p><p><strong>A small recurring task became an opportunity to build a reusable automation workflow.</strong></p></div>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">02 — The workflow problem</p>
-            <ul class="modal-points">
-                <li>Open and inspect each document manually.</li>
-                <li>Find the fields needed for naming and record keeping.</li>
-                <li>Rename files using a consistent format.</li>
-                <li>Repeat the same checks across many documents.</li>
-                <li>Transfer the extracted information into structured output.</li>
-            </ul>
-            <p class="mt-3 text-xs text-gray-600 leading-relaxed">Each step is simple, but at volume the process becomes slow, inconsistent, and error-prone.</p>
-        </div>
+        <section>
+            <h2>The workflow problem</h2>
+            <div><ul class="modal-points"><li>Open and inspect each document manually.</li><li>Find the fields needed for naming and record keeping.</li><li>Rename files using a consistent format.</li><li>Repeat the same checks across many documents.</li><li>Transfer the extracted information into structured output.</li></ul><p>Each step is simple, but at volume the process becomes slow, inconsistent, and error-prone.</p></div>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">03 — Automation approach</p>
-            <div class="mt-2 p-3 rounded-lg border border-gray-200 bg-gray-50 font-mono text-[11px] leading-relaxed text-gray-600" style="overflow-x:auto; white-space:pre;">Upload documents
+        <section>
+            <h2>Automation approach</h2>
+            <div class="case-flow" aria-label="Document automation workflow">Upload documents
        ↓
 OCR text extraction
        ↓
@@ -45,45 +65,46 @@ Batch process approved records
 Rename documents
        ↓
 Export structured data + files</div>
-        </div>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">04 — Human-in-the-loop by design</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">OCR is useful, but extraction is not automatically the same as correctness. The workflow keeps an editable review stage so a user can confirm or correct detected values before the final file name and export are produced.</p>
-            <div class="mt-3 p-3 rounded-lg border border-gray-200 bg-gray-50"><p class="text-xs text-gray-600 leading-relaxed"><strong class="text-ink">Design principle:</strong> automate repetitive work without removing the user's ability to verify the result.</p></div>
-        </div>
+        <section>
+            <h2>Human-in-the-loop by design</h2>
+            <div><p>OCR is useful, but extraction is not automatically the same as correctness. The workflow keeps an editable review stage so a user can confirm or correct detected values before the final file name and export are produced.</p><p><strong>Design principle:</strong> automate repetitive work without removing the user's ability to verify the result.</p></div>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">05 — Rule-based validation</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">Instead of trusting raw OCR output, the tool combines extraction with predictable validation and naming rules. This creates a controlled workflow where recognized text is checked before it becomes part of a file name or structured record.</p>
-            <ul class="modal-points"><li>Consistent file-naming patterns.</li><li>Required-field checks before final processing.</li><li>Editable values when OCR needs correction.</li><li>Repeatable behavior across an entire batch.</li></ul>
-        </div>
+        <section>
+            <h2>Rule-based validation</h2>
+            <div><p>Instead of trusting raw OCR output, the tool combines extraction with predictable validation and naming rules. This creates a controlled workflow where recognized text is checked before it becomes part of a file name or structured record.</p><ul class="modal-points"><li>Consistent file-naming patterns.</li><li>Required-field checks before final processing.</li><li>Editable values when OCR needs correction.</li><li>Repeatable behavior across an entire batch.</li></ul></div>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">06 — Batch processing</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The project moved beyond a one-file OCR demo. Batch processing makes the automation useful for real workflows by allowing multiple documents to be reviewed, validated, renamed, and exported together.</p>
-        </div>
+        <section>
+            <h2>Batch processing</h2>
+            <p>The project moved beyond a one-file OCR demo. Batch processing makes the automation useful for real workflows by allowing multiple documents to be reviewed, validated, renamed, and exported together.</p>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">07 — Structured output</p>
-            <p class="mt-2 text-xs text-gray-600 leading-relaxed">The end result is not only renamed files. Extracted and reviewed information can also be organized into structured output, including spreadsheet data and packaged document exports, so the same information can support downstream administrative work.</p>
-        </div>
+        <section>
+            <h2>Structured output</h2>
+            <p>The end result is not only renamed files. Extracted and reviewed information can also be organized into structured output, including spreadsheet data and packaged document exports, so the same information can support downstream administrative work.</p>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">08 — What the project taught me</p>
-            <div class="space-y-3 mt-2">
-                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">1. Start with the repetitive task, not the technology.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">The useful part of the project came from understanding the workflow before deciding where OCR or automation belonged.</p></div>
-                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">2. Automation still needs validation.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">A fast wrong result is not an improvement. Review and validation are part of the product, not an afterthought.</p></div>
-                <div class="p-3 rounded-lg border border-gray-200 bg-gray-50"><strong class="text-ink text-xs">3. Small problems can produce reusable tools.</strong><p class="mt-1 text-xs text-gray-600 leading-relaxed">A solution created for one repetitive process can become a general document-processing pattern that applies to many similar workflows.</p></div>
+        <section>
+            <h2>What the project taught me</h2>
+            <div class="case-lessons">
+                <div><strong>1. Start with the repetitive task, not the technology.</strong><p>The useful part of the project came from understanding the workflow before deciding where OCR or automation belonged.</p></div>
+                <div><strong>2. Automation still needs validation.</strong><p>A fast wrong result is not an improvement. Review and validation are part of the product, not an afterthought.</p></div>
+                <div><strong>3. Small problems can produce reusable tools.</strong><p>A solution created for one repetitive process can become a general document-processing pattern that applies to many similar workflows.</p></div>
             </div>
-        </div>
+        </section>
 
-        <div class="mt-5">
-            <p class="modal-kicker">09 — Project focus</p>
+        <section>
+            <h2>Project focus</h2>
             <ul class="modal-points"><li>Improve OCR reliability across different document layouts.</li><li>Expand configurable field and naming rules.</li><li>Strengthen batch review and exception handling.</li><li>Make the workflow easier to adapt to other document-processing use cases.</li></ul>
-        </div>
+        </section>
 
-        <div class="mt-5 p-3 rounded-lg border border-gray-200"><p class="text-sm text-ink leading-relaxed"><strong>The goal was never OCR for its own sake. The goal was to remove repetitive document work while keeping people in control of the final result.</strong></p></div>
-
+        <p class="case-closing"><strong>The goal was never OCR for its own sake. The goal was to remove repetitive document work while keeping people in control of the final result.</strong></p>
         <a class="modal-action" href="https://www.linkedin.com/pulse/how-one-conversation-inspired-me-build-ai-tool-jason-gil--g5eoc/" target="_blank" rel="noopener">Read the full project story on LinkedIn <span aria-hidden="true">↗</span></a>
-    </article><footer><a href="../../#contact">Discuss a project →</a></footer></main></body></html>
+    </article>
+    <footer><a href="../../#contact">Discuss a project →</a></footer>
+</main>
+</body>
+</html>
