@@ -1,0 +1,970 @@
+/* Portfolio V2 — editorial, proof-led presentation layer
+   Loaded last by js/liquid-glass.js so the existing portfolio remains reversible. */
+
+:root {
+    --v2-accent: #5d6dfb;
+    --v2-accent-soft: color-mix(in srgb, var(--v2-accent) 10%, transparent);
+    --v2-line: rgb(var(--g200) / .78);
+    --v2-muted: rgb(var(--g600));
+    --v2-panel: rgb(var(--bg) / .74);
+    --v2-max: 78rem;
+}
+
+html body {
+    background:
+        radial-gradient(circle at 78% 4%, rgb(93 109 251 / .055), transparent 28rem),
+        rgb(var(--bg));
+}
+
+html body .content-container {
+    max-width: var(--v2-max);
+}
+
+/* ---------------- Navigation: quiet, functional chrome ---------------- */
+html body .sidebar-nav {
+    border-color: rgb(var(--g200) / .72);
+    background: rgb(var(--bg) / .82);
+    box-shadow: 0 18px 50px rgb(15 23 42 / .045);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+
+html body .sidebar-nav::before,
+html body .sidebar-nav::after,
+html body .mobile-header::after {
+    opacity: 0 !important;
+}
+
+html body .primary-nav {
+    margin-top: 3rem;
+}
+
+html body .primary-nav a {
+    border-radius: .7rem;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    font-size: .74rem;
+    letter-spacing: .015em;
+}
+
+html body .primary-nav a:hover,
+html body .primary-nav a:focus-visible,
+html body .primary-nav a.is-active,
+html body .primary-nav a[aria-current="location"] {
+    transform: none;
+    border-color: transparent;
+    background: rgb(var(--g100) / .72);
+    box-shadow: none;
+}
+
+html body .header-controls {
+    gap: .55rem;
+}
+
+html body .glass-intensity-control,
+html body .sidebar-nav .sound-toggle-btn,
+html body .drawer-footer .glass-intensity-control,
+html body .drawer-footer .sound-toggle-btn {
+    display: none !important;
+}
+
+html body .theme-switch {
+    display: inline-flex;
+    align-self: flex-start;
+    width: auto;
+    border-color: rgb(var(--g200));
+    background: rgb(var(--g50));
+    box-shadow: none;
+}
+
+html body .theme-opt {
+    min-width: 38px;
+    min-height: 38px;
+}
+
+html body .mobile-header {
+    background: rgb(var(--bg) / .86);
+    border-color: rgb(var(--g200) / .72);
+    box-shadow: 0 12px 34px rgb(15 23 42 / .06);
+}
+
+/* ---------------- Hero: identity first ---------------- */
+html body .hero-section {
+    min-height: min(820px, calc(100vh - 3rem));
+    align-items: center;
+    padding-top: clamp(5rem, 10vw, 8.5rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+    border-bottom: 1px solid var(--v2-line);
+}
+
+html body .hero-section::before {
+    inset: 4% -10% 0 -6%;
+    background:
+        radial-gradient(circle at 18% 28%, rgb(93 109 251 / .09), transparent 30%),
+        radial-gradient(circle at 80% 34%, rgb(74 155 208 / .045), transparent 28%);
+    filter: blur(28px);
+}
+
+html body .hero-main {
+    max-width: 47rem;
+}
+
+html body .eyebrow {
+    color: rgb(var(--g500));
+    font-size: .72rem;
+    letter-spacing: .12em;
+}
+
+html body .hero-main h1 {
+    max-width: 8ch;
+    margin-top: 1.15rem;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: clamp(4rem, 9.5vw, 8.2rem);
+    font-weight: 700;
+    line-height: .88;
+    letter-spacing: -.07em;
+    text-wrap: balance;
+}
+
+html body .hero-role {
+    max-width: 31ch;
+    margin-top: 1.65rem;
+    color: rgb(var(--ink));
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(1.55rem, 3.4vw, 2.45rem);
+    font-weight: 520;
+    line-height: 1.12;
+    letter-spacing: -.035em;
+}
+
+html body .hero-description {
+    max-width: 55ch;
+    margin-top: 1.35rem;
+    color: var(--v2-muted);
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.75;
+}
+
+html body .hero-actions {
+    gap: .65rem;
+    margin-top: 2rem;
+}
+
+html body .button-primary,
+html body .button-secondary {
+    min-height: 48px;
+    padding-inline: 1.15rem;
+    border-radius: .7rem;
+    box-shadow: none;
+    font-size: .82rem;
+}
+
+html body .button-primary:hover,
+html body .button-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgb(15 23 42 / .09);
+}
+
+html body .hero-location {
+    margin-top: 1.35rem;
+    font-size: .72rem;
+}
+
+html body .hero-note {
+    min-height: clamp(25rem, 44vw, 34rem);
+    padding: .7rem;
+    border-radius: 1.6rem;
+    border-color: rgb(var(--g200) / .7);
+    background: rgb(var(--g50) / .72);
+    box-shadow: 0 28px 70px rgb(15 23 42 / .09);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+html body .hero-note::after {
+    background: linear-gradient(145deg, rgb(255 255 255 / .14), transparent 25% 78%, rgb(93 109 251 / .045));
+    opacity: .7;
+}
+
+html body .hero-note .note-top {
+    position: absolute;
+    z-index: 6;
+    top: 1.15rem;
+    left: 1.15rem;
+    right: 1.15rem;
+    color: rgb(255 255 255 / .72);
+    mix-blend-mode: difference;
+}
+
+html body .profile-portrait {
+    inset: .7rem;
+    border: 0;
+    border-radius: 1.15rem;
+    box-shadow: none;
+}
+
+html body .profile-portrait::before {
+    background: linear-gradient(180deg, transparent 58%, rgb(4 6 12 / .04) 76%, rgb(4 6 12 / .23) 100%);
+    opacity: .82;
+}
+
+html body .profile-portrait img {
+    object-position: 50% 22%;
+    transform: scale(1.015);
+}
+
+html body .hero-note:hover .profile-portrait img {
+    transform: scale(1.025);
+}
+
+html body .intro-detail {
+    display: none;
+}
+
+/* ---------------- Proof strip: capabilities, not questionable vanity stats ---------------- */
+html body .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding-block: 1.35rem;
+    border-bottom: 1px solid var(--v2-line);
+}
+
+html body .stat-box {
+    min-height: 0;
+    padding: .35rem 1.3rem;
+    border: 0;
+    border-right: 1px solid var(--v2-line);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: default;
+}
+
+html body .stat-box:first-child {
+    padding-left: 0;
+}
+
+html body .stat-box:last-child {
+    border-right: 0;
+}
+
+html body .stat-box:hover,
+html body .stat-box:active {
+    transform: none;
+    border-color: var(--v2-line);
+    box-shadow: none;
+}
+
+html body .stat-box svg {
+    display: none;
+}
+
+html body .stat-box .font-pixel {
+    font-family: 'Geist', sans-serif;
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: -.02em;
+}
+
+html body .stat-box .font-mono:last-child {
+    margin-top: .25rem;
+    color: rgb(var(--g500));
+    font-size: .68rem;
+    letter-spacing: .04em;
+}
+
+/* ---------------- Sections: editorial hierarchy ---------------- */
+html body .main-content section.py-14,
+html body #projects,
+html body #experience,
+html body #stack,
+html body #about,
+html body #certifications,
+html body #lab {
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+html body .section-header {
+    align-items: flex-end;
+    margin-bottom: clamp(2rem, 4vw, 3.25rem);
+}
+
+html body .section-kicker {
+    margin-bottom: .55rem;
+    color: var(--v2-accent);
+    font-size: .7rem;
+    letter-spacing: .13em;
+}
+
+html body .section-title {
+    max-width: 21ch;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: clamp(2rem, 4.2vw, 3.7rem);
+    font-weight: 680;
+    line-height: .98;
+    letter-spacing: -.055em;
+    text-wrap: balance;
+}
+
+html body .section-intro {
+    max-width: 56ch;
+    margin-top: .9rem;
+    color: var(--v2-muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+/* ---------------- Featured work ---------------- */
+html body .deck {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+html body .deck-card {
+    min-height: 27rem;
+    padding: clamp(1.35rem, 2.8vw, 2rem);
+    border: 1px solid var(--v2-line);
+    border-radius: 1.25rem;
+    background: rgb(var(--bg));
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+html body .deck-card::after {
+    display: none;
+}
+
+html body .deck-card:hover {
+    transform: translateY(-2px);
+    border-color: rgb(var(--g300));
+    box-shadow: 0 24px 55px rgb(15 23 42 / .07);
+}
+
+html body .deck-card.project-featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, .82fr) minmax(22rem, 1.18fr);
+    column-gap: clamp(2rem, 5vw, 5rem);
+    min-height: 34rem;
+    align-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 92% 8%, rgb(93 109 251 / .08), transparent 32%),
+        rgb(var(--bg));
+}
+
+html body .project-featured .project-copy {
+    min-width: 0;
+}
+
+html body .deck-card h3 {
+    margin-top: .25rem;
+    font-family: 'Geist', sans-serif;
+    font-size: clamp(1.75rem, 3vw, 2.8rem);
+    font-weight: 680;
+    line-height: 1;
+    letter-spacing: -.045em;
+}
+
+html body .project-featured h3 {
+    font-size: clamp(2.5rem, 5vw, 4.7rem);
+}
+
+html body .project-problem {
+    max-width: 48ch;
+    margin-top: 1rem;
+    color: rgb(var(--g600));
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+html body .project-facts {
+    margin-top: 1.5rem;
+}
+
+html body .project-facts dt {
+    margin-top: .85rem;
+    color: rgb(var(--g500));
+    font: 650 .68rem/1.4 'Geist Mono', monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+html body .project-facts dd {
+    max-width: 55ch;
+    margin-top: .3rem;
+    color: rgb(var(--ink));
+    font-size: .93rem;
+    line-height: 1.6;
+}
+
+html body .project-actions {
+    padding-top: 1.55rem;
+}
+
+html body .project-media {
+    display: none !important;
+}
+
+/* SupportOS product map: factual visual, not a synthetic screenshot. */
+html body .supportos-visual {
+    position: relative;
+    min-height: 25rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--g200));
+    border-radius: 1.2rem;
+    background: rgb(12 14 20);
+    box-shadow: 0 30px 70px rgb(15 23 42 / .16);
+    color: rgb(241 245 249);
+}
+
+html body .supportos-windowbar {
+    display: flex;
+    align-items: center;
+    gap: .42rem;
+    height: 2.65rem;
+    padding-inline: 1rem;
+    border-bottom: 1px solid rgb(255 255 255 / .08);
+    background: rgb(255 255 255 / .025);
+}
+
+html body .supportos-windowbar i {
+    display: block;
+    width: .48rem;
+    height: .48rem;
+    border-radius: 50%;
+    background: rgb(255 255 255 / .22);
+}
+
+html body .supportos-windowbar span {
+    margin-left: auto;
+    color: rgb(255 255 255 / .42);
+    font: 600 .62rem/1 'Geist Mono', monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+html body .supportos-app {
+    display: grid;
+    grid-template-columns: 4.7rem 1fr;
+    min-height: 22rem;
+}
+
+html body .supportos-rail {
+    display: grid;
+    align-content: start;
+    gap: .55rem;
+    padding: 1rem .75rem;
+    border-right: 1px solid rgb(255 255 255 / .07);
+}
+
+html body .supportos-rail span {
+    display: grid;
+    place-items: center;
+    height: 2.5rem;
+    border: 1px solid rgb(255 255 255 / .06);
+    border-radius: .7rem;
+    color: rgb(255 255 255 / .45);
+    font: 600 .62rem/1 'Geist Mono', monospace;
+}
+
+html body .supportos-rail span:first-child {
+    border-color: rgb(109 122 255 / .45);
+    background: rgb(109 122 255 / .12);
+    color: rgb(218 223 255);
+}
+
+html body .supportos-canvas {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+    align-content: center;
+    padding: clamp(1rem, 3vw, 1.6rem);
+    background:
+        radial-gradient(circle at 75% 10%, rgb(109 122 255 / .14), transparent 36%),
+        linear-gradient(180deg, rgb(255 255 255 / .015), transparent);
+}
+
+html body .supportos-module {
+    min-height: 7rem;
+    padding: .9rem;
+    border: 1px solid rgb(255 255 255 / .085);
+    border-radius: .9rem;
+    background: rgb(255 255 255 / .035);
+}
+
+html body .supportos-module b {
+    display: block;
+    color: rgb(248 250 252);
+    font-size: .82rem;
+    line-height: 1.3;
+}
+
+html body .supportos-module small {
+    display: block;
+    margin-top: .45rem;
+    color: rgb(203 213 225 / .62);
+    font: .68rem/1.55 'Geist Mono', monospace;
+}
+
+html body .supportos-module.is-wide {
+    grid-column: 1 / -1;
+    min-height: 6rem;
+}
+
+html body .supportos-status {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: .7rem;
+    color: rgb(203 213 225 / .7);
+    font: .62rem/1.3 'Geist Mono', monospace;
+}
+
+html body .supportos-status::before {
+    content: '';
+    width: .42rem;
+    height: .42rem;
+    border-radius: 50%;
+    background: rgb(74 222 128);
+    box-shadow: 0 0 0 4px rgb(74 222 128 / .08);
+}
+
+/* Secondary project visual language */
+html body .project-signal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .45rem;
+    margin-block: 1.2rem .35rem;
+}
+
+html body .project-signal span {
+    min-height: 4.1rem;
+    padding: .7rem;
+    border: 1px solid var(--v2-line);
+    border-radius: .75rem;
+    background: rgb(var(--g50) / .55);
+    color: rgb(var(--g600));
+    font: 600 .68rem/1.35 'Geist Mono', monospace;
+}
+
+/* ---------------- Engineering proof section ---------------- */
+html body .engineering-proof {
+    padding-block: clamp(4.5rem, 8vw, 7rem);
+    border-top: 1px solid var(--v2-line);
+}
+
+html body .engineering-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--v2-line);
+    border-left: 1px solid var(--v2-line);
+}
+
+html body .engineering-proof article {
+    min-height: 14rem;
+    padding: clamp(1.4rem, 3vw, 2.1rem);
+    border-right: 1px solid var(--v2-line);
+    border-bottom: 1px solid var(--v2-line);
+}
+
+html body .engineering-proof article span {
+    color: var(--v2-accent);
+    font: 650 .68rem/1.4 'Geist Mono', monospace;
+    letter-spacing: .08em;
+}
+
+html body .engineering-proof article h3 {
+    margin-top: 1.2rem;
+    color: rgb(var(--ink));
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+}
+
+html body .engineering-proof article p {
+    margin-top: .8rem;
+    color: var(--v2-muted);
+    font-size: .95rem;
+    line-height: 1.65;
+}
+
+/* ---------------- Career story ---------------- */
+html body .career-story {
+    display: grid;
+    grid-template-columns: minmax(17rem, .72fr) minmax(0, 1.28fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    margin-bottom: 2.5rem;
+    padding: clamp(1.5rem, 3vw, 2.2rem) 0 clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--v2-line);
+}
+
+html body .career-story h3 {
+    max-width: 15ch;
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+}
+
+html body .career-story p {
+    color: var(--v2-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+html body .career-path {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--v2-line);
+}
+
+html body .career-path span {
+    position: relative;
+    padding: 1rem .8rem 0 0;
+    color: rgb(var(--g600));
+    font: 650 .72rem/1.4 'Geist Mono', monospace;
+}
+
+html body .career-path span::before {
+    content: '';
+    position: absolute;
+    top: -.28rem;
+    left: 0;
+    width: .55rem;
+    height: .55rem;
+    border-radius: 50%;
+    background: rgb(var(--bg));
+    border: 2px solid var(--v2-accent);
+}
+
+html body .experience-row {
+    padding-block: 1.8rem;
+}
+
+html body .experience-row h3 {
+    font-size: 1.08rem;
+}
+
+html body .experience-row p,
+html body .experience-points {
+    color: var(--v2-muted);
+    font-size: .95rem;
+}
+
+/* ---------------- Expertise: quiet and legible ---------------- */
+html body .expertise-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--v2-line);
+    border-left: 1px solid var(--v2-line);
+}
+
+html body .expertise-grid > div {
+    min-height: 10rem;
+    padding: 1.5rem;
+    border-right: 1px solid var(--v2-line);
+    border-bottom: 1px solid var(--v2-line);
+}
+
+html body .expertise-grid h3 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+html body .expertise-grid p {
+    color: var(--v2-muted);
+    font-size: .92rem;
+    line-height: 1.7;
+}
+
+/* ---------------- About / credentials ---------------- */
+html body #about > p {
+    max-width: 62ch;
+    color: rgb(var(--ink));
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(1.35rem, 2.8vw, 2rem);
+    line-height: 1.4;
+    letter-spacing: -.02em;
+}
+
+html body #about .section-intro {
+    margin-top: 1.5rem;
+    color: var(--v2-muted);
+    font-family: 'Geist', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+html body .credentials-grid {
+    gap: .75rem;
+}
+
+html body .credentials-grid > div {
+    border-radius: 1rem;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* ---------------- Contact: strongest close ---------------- */
+html body #contact {
+    margin-block: clamp(2rem, 5vw, 5rem) 0;
+    padding: clamp(2rem, 6vw, 5rem) !important;
+    border: 0 !important;
+    border-radius: 1.6rem;
+    background:
+        radial-gradient(circle at 90% 12%, rgb(109 122 255 / .24), transparent 30%),
+        rgb(13 15 22);
+    color: white;
+    box-shadow: 0 35px 90px rgb(15 23 42 / .18);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+html body #contact::after {
+    display: none;
+}
+
+html body #contact .section-kicker {
+    color: rgb(180 188 255);
+}
+
+html body #contact .section-title {
+    max-width: 14ch;
+    color: white;
+    font-size: clamp(2.65rem, 6vw, 5.7rem);
+}
+
+html body #contact .section-intro {
+    color: rgb(226 232 240 / .72);
+}
+
+html body #contact .button-primary {
+    border-color: white;
+    background: white;
+    color: rgb(13 15 22);
+}
+
+html body #contact .button-secondary {
+    border-color: rgb(255 255 255 / .22);
+    color: white;
+}
+
+html body #contact .resume-placeholder {
+    opacity: .58;
+}
+
+/* ---------------- Lab: intentionally secondary ---------------- */
+html body #lab {
+    margin-top: 0;
+    padding-top: clamp(4rem, 7vw, 6rem);
+}
+
+html body #lab .section-title {
+    font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+}
+
+html body #lab .beyond-grid {
+    border-color: var(--v2-line);
+    border-radius: 1rem;
+    background: rgb(var(--g50) / .46);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+html body #lab .tool-links button {
+    border-radius: .6rem;
+}
+
+html body .playground-details {
+    opacity: .76;
+}
+
+/* ---------------- Generic dialog cleanup ---------------- */
+html body .modal-card,
+html body .chat-content {
+    border-color: rgb(var(--g200));
+    background: rgb(var(--bg) / .96);
+    border-radius: 1.1rem;
+}
+
+html body #askOverlay .ask-backdrop,
+html body #typingOverlay .tt-backdrop,
+html body #chatOverlay .chat-backdrop {
+    background: rgb(var(--bg) / .90);
+}
+
+/* ---------------- SupportOS case-study visual language ---------------- */
+html body .case-page .supportos-case-map {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .65rem;
+    width: 100%;
+    padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+html body .case-page .supportos-case-map > div {
+    min-height: 8rem;
+    padding: 1rem;
+    border: 1px solid rgb(255 255 255 / .09);
+    border-radius: .9rem;
+    background: rgb(255 255 255 / .04);
+    color: white;
+    text-align: left;
+}
+
+html body .case-page .supportos-case-map strong,
+html body .case-page .supportos-case-map span {
+    display: block;
+}
+
+html body .case-page .supportos-case-map span {
+    margin-top: .5rem;
+    color: rgb(203 213 225 / .68);
+    font: .7rem/1.55 'Geist Mono', monospace;
+}
+
+html body .case-page .case-media.supportos-case-media {
+    min-height: 23rem;
+    background:
+        radial-gradient(circle at 78% 12%, rgb(109 122 255 / .18), transparent 32%),
+        rgb(12 14 20);
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 1099px) {
+    html body .deck-card.project-featured {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    html body .project-featured .supportos-visual {
+        order: 2;
+    }
+}
+
+@media (max-width: 819px) {
+    html body .hero-section {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        padding-top: 4.5rem;
+    }
+
+    html body .hero-main {
+        max-width: none;
+    }
+
+    html body .hero-main h1 {
+        font-size: clamp(4rem, 17vw, 6.8rem);
+    }
+
+    html body .hero-note {
+        width: min(100%, 32rem);
+        min-height: clamp(27rem, 112vw, 37rem);
+        margin-inline: 0;
+    }
+
+    html body .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    html body .stat-box {
+        padding: .8rem 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--v2-line);
+    }
+
+    html body .stat-box:nth-last-child(-n+2) {
+        border-bottom: 0;
+    }
+
+    html body .deck,
+    html body .engineering-proof-grid,
+    html body .expertise-grid,
+    html body .career-story {
+        grid-template-columns: 1fr;
+    }
+
+    html body .career-path {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 1.6rem;
+    }
+
+    html body .supportos-app {
+        grid-template-columns: 3.6rem 1fr;
+    }
+
+    html body .supportos-canvas {
+        grid-template-columns: 1fr;
+    }
+
+    html body .supportos-module.is-wide {
+        grid-column: auto;
+    }
+
+    html body .case-page .supportos-case-map {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 639px) {
+    html body .section-title {
+        font-size: clamp(2.15rem, 10vw, 3rem);
+    }
+
+    html body .hero-role {
+        font-size: clamp(1.45rem, 7vw, 2rem);
+    }
+
+    html body .project-featured h3 {
+        font-size: clamp(2.5rem, 12vw, 3.7rem);
+    }
+
+    html body .project-signal {
+        grid-template-columns: 1fr;
+    }
+
+    html body .engineering-proof article {
+        min-height: 0;
+    }
+
+    html body #contact {
+        border-radius: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    html body .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    html body .stat-box,
+    html body .stat-box:nth-last-child(-n+2) {
+        border-bottom: 1px solid var(--v2-line);
+    }
+
+    html body .stat-box:last-child {
+        border-bottom: 0;
+    }
+
+    html body .career-path {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html body .deck-card:hover,
+    html body .hero-note:hover .profile-portrait img,
+    html body .button-primary:hover,
+    html body .button-secondary:hover {
+        transform: none;
+    }
+}
