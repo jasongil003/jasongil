@@ -7,6 +7,8 @@
     const overlay = document.getElementById('typingOverlay');
     if (!overlay) return;
 
+    const typingInput = document.getElementById('typingInput');
+    let previousInput = '';
     const wordsEl = document.getElementById('ttWords');
     const kbEl = document.getElementById('ttKeyboard');
     const elWpm = document.getElementById('ttWpm');
@@ -239,6 +241,8 @@
     }
 
     function reset() {
+        previousInput = '';
+        if (typingInput) typingInput.value = '';
         finished = false;
         started = false;
         startTime = 0;
@@ -285,6 +289,21 @@
         window.siteSound?.play('close');
     };
 
+    // Native input events work with iOS/Android keyboards and composition.
+    function readTypedInput(event) {
+        if (!isOpen || event?.isComposing) return;
+        const next = typingInput.value.toLowerCase();
+        let common = 0;
+        while (common < previousInput.length && common < next.length && previousInput[common] === next[common]) common++;
+        for (let i = common; i < previousInput.length; i++) handleBackspace();
+        for (const ch of next.slice(common)) {
+            if (ch === ' ') handleSpace();
+            else if (/[a-z]/.test(ch)) handleChar(ch);
+        }
+        previousInput = next;
+    }
+    typingInput?.addEventListener('input', readTypedInput);
+    typingInput?.addEventListener('compositionend', readTypedInput);
     buildKeyboard();
 
     document.addEventListener('keydown', (e) => {
@@ -301,6 +320,8 @@
             closeTyping();
             return;
         }
+
+        if (e.target === typingInput) return;
 
         if (e.key === 'Tab') {
             e.preventDefault();

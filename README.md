@@ -10,6 +10,7 @@ Static HTML, CSS, and JavaScript portfolio with light/dark themes, accessible di
 - Experience, grouped expertise, About, education, and Contact.
 - Static project pages under `projects/`, compatible with GitHub Pages subpath hosting.
 - Lab: curated Portfolio Assistant (no live LLM), typing test, local guestbook demo, and Orbit Impact.
+- Responsive phone layouts include scrollable navigation/dialogs, native typing input, and touch controls for Orbit Impact.
 - Appearance and sound preferences remain available. The game loads when its panel opens.
 
 ## Structure
@@ -18,11 +19,13 @@ Static HTML, CSS, and JavaScript portfolio with light/dark themes, accessible di
 - `projects/*/index.html`: indexable case studies, with content independent of JavaScript.
 - `css/`: shared styles and utilities.
 - `js/`: theme, dialogs, and interactive features.
-- `assets/`: portrait and favicon. The displayed portrait uses WebP.
+- `assets/`: portrait and favicon. The displayed portrait uses the original color PNG, with its full proportions preserved.
 
 ## Development and deployment
 
-No build or package installation is required. Serve the repository with a static HTTP server. GitHub Pages should publish the repository root; `.nojekyll` is retained. Each project route uses a directory index.
+Production needs no build or package installation. Serve the repository with a static HTTP server. GitHub Pages should publish the repository root; `.nojekyll` is retained. Each project route uses a directory index.
+
+For local development and browser QA, run `npm ci` and `npm run dev`. Vite is a development-only dependency; the deployed site remains static HTML/CSS/JS.
 
 ## Review status
 
